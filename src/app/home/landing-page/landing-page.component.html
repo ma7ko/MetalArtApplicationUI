@@ -1,0 +1,98 @@
+<div class="container" style="font-family: 'Julius Sans One';">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center"><span style="font-family: 'Oxygen';font-weight: 900;font-size: 100px;">art</span> Reimagined</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-4">
+           <div style="border-left: 50px solid cadetblue;
+           height: 100%; padding: 5%;
+display: flex;
+flex-direction: column;background: #f4f4f4;
+border-radius: 0px 50px 0px 0px;">
+               <p style="  font-family: 'Oxygen';
+               font-weight: 500;
+               font-size: 50px; height: 45%;
+             ">Decoration for everyone.</p> 
+               <p>Find yours</p>
+               <button class="check-button">Check products</button>
+           </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-8">
+            <app-svg [image]="'head-hat'"></app-svg>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card-marked">
+                <app-svg [image]="'painting'"></app-svg>
+            </div>
+        </div>
+        <div class="col-6">
+            <div style="height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #f4f4f4;
+            border-radius: 50px 0px 0px 0px; padding:5%;">
+                <span style="font-family: 'Oxygen'; font-size:50px;">Sketch it.</span>
+                <p>And let us create it for you</p>
+                <button class="check-button" style="align-self: center;
+                width: 50%;
+                padding: 2%;">Create Sketch</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div style="background: #f4f4f4; border-radius: 0px 0px 0px 0px; font-family: 'Oxygen'; display: flex;
+            flex-direction: column;
+            height: 50vh;
+            justify-content: center; border: 50px solid cadetblue;">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="text-center">
+                            <fa-icon [icon]="this.faInfo"  style="font-size: 40px; color: #0080ff;"></fa-icon>
+                            <p>Give details of your sketch</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center">
+                            <fa-icon [icon]="this.faIcon" style="font-size: 40px;"></fa-icon>
+                            <p>Send us your sketch</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center">
+                            <fa-icon [icon]="this.faClock" style="font-size: 40px; color: #ffe140;"></fa-icon>
+                            <p>Wait for approval</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <div style="height: 100%; background: #f4f4f4; flex-direction: column; justify-content: center; padding:5%;" class="d-flex">
+                <h1 style="font-family: 'Oxygen'; font-size: 40px;">Keep track of your work.</h1>
+                <p>Find the status of your sketch on your dashboard</p>
+                <button class="check-button" style="align-self: flex-end;
+                width: 50%;
+                padding: 2%;">Dashboard</button>
+            </div>
+        </div>
+        <div class="col-7">
+            <div style="background: darkslategray; border-right: 50px solid cadetblue;">
+                <app-svg [image]="'order'"></app-svg>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!--<div class="row">
+        <div class="col-12">
+            <app-svg [image]="'head-imagine'"></app-svg>
+        </div>-->
+    </div>
+</div>

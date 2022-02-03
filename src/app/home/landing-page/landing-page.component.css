@@ -1,0 +1,48 @@
+.first-link {
+    display: block;
+    transform: rotate(90deg);
+    border-top: 2px solid aquamarine;
+}
+
+#head-hat:hover:before {
+    background: aquamarine;
+}
+
+#menu-item-1:hover {
+    background: aquamarine;
+}
+
+#products-text:hover {
+    background: aquamarine;
+    cursor: pointer;
+}
+
+.card-marked::before {
+    content: 'Sketch';
+    transform: rotate(90deg);
+    display: inline-block;
+    background: aquamarine;
+    padding: 20px;
+    color: #333;
+    border: 1px solid aquamarine;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.card-marked {
+    padding-top: 17px;
+    padding-left: 33px;
+    background: cadetblue;
+    color: whitesmoke;
+}
+
+.check-button {
+    background: rgb(56, 195, 255);
+    color: white;
+    font-weight: 900;
+    border: none;
+    border-radius: 200px;
+    padding: 5%;
+    font-family: 'Oxygen';
+    font-variant: all-petite-caps;
+    font-size: 20px;
+}
