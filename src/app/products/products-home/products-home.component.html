@@ -1,0 +1,29 @@
+<div class="container" style="height: 100%;">
+    <div class="row">
+        <div class="col-12">
+            <div style="height: 40vh; background-color: #f4f4f4;">
+                <div></div>
+                <div class="d-flex align-items-end h-100 w-50 justify-items-around">
+                    <div class="d-flex justify-content-around w-50">
+                        <div class="functions"><a routerLink="/products/create"><fa-icon [icon]="this.faCartPlus"></fa-icon></a></div>
+                        <div class="functions"><fa-icon [icon]="this.faTrash"></fa-icon></div>
+                        <div class="functions"><fa-icon [icon]="this.faPen"></fa-icon></div>
+                        <div class="functions"><fa-icon [icon]="this.faEye"></fa-icon></div>
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="this.products.length == 0">
+                <div *ngFor="let row of itemsPerRow" class="d-flex justify-content-around">
+                    <div *ngFor="let item of rows; let i = index;">
+                        <app-placeholder></app-placeholder>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="row">
+                <div *ngFor="let product of products; let i = index;" class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <app-placeholder [product]="product"></app-placeholder>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,10 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { SvgComponent } from './svg/svg.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PlaceholderComponent } from './placeholder/placeholder.component';
+import { ValidationComponent } from './validation/validation.component';
+import { InputPriceComponent } from './input-price/input-price.component';
+import { InputDimensionComponent } from './input-dimension/input-dimension.component';
 
 
 
@@ -11,7 +15,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     NavigationComponent,
     SvgComponent,
-    FooterComponent
+    FooterComponent,
+    PlaceholderComponent,
+    ValidationComponent,
+    InputPriceComponent,
+    InputDimensionComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +28,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   exports: [
     NavigationComponent,
     FooterComponent,
-    SvgComponent
+    SvgComponent,
+    PlaceholderComponent,
+    ValidationComponent,
+    InputPriceComponent,
+    InputDimensionComponent
   ]
 })
 export class SharedModule { }

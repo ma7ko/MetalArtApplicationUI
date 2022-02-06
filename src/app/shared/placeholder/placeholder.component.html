@@ -1,0 +1,12 @@
+<div class="ui card p-3" id="wrp">
+    <div [ngClass]="{ 'display-01' : this.product.image }" class="ui placeholder">
+        <div [ngClass]="{ 'h-100 p-0' : this.product.image }" class="image square" id="img-h">
+            <img [ngClass]="{ 'w-100' : this.product.image }" id="fetched" [src]="this.product?.image ? 'data:image/jpeg;base64,' + this.product.image : ''" />
+        </div>
+        <div class="paragraph">
+            <div [ngClass]="{ 'placeholder-none' : this.product, 'medium line': !this.product }">{{ this.product?.name }}</div>
+            <div class="medium line" [ngClass]="{ 'placeholder-none' : this.product, 'full line': !this.product }" >{{ this.product?.description }}</div>
+        </div>
+
+    </div>
+</div>

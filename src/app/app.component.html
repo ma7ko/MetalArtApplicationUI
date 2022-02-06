@@ -1,5 +1,13 @@
 <div>
-  <app-navigation></app-navigation>
+  <app-navigation>
+    <a class="nav-link" routerLink="/home" routerLinkActive="active" id="home-link">Home</a>
+    <a class="nav-link" routerLink="/products" routerLinkActive="active" id="products-link">Products</a>
+    <a class="nav-link" href="#" id="about-link">About</a>
+    <a class="nav-link" href="#" id="contact-link">Contact us</a>
+    <a class="nav-link" routerLink="/auth" routerLinkActive="active" id="auth-link">
+      <fa-icon [icon]="this.faUser"  style="color: #f4f4f4; background: #555; border-radius:10px; padding:10px"></fa-icon>
+    </a>
+  </app-navigation>
 </div>
 
 <router-outlet></router-outlet>

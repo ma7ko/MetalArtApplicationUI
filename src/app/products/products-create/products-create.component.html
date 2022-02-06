@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-12">
+        <div class="container" style="height: 100vh;">
+            <div class="d-flex align-items-center h-100">
+            <form class="w-100" [formGroup]="this.createForm" (ngSubmit)="this.onSubmit()" enctype="multipart/form-data">
+                <div style="
+                padding: 15px;" class="row">
+                <div class="col-6">
+                    <div style="width: inherit; height: inherit; margin:auto;">
+                        <div class="w-100 h-100" id="img-holder"></div>
+                        <app-svg *ngIf="!this.image" class="w-100 h-100" [image]="'product-placeholder'"></app-svg>
+                        <input class="form-control m-2" type="file" (change)="onChange($event)">
+                    </div>
+                </div>
+                    <div class="col-3"> 
+
+                        <div>
+                            <label>Name</label>
+                            <input class="form-control" formControlName="name" type="text"/>
+                        </div>
+                        <div>
+                            <label>Description</label>
+                            <input class="form-control" formControlName="description" type="text"/>
+                        </div>
+                        <div>
+                            <label>Shape</label>
+                            <input class="form-control" formControlName="shape" type="text"/>
+                        </div>
+                        <div style="margin-top: 10px; margin-bottom: 10px;">
+                        <div class="form-check">
+                            <label class="form-check-label">Available</label>
+                            <input class="form-check-input" formControlName="available" type="checkbox"/>
+                        </div>
+                        </div>
+                        <div>
+                            <label>Amount</label>
+                            <div class="d-flex">
+                                <button type="button" style="width: 50%; border:0; border-radius: 40px 0px 0px 40px; font-size: 10px;" (click)="this.changeAmount(false)"><fa-icon [icon]="this.arrowDown"></fa-icon></button>
+                                <input class="form-control text-center" formControlName="amount" type="number"/>
+                                <button type="button" style="width: 50%; border:0; border-radius: 0px 40px 40px 0px; font-size: 10px;" (click)="this.changeAmount(true)"><fa-icon [icon]="this.arrowUp"></fa-icon></button>
+                            </div>
+                        </div>
+                        <div style="margin-top: 5px;">
+                            <label>Price</label>
+                            <app-input-price (changePrice)="this.setPrice($event)"></app-input-price>
+                        </div>
+
+                    </div>
+
+                    <div class="col-3">
+                        <div>
+                            <label>Width</label>
+                            <!--<app-input-dimension></app-input-dimension>-->
+                            <input class="form-control" formControlName="width" type="number"/>
+                        </div>
+                        <div>
+                            <label>Height</label>
+                            <input class="form-control" formControlName="height" type="number"/>
+                        </div>
+                        <div>
+                            <label>Depth</label>
+                            <input class="form-control" formControlName="depth" type="number"/>
+                        </div>
+                    </div>
+                </div>
+
+                <button style="background: tan;
+                border: 0px;
+                padding: 10px;
+                width: 100%;" type="submit">Submit</button>
+
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

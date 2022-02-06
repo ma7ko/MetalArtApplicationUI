@@ -1,0 +1,11 @@
+<div *ngIf="this.control != undefined && this.control.dirty && this.control.touched && this.control.errors" class="text-danger">
+    <div *ngIf="this.control.errors['required']">
+        Value is required.
+    </div>
+    <div *ngIf="this.control.errors['pattern']">
+        Invalid format.
+    </div>
+    <div *ngIf="this.control.errors['minlength']">
+        Value must be at least {{ this.control.errors['minlength'].requiredLength }} characters long.
+    </div>
+</div>
