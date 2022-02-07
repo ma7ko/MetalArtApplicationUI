@@ -1,20 +1,29 @@
-<div class="ui right labeled input">
-    <input type="text" placeholder="Enter width..">
-    <div class="ui basic label">
-        mm
+<div class="d-flex flex-column justify-content-between dim-wrapper">
+    <div>
+        <div class="ui large buttons w-100 p-1">
+            <button id="checkbox-active" type="button" class="ui button radio-dim" (click)="this.radioDim($event)"><input value="mm" class="d-none" type="radio" name="metric"/>mm</button>
+            <div class="or"></div>
+            <button type="button" class="ui button radio-dim" (click)="this.radioDim($event)"><input value="in" class="d-none" type="radio" name="metric"/>in</button>
+          </div>
     </div>
-</div>
-
-<div class="ui right labeled input">
-    <input type="text" placeholder="Enter height..">
-    <div class="ui basic label">
-        mm
+    <div class="ui right labeled input w-100 p-1">
+        <input value="{{this.dimension ? ((this.dimension.width ? this.dimension.width : 0) | mmToIn: this.metrics)  : 0}}" name="width" class="w-75 field" type="text" placeholder="Enter width.." (change)="this.dimensionChanged($event)">
+        <div class="ui basic label text-center" style="width: 70px;">
+            {{ this.metrics }}
+        </div>
     </div>
-</div>
 
-<div class="ui right labeled input">
-    <input type="text" placeholder="Enter depth..">
-    <div class="ui basic label">
-        mm
+    <div class="ui right labeled input w-100 p-1">
+        <input value="{{this.dimension ? ((this.dimension.height ? this.dimension.height : 0) | mmToIn: this.metrics)  : 0}}" name="height" class="w-75 field" type="text" placeholder="Enter height.." (change)="this.dimensionChanged($event)">
+        <div class="ui basic label text-center" style="width: 70px;">
+            {{ this.metrics }}
+        </div>
+    </div>
+
+    <div class="ui right labeled input w-100 p-1">
+        <input value="{{this.dimension ? ((this.dimension.depth ? this.dimension.depth : 0) | mmToIn: this.metrics)  : 0}}" name="depth" class="w-75 field" type="text" placeholder="Enter depth.." (change)="this.dimensionChanged($event)">
+        <div class="ui basic label text-center" style="width: 70px;">
+            {{ this.metrics }}
+        </div>
     </div>
 </div>

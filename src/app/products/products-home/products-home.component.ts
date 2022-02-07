@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
-import { faPlusSquare, faTrash, faPen, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-products-home',
@@ -10,14 +10,18 @@ import { faPlusSquare, faTrash, faPen, faEye } from '@fortawesome/free-solid-svg
 })
 export class ProductsHomeComponent implements OnInit {
 
-  itemsPerRow: Array<number> = [1,2,3];
+  itemsPerRow: Array<number> = [1,2,3,4,5,6,7,8,9,10,11,12];
   rows: Array<number> = [1,2,3,4];
   products: Array<ProductResponse> = [];
+  checkedProducts: Array<string> = [];
+  showToolbar: boolean = false;
+  showModal: boolean = false;
 
   faEye = faEye;
   faPen = faPen;
   faTrash = faTrash;
   faCartPlus = faPlusSquare;
+  faToggle = faAlignJustify;
 
   
   constructor(private productsService: ProductsService) { }
@@ -32,4 +36,33 @@ export class ProductsHomeComponent implements OnInit {
     });
   }
 
+  addProduct(value: any) {
+   if ( this.checkedProducts.includes(value) )
+      this.checkedProducts.splice(this.checkedProducts.indexOf(value),1);
+    else 
+    this.checkedProducts.push(value);
+
+    console.log(this.checkedProducts);
+  }
+
+  bulkDeleteProducts(value: boolean) {
+    this.showModal = false;
+    if (this.checkedProducts.length > 0) {
+      this.productsService.bulkDeleteProducts(this.checkedProducts).subscribe((response) => {
+        console.log(response);
+        location.reload();
+      }, (error) => {
+        console.log(error);
+      }
+      )
+    }
+  }
+
+  setValues(product: ProductResponse) {
+    this.productsService.setClickedProduct(product);
+  }
+
+  ticked(event: Event) {
+    this.addProduct((<HTMLInputElement>event?.target)?.parentElement?.parentElement?.getAttribute('id')?.toString());
+   }
 }

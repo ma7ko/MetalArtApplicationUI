@@ -16,6 +16,8 @@ export class ProductResponse {
     public amount?: number;
     public available?: boolean;
     public shape?: number;
-    public dimension?: Dimension;
     public customMultipartFile: any;
+    public width?: number;
+    public height?: number;
+    public depth?: number;
 }

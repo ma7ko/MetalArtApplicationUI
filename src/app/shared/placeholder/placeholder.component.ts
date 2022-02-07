@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-placeholder',
@@ -8,24 +8,18 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PlaceholderComponent implements OnInit {
 
   @Input() product: any = null;
+  @Input() editMode: boolean = false;
+  @Input() placeholderActive: boolean = false;
+
+  @Output() checkboxTicked: EventEmitter<string> = new EventEmitter<string>();
   imageFile: Blob | undefined;
   constructor() { }
 
   ngOnInit(): void {
-    if (this.product) {
-      this.readFile();
-
-    }
   }
 
-  readFile() {
-
-    if (this.product.image) {
-      document.getElementById('fetched')?.setAttribute('src', `data:image/jpeg;base64,${this.product.image}`);
-      console.log(this.product.image);
-    }
-      
-
+  ticked(event: Event) {
+   this.checkboxTicked.emit(((<HTMLInputElement>event?.target)?.parentElement?.parentElement?.getAttribute('id')?.toString()));
   }
 
 

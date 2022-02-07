@@ -8,13 +8,14 @@ import { SharedModule } from '../shared/shared.module';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
 import { ProductsCreateComponent } from './products-create/products-create.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PricePipe } from '../pipe/price/price.pipe';
 
 
 @NgModule({
   declarations: [
     ProductsHomeComponent,
     ProductsDetailsComponent,
-    ProductsCreateComponent
+    ProductsCreateComponent,
   ],
   imports: [
     CommonModule,

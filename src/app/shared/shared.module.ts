@@ -8,6 +8,11 @@ import { PlaceholderComponent } from './placeholder/placeholder.component';
 import { ValidationComponent } from './validation/validation.component';
 import { InputPriceComponent } from './input-price/input-price.component';
 import { InputDimensionComponent } from './input-dimension/input-dimension.component';
+import { InputShapeComponent } from './input-shape/input-shape.component';
+import { ModalComponent } from './modal/modal.component';
+import { MmToInPipe } from '../pipe/mm-to-in/mm-to-in.pipe';
+import { InputPriceTagComponent } from './input-price-tag/input-price-tag.component';
+import { PricePipe } from '../pipe/price/price.pipe';
 
 
 
@@ -19,7 +24,12 @@ import { InputDimensionComponent } from './input-dimension/input-dimension.compo
     PlaceholderComponent,
     ValidationComponent,
     InputPriceComponent,
-    InputDimensionComponent
+    InputDimensionComponent,
+    InputShapeComponent,
+    ModalComponent,
+    MmToInPipe,
+    PricePipe,
+    InputPriceTagComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +42,11 @@ import { InputDimensionComponent } from './input-dimension/input-dimension.compo
     PlaceholderComponent,
     ValidationComponent,
     InputPriceComponent,
-    InputDimensionComponent
+    InputDimensionComponent,
+    InputShapeComponent,
+    ModalComponent,
+    InputPriceTagComponent,
+    PricePipe
   ]
 })
 export class SharedModule { }

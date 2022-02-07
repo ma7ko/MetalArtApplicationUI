@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './products/products.module';
+import { PricePipe } from './pipe/price/price.pipe';
 
 @NgModule({
   declarations: [

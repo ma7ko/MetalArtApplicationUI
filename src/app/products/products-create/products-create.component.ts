@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { Dimension, ProductResponse } from 'src/app/service/products/request/product-request';
 
@@ -19,7 +19,7 @@ export class ProductsCreateComponent implements OnInit {
     price: new FormControl('', [Validators.required]),
     amount: new FormControl(0, [Validators.required]),
     available: new FormControl('', [Validators.required]),
-    shape: new FormControl('', [Validators.required]),
+    shape: new FormControl(0, [Validators.required]),
     width: new FormControl('', [Validators.required]),
     height: new FormControl('', [Validators.required]),
     depth: new FormControl('', [Validators.required])
@@ -27,6 +27,7 @@ export class ProductsCreateComponent implements OnInit {
 
   arrowUp = faPlus;
   arrowDown = faMinus;
+  angleRight = faAngleRight;
 
   constructor(private productService: ProductsService) { }
 
@@ -47,6 +48,10 @@ export class ProductsCreateComponent implements OnInit {
         img.src = e.target?.result?.toString();
         img.classList.add('w-100');
         img.style.borderRadius="20px";
+        img.style.border = "10px solid teal";
+        img.style.padding = "20px";
+        img.style.height= "100%";
+        img.style.objectFit = "cover";
         document.getElementById('img-holder')?.appendChild(img);
     }
 
@@ -62,8 +67,20 @@ export class ProductsCreateComponent implements OnInit {
 
   setPrice(price: string) {
     if (price) {
-      this.createForm.controls['price'].setValue(price);
+      this.createForm.controls['price'].setValue(parseInt(price));
     }
+  }
+
+  setShape(shape: string) {
+    this.createForm.controls['shape'].setValue(parseInt(shape));
+    console.log(this.createForm);
+  }
+
+  setDimensions(dimension: Dimension) {
+    console.log(dimension);
+    this.createForm.controls['width'].setValue(dimension.width);
+    this.createForm.controls['height'].setValue(dimension.height);
+    this.createForm.controls['depth'].setValue(dimension.depth);
   }
 
   onSubmit() {
@@ -73,7 +90,9 @@ export class ProductsCreateComponent implements OnInit {
     dim.depth = this.createForm.controls['depth'].value;
 
     let product: ProductResponse = new ProductResponse();
-    product.dimension = dim;
+    product.width = dim.width;
+    product.height = dim.height;
+    product.depth = dim.depth;
     product.amount = this.createForm.controls['amount'].value;
     product.available = this.createForm.controls['available'].value;
     product.description = this.createForm.controls['description'].value;
@@ -82,6 +101,7 @@ export class ProductsCreateComponent implements OnInit {
     product.name = this.createForm.controls['name'].value;
 
     this.productService.create(product, this.image).subscribe((response) => {
+      document.getElementById('product-route')?.click();
       console.log(response);
     }, (error) => {
       console.log(error);
