@@ -10,7 +10,7 @@
                     <div>Product Details</div>
                 </div>
                 <div class="d-flex" style="margin-right: 10%;">
-                    <button style="border-radius: 50px;" class="btn btn-dark"><fa-icon [icon]="deleteIcon"></fa-icon></button>
+                    <button (click)="this.showModal=true;" style="border-radius: 50px;" class="btn btn-dark"><fa-icon [icon]="deleteIcon"></fa-icon></button>
                     <button style="border-radius: 50px;" class="btn btn-info text-light"><fa-icon [icon]="editIcon"></fa-icon></button>
                 </div>
             </div>
@@ -83,3 +83,10 @@
         <div class="col-lg-1"></div>
     </div>
 </div>
+
+<app-modal [showModal]="this.showModal" (closeModal)="this.showModal = !($event);" (confirmed)="this.deleteProduct($event)">
+<header>Delete Product</header>
+<div class="main-message">Are you sure you want to delete this product?</div>
+<div class="confirm-text">Yes</div>
+<div class="cancel-text">No</div>
+</app-modal>

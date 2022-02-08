@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, PRODUCTS_BULK_DELETE, PRODUCTS_CREATE_URL, PRODUCTS_SIMILAR_PRODUCTS, PRODUCTS_URL } from '../route-constants/route-constants';
-import { ProductResponse } from './request/product-request';
+import { PagedResponse, ProductResponse } from './request/product-request';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,11 @@ export class ProductsService {
     this.clickedProduct = product;
   }
 
-  getAll(): Observable<Array<ProductResponse>>{
-    return this.httpClient.get<any>(`${API_URL}${PRODUCTS_URL}`);
+  getAll(page: number): Observable<PagedResponse>{
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("page", page);
+    queryParams = queryParams.append("size", 12);
+    return this.httpClient.get<any>(`${API_URL}${PRODUCTS_URL}`, {params: queryParams});
   }
 
   getProductById(id: number): Observable<ProductResponse> {
@@ -54,5 +57,9 @@ export class ProductsService {
 
   getSimilarProducts(productId: number): Observable<any> {
     return this.httpClient.get<any>(`${API_URL}${PRODUCTS_URL}/${productId}${PRODUCTS_SIMILAR_PRODUCTS}`);
+  }
+
+  deleteProduct(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${API_URL}${PRODUCTS_URL}/${id}/delete`);
   }
 }

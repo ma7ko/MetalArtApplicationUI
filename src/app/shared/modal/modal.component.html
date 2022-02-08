@@ -1,9 +1,9 @@
-<div [ngClass]="{ 'd-block': this.showModal }" id="modalComponent" class="modal" tabindex="-1" role="dialog">
+<div (click)="this.closeModal.emit(true);" [ngClass]="{ 'd-block': this.showModal }" id="modalComponent" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div (click)="$event.stopPropagation()" class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"><ng-content select="header"></ng-content></h5>
-          <button (click)="this.closeModal.emit(true);" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button (click)="this.closeModal.emit(true);" type="button" class="close btn btn-light p-1" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

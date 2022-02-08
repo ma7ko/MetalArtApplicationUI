@@ -16,6 +16,9 @@ export class ProductsHomeComponent implements OnInit {
   checkedProducts: Array<string> = [];
   showToolbar: boolean = false;
   showModal: boolean = false;
+  total: number = 0;
+  current: number = 0;
+  currentPage: number = 0;
 
   faEye = faEye;
   faPen = faPen;
@@ -27,9 +30,20 @@ export class ProductsHomeComponent implements OnInit {
   constructor(private productsService: ProductsService) { }
 
   ngOnInit(): void {
-    this.productsService.getAll().subscribe((response) => {
-      this.products =  response;
+    this.getPage(0);
+  }
+
+  getPage(page: number) {
+    this.productsService.getAll(page).subscribe((response) => {
+      console.log(response);
+      if (response.content)
+        this.products =  response.content;
+      if(response.totalCount)
+        this.total = response.totalCount;
+        if(response.count)
+        this.current = response.count
       console.log('here');
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
     (error) => {
       console.log("Could not load products");
@@ -64,5 +78,12 @@ export class ProductsHomeComponent implements OnInit {
 
   ticked(event: Event) {
     this.addProduct((<HTMLInputElement>event?.target)?.parentElement?.parentElement?.getAttribute('id')?.toString());
+   }
+
+   changePage(value: number) {
+     if (this.currentPage != value) {
+      this.getPage(value);
+      this.currentPage = value;
+     }
    }
 }

@@ -13,6 +13,7 @@ import { ModalComponent } from './modal/modal.component';
 import { MmToInPipe } from '../pipe/mm-to-in/mm-to-in.pipe';
 import { InputPriceTagComponent } from './input-price-tag/input-price-tag.component';
 import { PricePipe } from '../pipe/price/price.pipe';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 
@@ -29,7 +30,8 @@ import { PricePipe } from '../pipe/price/price.pipe';
     ModalComponent,
     MmToInPipe,
     PricePipe,
-    InputPriceTagComponent
+    InputPriceTagComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { PricePipe } from '../pipe/price/price.pipe';
     InputShapeComponent,
     ModalComponent,
     InputPriceTagComponent,
-    PricePipe
+    PricePipe,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

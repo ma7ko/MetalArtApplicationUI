@@ -21,3 +21,9 @@ export class ProductResponse {
     public height?: number;
     public depth?: number;
 }
+
+export class PagedResponse {
+    public content?: Array<ProductResponse>;
+    public count?: number;
+    public totalCount?: number;
+}

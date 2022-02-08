@@ -22,6 +22,7 @@ export class ProductsDetailsComponent implements OnInit {
   currency: number = 0;
   similarProducts: any;
   placeholderArray: Array<number> = [1,2,3];
+  showModal=false;
 
   constructor(private productsService: ProductsService) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -66,6 +67,19 @@ export class ProductsDetailsComponent implements OnInit {
   changeProduct(value: any) {
     this.product = value;
     this.getSimilarProductsTo();
+  }
+
+  deleteProduct(value:any) {
+    this.showModal = false;
+    if (this.product.id) {
+      this.productsService.deleteProduct(this.product.id).subscribe((response) => {
+        console.log(response);
+        document.getElementById('product-route')?.click();
+      }, (error) => {
+        console.log(error);
+      }
+      )
+    }
   }
 
 }

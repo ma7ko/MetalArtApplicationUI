@@ -1,0 +1,11 @@
+<div class="ui pagination menu">
+    <a [ngClass]="{ 'active' : this.page ==  0}" data-id="0"(click)="this.changePage($event)" class="item">
+      1
+    </a>
+    <a [ngClass]="{ 'active' : this.page ==  1}" data-id="1" (click)="this.changePage($event)" class="item">
+        2
+    </a>
+    <div class="disabled item">
+      ...
+    </div>
+  </div>
