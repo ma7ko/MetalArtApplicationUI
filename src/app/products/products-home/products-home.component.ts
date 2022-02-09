@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
-import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-products-home',
@@ -19,12 +19,14 @@ export class ProductsHomeComponent implements OnInit {
   total: number = 0;
   current: number = 0;
   currentPage: number = 0;
+  searchBoxOpened: boolean = false;
 
   faEye = faEye;
   faPen = faPen;
   faTrash = faTrash;
   faCartPlus = faPlusSquare;
   faToggle = faAlignJustify;
+  faSearch = faSearch;
 
   
   constructor(private productsService: ProductsService) { }
@@ -33,7 +35,7 @@ export class ProductsHomeComponent implements OnInit {
     this.getPage(0);
   }
 
-  getPage(page: number) {
+  getPage(page: number, opt?: any) {
     this.productsService.getAll(page).subscribe((response) => {
       console.log(response);
       if (response.content)
@@ -43,7 +45,11 @@ export class ProductsHomeComponent implements OnInit {
         if(response.count)
         this.current = response.count
       console.log('here');
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
+      if (opt) {
+        document.getElementById('content')?.scrollIntoView(true);
+      } else {
+      window.scrollTo(0,0);
+      }
     },
     (error) => {
       console.log("Could not load products");
@@ -77,13 +83,27 @@ export class ProductsHomeComponent implements OnInit {
   }
 
   ticked(event: Event) {
-    this.addProduct((<HTMLInputElement>event?.target)?.parentElement?.parentElement?.getAttribute('id')?.toString());
+    this.addProduct((<HTMLInputElement>event?.target)?.getAttribute('id')?.toString());
+    console.log((<HTMLInputElement>event?.target)?.getAttribute('id')?.toString());
    }
 
    changePage(value: number) {
      if (this.currentPage != value) {
-      this.getPage(value);
+      document.getElementById('content')?.scrollIntoView(true);
+      this.products = new Array<ProductResponse>();
+      this.getPage(value, true);
       this.currentPage = value;
+     }
+   }
+
+   openSearchBox(event:Event) {
+     this.searchBoxOpened = !this.searchBoxOpened;
+     let searchBox = document.getElementById('search-box');
+     if (searchBox) {
+     if (searchBox.style.height == "0px")
+        searchBox.style.height = "100pc";
+      else 
+        searchBox.style.height = "0px";
      }
    }
 }

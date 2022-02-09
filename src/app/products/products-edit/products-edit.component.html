@@ -3,7 +3,7 @@
         <a id="product-route" style="text-decoration: none;" routerLink="/products" routerLinkActive="active">Products</a>
     </div>
     <div class="second-lvl">
-        Create Product
+        Edit Product
     </div>
 </app-breadcrumbs>
 
@@ -11,16 +11,18 @@
     <div class="col-12">
         <div class="container mt-5">
             <div class="d-flex align-items-center h-100">
-                <form class="w-100" [formGroup]="this.createForm" (ngSubmit)="this.onSubmit()"
+                <form class="w-100" [formGroup]="this.editForm" (ngSubmit)="this.onSubmit()"
                     enctype="multipart/form-data" style="height:inherit">
                     <div style="
                 padding: 15px;" class="row">
                         <div class="col-lg-6 col-12">
                             <div style="padding: 10px;">
-                                <div *ngIf="this.image" style="width: 100%; height: 600px;">
-                                    <div class="w-100 h-100" id="img-holder"></div>
+                                <div *ngIf="this.product?.image" style="width: 100%; height: 600px;">
+                                    <div class="w-100 h-100" id="img-holder">
+                                        <img class="img-class" [src]="'data:image/jpeg;base64,' + this.product?.image"/>
+                                    </div>
                                 </div>
-                                <div *ngIf="!this.image"
+                                <div *ngIf="!this.product?.image"
                                     style="width: 100%; height: 600px; border: 10px solid teal; border-radius: 20px;">
                                     <app-svg class="w-100 h-100" [image]="'product-placeholder'"></app-svg>
                                 </div>
@@ -41,7 +43,7 @@
                                 </div>
                                 <div>
                                     <label>Shape</label>
-                                    <app-input-shape (selectedShape)="this.setShape($event)"></app-input-shape>
+                                    <app-input-shape [shape]="this.product?.shape" (selectedShape)="this.setShape($event)"></app-input-shape>
                                 </div>
                                 <div style="margin-top: 10px; margin-bottom: 10px;">
                                     <div class="form-check">
@@ -51,29 +53,16 @@
                                 </div>
                                 <div>
                                     <label>Amount</label>
-                                    <div class="d-flex">
-                                        <button type="button"
-                                            style="width: 50%; border:0; border-radius: 40px 0px 0px 40px; font-size: 10px;"
-                                            (click)="this.changeAmount(false)">
-                                            <fa-icon [icon]="this.arrowDown"></fa-icon>
-                                        </button>
-                                        <input class="form-control text-center" formControlName="amount"
-                                            type="number" />
-                                        <button type="button"
-                                            style="width: 50%; border:0; border-radius: 0px 40px 40px 0px; font-size: 10px;"
-                                            (click)="this.changeAmount(true)">
-                                            <fa-icon [icon]="this.arrowUp"></fa-icon>
-                                        </button>
-                                    </div>
+                                    <app-input-amount [amount]="this.product?.amount" (amountChanged)="this.setAmount($event)"></app-input-amount>
                                 </div>
                                 <div class="h-75">
                                     <label>Dimensions</label>
-                                    <app-input-dimension [editMode]="true" (changedDimensions)="this.setDimensions($event)">
+                                    <app-input-dimension [editMode]="true" [dimension]="this.product?.dimension" (changedDimensions)="this.setDimensions($event)">
                                     </app-input-dimension>
                                 </div>
                                 <div class="d-flex flex-column m-3">
                                     <label>Price</label>
-                                    <app-input-price [editMode]="true" (changePrice)="this.setPrice($event)"></app-input-price>
+                                    <app-input-price [editMode]="true" [price]="this.product?.price" (changePrice)="this.setPrice($event)"></app-input-price>
                                 </div>
                             </div>
 

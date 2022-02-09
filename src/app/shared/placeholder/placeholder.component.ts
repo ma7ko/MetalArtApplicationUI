@@ -19,7 +19,7 @@ export class PlaceholderComponent implements OnInit {
   }
 
   ticked(event: Event) {
-   this.checkboxTicked.emit(((<HTMLInputElement>event?.target)?.parentElement?.parentElement?.getAttribute('id')?.toString()));
+   this.checkboxTicked.emit(((<HTMLInputElement>event?.target)?.parentElement?.parentElement?.getAttribute('data-id')?.toString()));
   }
 
 

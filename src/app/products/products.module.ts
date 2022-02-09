@@ -9,6 +9,7 @@ import { ProductsDetailsComponent } from './products-details/products-details.co
 import { ProductsCreateComponent } from './products-create/products-create.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PricePipe } from '../pipe/price/price.pipe';
+import { ProductsEditComponent } from './products-edit/products-edit.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { PricePipe } from '../pipe/price/price.pipe';
     ProductsHomeComponent,
     ProductsDetailsComponent,
     ProductsCreateComponent,
+    ProductsEditComponent,
   ],
   imports: [
     CommonModule,

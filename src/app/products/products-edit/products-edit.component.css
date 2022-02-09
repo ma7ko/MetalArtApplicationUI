@@ -1,0 +1,8 @@
+.img-class {
+    width: 100%;
+    border-radius: 20px;
+    border: 10px solid teal;
+    padding: 20px;
+    height: 100%;
+    object-fit: cover;
+}

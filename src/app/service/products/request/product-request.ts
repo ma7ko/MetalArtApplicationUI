@@ -20,6 +20,7 @@ export class ProductResponse {
     public width?: number;
     public height?: number;
     public depth?: number;
+    public dimid? :number;
 }
 
 export class PagedResponse {

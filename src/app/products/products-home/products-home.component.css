@@ -14,3 +14,7 @@
 #toggle-holder:hover {
     cursor: pointer;
 }
+
+.icon-toolbar:hover {
+    cursor: pointer;
+}

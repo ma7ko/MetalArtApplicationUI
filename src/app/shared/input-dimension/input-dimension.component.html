@@ -3,7 +3,7 @@
         <div class="ui large buttons w-100 p-1">
             <button id="checkbox-active" type="button" class="ui button radio-dim" (click)="this.radioDim($event)"><input value="mm" class="d-none" type="radio" name="metric"/>mm</button>
             <div class="or"></div>
-            <button type="button" class="ui button radio-dim" (click)="this.radioDim($event)"><input value="in" class="d-none" type="radio" name="metric"/>in</button>
+            <button [ngClass]="{'disabled': this.editMode}" type="button" class="ui button radio-dim" (click)="this.radioDim($event)"><input value="in" class="d-none" type="radio" name="metric"/>in</button>
           </div>
     </div>
     <div class="ui right labeled input w-100 p-1">

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Dimension } from 'src/app/service/products/request/product-request';
 
 @Component({
@@ -6,20 +6,31 @@ import { Dimension } from 'src/app/service/products/request/product-request';
   templateUrl: './input-dimension.component.html',
   styleUrls: ['./input-dimension.component.css']
 })
-export class InputDimensionComponent implements OnInit {
+export class InputDimensionComponent implements OnInit, OnChanges {
 
   @Input() previewMode: boolean = false;
   @Input() dimension: Dimension = new Dimension();
+  @Input() editMode: boolean = false;
   @Output() changedDimensions: EventEmitter<Dimension> = new EventEmitter<Dimension>();
   dimensions: Dimension = new Dimension();
   metrics: string = "mm";
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log ("here in ng changes");
+    console.log(this.dimension);
+    if (changes['dimension'] != undefined) {
+      this.dimension = changes['dimension'].currentValue;
+    }
+    console.log(this.dimension);
+  }
 
   ngOnInit(): void {
     if (this.previewMode) {
       document.querySelectorAll('.field').forEach((element: Element) => {
         let el = <HTMLInputElement>element;
         el.disabled = true;
+        el.style.opacity = "0.8";
       });
     }
   }

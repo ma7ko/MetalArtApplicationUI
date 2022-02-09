@@ -1,25 +1,34 @@
-<div class="container" style="height: 100%;">
+<div id="content" class="container" style="height: 100%;">
     <div class="row">
         <div class="col-12">
-            <div style="height: 40vh; background-color: #f4f4f4;">
-                <div></div>
+            <div class="d-flex flex-column justify-content-between" style="height: 40vh; background-color: #f4f4f4;">
+                <div id="search-box" style="height: 0; transition: height 0.5s; background-color: #555;">
+                    <div *ngIf="this.searchBoxOpened" class="d-flex justify-content-end">
+                        <div></div>
+                        <div class="d-flex flex-column">
+                            <input class="form-control" type="text"/>
+                            <input class="form-control" type="number"/>
+                            <input class="form-control" type="number"/>
+                            <input class="form-control" type="number"/>
+                        </div>
+                    </div>
+                </div>
+                <div style="font-family: 'Oxygen'; font-size: 50px; height: fit-content; display: flex; padding-left: 20px;">
+                    Pr<fa-icon class="icon-toolbar" style="font-size: 38px; padding-top: 18px;" (click)="this.openSearchBox($event)" [icon]="this.faSearch"></fa-icon>ducts.
+                </div>
                 <div class="d-flex align-items-end h-100 w-100 justify-items-around">
                     <ng-container *ngIf="this.showToolbar">
                     <div class="d-flex justify-content-around w-25" style="background: #ace9;">
                         
-                        <div class="functions"><a routerLink="/products/create">
+                        <div class="functions icon-toolbar" routerLink="/products/create">
                                 <fa-icon [icon]="this.faCartPlus"></fa-icon>
-                            </a></div>
-                        <div class="functions" (click)="this.showModal = !this.showModal">
+                        </div>
+                        <div class="functions icon-toolbar" (click)="this.showModal = !this.showModal">
                             <fa-icon [icon]="this.faTrash"></fa-icon>
                         </div>
-                        <div class="functions">
+                        <div *ngIf="this.checkedProducts.length == 1" class="functions icon-toolbar" [routerLink]="this.checkedProducts.length == 1 ? '/products/' + this.checkedProducts[0] + '/edit' : ''">
                             <fa-icon [icon]="this.faPen"></fa-icon>
                         </div>
-                        <div class="functions">
-                            <fa-icon [icon]="this.faEye"></fa-icon>
-                        </div>
-            
                     </div>
                 </ng-container>
                     <div style="display: flex;
@@ -27,8 +36,8 @@
                     align-items: end;
                     width: 100%;
                     background: #ace9;">
-                        <div class="functions" id="toggle-holder">
-                            <fa-icon [icon]="this.faToggle" (click)="this.showToolbar = !this.showToolbar; this.checkedProducts = [];"></fa-icon>
+                        <div (click)="this.showToolbar = !this.showToolbar; this.checkedProducts = [];" class="functions" id="toggle-holder">
+                            <fa-icon [icon]="this.faToggle"></fa-icon>
                         </div>
                     </div>
                 </div>
@@ -40,11 +49,11 @@
                     </div>
                 </div>
             </ng-container>
-            <div class="row" style="padding: 20px;">
+            <div class="row" style="padding: 20px; min-height: 1216.55px;">
                 <div *ngFor="let product of products; let i = index;" class="col-12 col-md-6 col-lg-4 col-xl-3">
                     <div class="ui card p-3 mt-4">
                     <div *ngIf="this.showToolbar" class="input-check">
-                        <input type="checkbox" class="form-check-input" (change)="this.ticked($event)"/>
+                        <input data-id="{{product?.id}}" type="checkbox" class="form-check-input" (change)="this.ticked($event)"/>
                     </div>
                     <div [routerLink]="'/products/'+product.id+'/details'" (click)="this.setValues(product)">
                         <app-placeholder [product]="product" [editMode]="this.showToolbar" (checkboxTicked)="this.addProduct($event)"></app-placeholder>

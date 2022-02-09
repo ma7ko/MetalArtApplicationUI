@@ -1,7 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { identifierName } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_URL, PRODUCTS_BULK_DELETE, PRODUCTS_CREATE_URL, PRODUCTS_SIMILAR_PRODUCTS, PRODUCTS_URL } from '../route-constants/route-constants';
+import { API_URL, PRODUCTS_BULK_DELETE, PRODUCTS_CREATE_URL, PRODUCTS_SIMILAR_PRODUCTS, PRODUCTS_UPDATE_URL, PRODUCTS_URL } from '../route-constants/route-constants';
 import { PagedResponse, ProductResponse } from './request/product-request';
 
 @Injectable({
@@ -49,6 +50,25 @@ export class ProductsService {
     console.log(formData);
 
     return this.httpClient.post<any>(`${API_URL}${PRODUCTS_CREATE_URL}`, formData);
+  }
+
+  update(product: any, id: any, file?: File): Observable<Array<ProductResponse>>{
+
+    const formData = new FormData();
+    // Append file to the virtual form.
+    console.log(file);
+    if (file)
+      formData.append('uploadedFile', file);
+      console.log(file);
+
+    // Optional, append other kev:val rest data to the form.
+    Object.keys(product).forEach(key => {
+        formData.append(key, product[key]);
+    });
+
+    console.log(formData);
+
+    return this.httpClient.put<any>(`${API_URL}${PRODUCTS_URL}/${id}${PRODUCTS_UPDATE_URL}`, formData);
   }
 
   bulkDeleteProducts(products: Array<string>): Observable<any> {

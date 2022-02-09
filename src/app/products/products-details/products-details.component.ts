@@ -66,6 +66,7 @@ export class ProductsDetailsComponent implements OnInit {
 
   changeProduct(value: any) {
     this.product = value;
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
     this.getSimilarProductsTo();
   }
 
@@ -80,6 +81,10 @@ export class ProductsDetailsComponent implements OnInit {
       }
       )
     }
+  }
+
+  setValues(product: any) {
+    this.productsService.setClickedProduct(product);
   }
 
 }
