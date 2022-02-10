@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
 import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
   selector: 'app-products-home',
@@ -20,6 +21,8 @@ export class ProductsHomeComponent implements OnInit {
   current: number = 0;
   currentPage: number = 0;
   searchBoxOpened: boolean = false;
+  isAdminUser: boolean = false;
+  isLoggedIn: boolean = false;
 
   faEye = faEye;
   faPen = faPen;
@@ -29,9 +32,11 @@ export class ProductsHomeComponent implements OnInit {
   faSearch = faSearch;
 
   
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.isAdminUser = this.authService.isAdminUser();
+    this.isLoggedIn = this.authService.isLoggedIn();
     this.getPage(0);
   }
 

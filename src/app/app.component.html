@@ -4,6 +4,9 @@
     <a class="nav-link" routerLink="/products" routerLinkActive="active" id="products-link">Products</a>
     <a class="nav-link" href="#" id="about-link">About</a>
     <a class="nav-link" href="#" id="contact-link">Contact us</a>
+    <a *ngIf="this.loggedIn" class="nav-link" routerLink="/home" routerLinkActive="active" id="sign-out">
+      <fa-icon (click)="this.logOut()" [icon]="this.faSignOut"  style="color: #f4f4f4; background: #555; border-radius:10px; padding:10px 11.5px;"></fa-icon>
+    </a>
     <a class="nav-link" routerLink="/payment/shopping-cart" routerLinkActive="active" id="shopping-cart">
       <fa-icon [icon]="this.faShoppingCart"  style="color: #f4f4f4; background: #555; border-radius:10px; padding:10px"></fa-icon>
     </a>

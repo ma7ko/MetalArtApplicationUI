@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
 import { faAngleRight, faCartPlus, faCheck, faCross, faPen, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
   selector: 'app-products-details',
@@ -23,13 +24,16 @@ export class ProductsDetailsComponent implements OnInit {
   similarProducts: any;
   placeholderArray: Array<number> = [1,2,3];
   showModal=false;
+  isAdminUser: boolean = false;
+  isLoggedIn: boolean = false;
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService, private authService: AuthService) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
   ngOnInit(): void {
-
+    this.isAdminUser = this.authService.isAdminUser();
+    this.isLoggedIn = this.authService.isLoggedIn();
     let prod = this.productsService.getClickedProduct();
     this.productId = window.location.pathname.split("/")[2];
     console.log(prod.id);
@@ -39,7 +43,7 @@ export class ProductsDetailsComponent implements OnInit {
         console.log(this.product);
       }, (error) => {
         console.log(error);
-      });
+      });1
     }
     else {
       this.product = prod;

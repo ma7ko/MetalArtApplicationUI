@@ -1,3 +1,1 @@
-export class KeyHolder {
-    static authKey?: string;
-}
+export const authKey: any = {};

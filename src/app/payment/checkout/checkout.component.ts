@@ -28,6 +28,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(window.history);
+    document.body.scrollIntoView(true);
   }
   
   checkAllFilled() {

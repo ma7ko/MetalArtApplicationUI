@@ -5,4 +5,5 @@ export class AuthRequest {
 
 export class AuthResponse {
     public jwt: string = '';
+    public role?: any;
 }
