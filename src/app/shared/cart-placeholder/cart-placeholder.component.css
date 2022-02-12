@@ -1,0 +1,10 @@
+@import "semantic-ui-css/semantic.css";
+
+.display-01 {
+    opacity: 0.9;
+    cursor: auto;
+}
+
+.display-all {
+    opacity: 1;
+}

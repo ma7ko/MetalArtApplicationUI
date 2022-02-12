@@ -17,6 +17,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { InputAmountComponent } from './input-amount/input-amount.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ErrorComponent } from './error/error.component';
+import { CartPlaceholderComponent } from './cart-placeholder/cart-placeholder.component';
 
 
 
@@ -37,7 +38,8 @@ import { ErrorComponent } from './error/error.component';
     PaginationComponent,
     InputAmountComponent,
     BreadcrumbsComponent,
-    ErrorComponent
+    ErrorComponent,
+    CartPlaceholderComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import { ErrorComponent } from './error/error.component';
     PaginationComponent,
     InputAmountComponent,
     BreadcrumbsComponent,
-    ErrorComponent
+    ErrorComponent,
+    CartPlaceholderComponent
   ]
 })
 export class SharedModule { }

@@ -5,6 +5,7 @@ import { faFeather, faExclamationCircle } from '@fortawesome/free-solid-svg-icon
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { AuthRequest, AuthResponse } from 'src/app/service/auth/request/auth-request';
 import { authKey } from 'src/app/service/route-constants/auth-key';
+import { UserService } from 'src/app/service/user/user.service';
 
 @Component({
   selector: 'app-log-in',
@@ -20,7 +21,7 @@ export class LogInComponent implements OnInit {
     username: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{6,}$/)]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -34,7 +35,9 @@ export class LogInComponent implements OnInit {
       localStorage.setItem('authKey', "Bearer " + response.jwt);
       localStorage.setItem('userKey', response.username);
       localStorage.setItem('roleKey', response.role.key);
-      location.href="/home";
+      this.userService.setCartProducts(response.products);
+      console.log(response.products);
+      //location.href="/home";
     }, (error) => {
       this.errorAuth = true;
     });

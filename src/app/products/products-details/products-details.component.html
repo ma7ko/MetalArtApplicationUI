@@ -55,11 +55,11 @@
                                     <span id="price">{{ this.product?.price | price: this.currency }}</span>
                                 </app-input-price-tag>
                             </div>
-                            <div>
-                                <button (click)="this.addToCart()" [ngClass]="{ 'btn btn-primary m-2' : !this.addedToCart, 'disabled btn btn-success': this.addedToCart }">
+                            <div class="d-flex">
+                                <button style="width: 170px;" class="btn m-2" (click)="this.addToCart()" [ngClass]="{ 'btn-primary' : !this.addedToCart, 'btn-success': this.addedToCart, 'btn-secondary': this.addingToCart, 'disabled': this.addingToCart || this.addedToCart }">
                                     <div>
                                         <span class="p-2">Add to cart</span>
-                                        <fa-icon *ngIf="!this.addingToCart; else spinner" [icon]="this.cart"></fa-icon>
+                                        <fa-icon *ngIf="!this.addingToCart; else spinner" [icon]="this.addedToCart ? this.tick : this.cart"></fa-icon>
                                         <ng-template #spinner>
                                             <div class="spinner-border spinner-border-sm text-light btn-w" role="status">
                                                 <span class="sr-only">Loading...</span>
@@ -67,7 +67,7 @@
                                         </ng-template>
                                     </div>
                                 </button>
-                                <button [routerLink]="'/payment/checkout'" class="btn btn-dark w-50 m-2">Buy now</button>
+                                <button style="width: 250px;" (click)="this.sendToCheckout()" class="btn btn-dark m-2">Buy now</button>
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,8 @@ import { ProductToCartRequest, RegisterRequest } from './request/user-request';
 })
 export class UserService {
 
+  userProducts: any;
+
   constructor(private httpClient: HttpClient) { }
 
   getAuthorizationHeader() {
@@ -36,11 +38,20 @@ export class UserService {
 
   addProductToUserCart(request: ProductToCartRequest): Observable<any>{
     const httpOptions = this.getAuthorizationHeader();
-    return this.httpClient.post<any>(`${API_URL}/user/add-to-cart`, request, httpOptions);
+    return this.httpClient.post<any>(`${API_URL}/shopping-cart/add-product`, request, httpOptions);
   }
+
+  getCartProducts() {
+    return this.userProducts;
+  }
+
+  setCartProducts(products: any) {
+    this.userProducts = products;
+    console.log(this.userProducts);
+  } 
 
   getUserProducts(username: any): Observable<any> {
     const httpOptions = this.getAuthorizationHeader();
-    return this.httpClient.get<any>(`${API_URL}/user/${username}/get-products`, httpOptions);
+    return this.httpClient.get<any>(`${API_URL}/shopping-cart/${username}/get-products`, httpOptions);
   }
 }

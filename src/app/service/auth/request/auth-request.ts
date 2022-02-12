@@ -7,4 +7,5 @@ export class AuthResponse {
     public jwt: string = '';
     public username: any;
     public role?: any;
+    public products: any;
 }
