@@ -1,0 +1,31 @@
+.line-animate {
+    animation: waiting 1s linear forwards 12 alternate;
+}
+
+.line-color {
+    animation: fading 1s linear forwards 12 alternate;
+}
+
+@keyframes waiting {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes fading {
+    0% {
+        stroke:black;
+    }
+
+    50% {
+        stroke: aliceblue;
+    }
+
+    100% {
+        stroke:aliceblue;
+    }
+}

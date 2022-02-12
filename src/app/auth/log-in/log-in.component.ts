@@ -32,6 +32,7 @@ export class LogInComponent implements OnInit {
     console.log(data);
     this.authService.authenticate(data).subscribe((response) => {
       localStorage.setItem('authKey', "Bearer " + response.jwt);
+      localStorage.setItem('userKey', response.username);
       localStorage.setItem('roleKey', response.role.key);
       location.href="/home";
     }, (error) => {

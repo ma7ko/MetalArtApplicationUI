@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
 
   logOut() {
     localStorage.removeItem('authKey');
+    localStorage.removeItem('userKey');
     localStorage.removeItem('roleKey');
     location.reload();
   }

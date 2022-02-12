@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
 import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/service/auth/auth.service';
   templateUrl: './products-home.component.html',
   styleUrls: ['./products-home.component.css']
 })
-export class ProductsHomeComponent implements OnInit {
+export class ProductsHomeComponent implements OnInit, OnDestroy {
 
   itemsPerRow: Array<number> = [1,2,3,4,5,6,7,8,9,10,11,12];
   rows: Array<number> = [1,2,3,4];
@@ -111,4 +111,9 @@ export class ProductsHomeComponent implements OnInit {
         searchBox.style.height = "0px";
      }
    }
+
+   ngOnDestroy(): void {
+    this.products = new Array<ProductResponse>();
+  }
+
 }

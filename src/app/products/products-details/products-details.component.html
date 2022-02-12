@@ -1,3 +1,4 @@
+<div class="w-100" style="background-color: #f4f4f4;">
 <div class="row w-100">
     <div class="col-12">
         <div style="background-color: #f4f4f4;">
@@ -22,6 +23,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="container w-100">
     <div class="row">
@@ -54,7 +56,17 @@
                                 </app-input-price-tag>
                             </div>
                             <div>
-                                <button [routerLink]="'/payment/shopping-cart'" class="btn btn-primary m-2"><span class="p-2">Add to cart</span><fa-icon [icon]="this.cart"></fa-icon></button>
+                                <button (click)="this.addToCart()" [ngClass]="{ 'btn btn-primary m-2' : !this.addedToCart, 'disabled btn btn-success': this.addedToCart }">
+                                    <div>
+                                        <span class="p-2">Add to cart</span>
+                                        <fa-icon *ngIf="!this.addingToCart; else spinner" [icon]="this.cart"></fa-icon>
+                                        <ng-template #spinner>
+                                            <div class="spinner-border spinner-border-sm text-light btn-w" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </ng-template>
+                                    </div>
+                                </button>
                                 <button [routerLink]="'/payment/checkout'" class="btn btn-dark w-50 m-2">Buy now</button>
                             </div>
                         </div>
