@@ -18,6 +18,8 @@ import { InputAmountComponent } from './input-amount/input-amount.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ErrorComponent } from './error/error.component';
 import { CartPlaceholderComponent } from './cart-placeholder/cart-placeholder.component';
+import { SearchComponent } from './search/search.component';
+import { ToggleSwitchComponent } from './toggle-switch/toggle-switch.component';
 
 
 
@@ -39,7 +41,9 @@ import { CartPlaceholderComponent } from './cart-placeholder/cart-placeholder.co
     InputAmountComponent,
     BreadcrumbsComponent,
     ErrorComponent,
-    CartPlaceholderComponent
+    CartPlaceholderComponent,
+    SearchComponent,
+    ToggleSwitchComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +65,9 @@ import { CartPlaceholderComponent } from './cart-placeholder/cart-placeholder.co
     InputAmountComponent,
     BreadcrumbsComponent,
     ErrorComponent,
-    CartPlaceholderComponent
+    CartPlaceholderComponent,
+    SearchComponent,
+    ToggleSwitchComponent
   ]
 })
 export class SharedModule { }

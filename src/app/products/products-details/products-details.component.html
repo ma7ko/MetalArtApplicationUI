@@ -56,10 +56,10 @@
                                 </app-input-price-tag>
                             </div>
                             <div class="d-flex">
-                                <button style="width: 170px;" class="btn m-2" (click)="this.addToCart()" [ngClass]="{ 'btn-primary' : !this.addedToCart, 'btn-success': this.addedToCart, 'btn-secondary': this.addingToCart, 'disabled': this.addingToCart || this.addedToCart }">
+                                <button style="width: 170px;" class="btn m-2" (click)="this.addToCart()" [ngClass]="{ 'btn-primary' : !this.addedToCart || !this.isLoggedIn, 'btn-success': this.addedToCart, 'btn-secondary': this.addingToCart, 'disabled': this.addingToCart || this.addedToCart }">
                                     <div>
                                         <span class="p-2">Add to cart</span>
-                                        <fa-icon *ngIf="!this.addingToCart; else spinner" [icon]="this.addedToCart ? this.tick : this.cart"></fa-icon>
+                                        <fa-icon *ngIf="!this.addingToCart || !this.isLoggedIn; else spinner" [icon]="this.addedToCart ? this.tick : this.cart"></fa-icon>
                                         <ng-template #spinner>
                                             <div class="spinner-border spinner-border-sm text-light btn-w" role="status">
                                                 <span class="sr-only">Loading...</span>

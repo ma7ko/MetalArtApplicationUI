@@ -106,4 +106,12 @@ export class ProductsService {
     const httpOptions = this.getAuthorizationHeader();
     return this.httpClient.delete<any>(`${API_URL}${PRODUCTS_URL}/${id}/delete`, httpOptions);
   }
+
+  searchProducts(value: any): Observable<PagedResponse> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("page", 0);
+    queryParams = queryParams.append("size", 12);
+    queryParams = queryParams.append("searchString", value);
+    return this.httpClient.get<any>(`${API_URL}${PRODUCTS_URL}/search`, { params: queryParams });
+  }
 }

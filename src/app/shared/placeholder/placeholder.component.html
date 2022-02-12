@@ -1,11 +1,26 @@
 <div data-id="{{ this.product?.id }}" [ngClass]="{ 'ui card p-3 mt-4 m-auto' : this.placeholderActive }">
-    <div [ngClass]="{ 'display-01' : this.product?.image , 'display-all': !this.product }" class="ui placeholder w-100">
+    <div [ngClass]="{ 'display-01' : this.product?.image , 'ui placeholder display-all': !this.product }" class="w-100">
         <div [ngClass]="{ 'h-100 p-0' : this.product?.image }" class="image square" id="img-h">
-            <img class="rounded" style="height: 260px; object-fit: cover;" [ngClass]="{ 'w-100' : this.product?.image }" id="fetched" [src]="this.product?.image ? 'data:image/jpeg;base64,' + this.product.image : ''" />
+            <img class="rounded" style="height: 260px; object-fit: cover;" [ngClass]="{ 'w-100' : this.product?.image }"
+                id="fetched" [src]="this.product?.image ? 'data:image/jpeg;base64,' + this.product.image : ''" />
         </div>
-        <div class="paragraph">
-            <div style="font-size: 25px;" [ngClass]="{ 'placeholder-none' : this.product, 'medium line': !this.product }">{{ this.product?.name }}</div>
-            <div class="medium line" [ngClass]="{ 'placeholder-none' : this.product, 'full line': !this.product }" >{{ this.product?.description }}</div>
+        <div class="paragraph" [ngClass]="{'d-flex w-100 p-3' : this.product }">
+            <div [ngClass]="{ 'd-flex flex-column w-100 mt-1 pt-1 mb-1 pb-1' : this.product }">
+                <div style="font-size: 25px;"
+                    [ngClass]="{ 'placeholder-none' : this.product, 'medium line': !this.product }">{{
+                    this.product?.name }}</div>
+                <div class="medium line" [ngClass]="{ 'placeholder-none' : this.product, 'full line': !this.product }">
+                    {{ this.showPrice ? this.product?.description.substring(0,11) + '...' : this.product?.description }}
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <div style="height: 100%;"
+                    [ngClass]="{ 'placeholder-none d-flex align-items-center' : this.product, 'full line': !this.product }"
+                    *ngIf="this.showPrice"> <a style="white-space: nowrap; height: 40px; font-size: 18px;"
+                        class="ui left tag label">
+                        {{ this.product?.price }} {{ this.product ? '$' : ''}}
+                    </a></div>
+            </div>
         </div>
 
     </div>

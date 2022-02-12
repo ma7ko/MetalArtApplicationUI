@@ -23,6 +23,7 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
   searchBoxOpened: boolean = false;
   isAdminUser: boolean = false;
   isLoggedIn: boolean = false;
+  showPrices: boolean = false;
 
   faEye = faEye;
   faPen = faPen;
@@ -112,6 +113,19 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
      }
    }
 
+   setShowPrices(value: boolean) {
+    this.showPrices = value;
+    console.log(this.showPrices);
+   }
+
+   searchProducts(value: any) {
+     this.productsService.searchProducts(value).subscribe((response) => {
+       if (response.content)
+        this.products = response.content;
+     }, (error) => {
+       console.log(error);
+     })
+   }
    ngOnDestroy(): void {
     this.products = new Array<ProductResponse>();
   }
