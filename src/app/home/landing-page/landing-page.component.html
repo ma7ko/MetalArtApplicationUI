@@ -16,7 +16,7 @@ border-radius: 0px 50px 0px 0px;">
                font-size: 50px; height: 45%;
              ">Decoration for everyone.</p> 
                <p>Find yours</p>
-               <button class="check-button">Check products</button>
+               <button class="check-button" [routerLink]="'/products'">Check products</button>
            </div>
         </div>
         <div class="d-none d-lg-block col-lg-8">
@@ -38,7 +38,7 @@ border-radius: 0px 50px 0px 0px;">
             border-radius: 50px 0px 0px 0px; padding:5%;">
                 <span style="font-family: 'Oxygen'; font-size:50px;">Sketch it.</span>
                 <p>And let us create it for you</p>
-                <button class="check-button" style="align-self: center;
+                <button [routerLink]="'/sketch-home'" class="check-button" style="align-self: center;
                 width: 50%;
                 padding: 2%;">Create Sketch</button>
             </div>

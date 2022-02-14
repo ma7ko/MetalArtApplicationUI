@@ -1,0 +1,69 @@
+<!--<canvas id="canvas" (mouseup)="this.endDrawing($event)" (mousedown)="this.setStartingPoint($event)" (mousemove)="this.dragging($event)" width="700px" height="700px">
+</canvas>-->
+<div style="min-height: 800px;">
+    <div>
+        <div class="d-flex" style="overflow-x: scroll;">
+            <div class="d-flex">
+                <svg (mousedown)="this.setStart($event)" (mousemove)="this.move($event)" (mouseup)="this.setEnd($event)"
+                    id="svg-el" width="700px" height="700px" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                </svg>
+                <div class="d-flex flex-column menu-draw">
+                    <button (click)="this.changePen($event, 'line')" class="btn-draw btn-active">
+                        <fa-icon style="pointer-events: none;" [icon]="this.faLine"></fa-icon>
+                    </button>
+                    <button (click)="this.changePen($event, 'rect')" class="btn-draw">
+                        <fa-icon style="pointer-events: none;" [icon]="this.faSquare"></fa-icon>
+                    </button>
+                    <button (click)="this.changePen($event, 'ellipse')" class="btn-draw">
+                        <fa-icon style="pointer-events: none;" [icon]="this.faCircle"></fa-icon>
+                    </button>
+                    <button (click)="this.changePen($event, 'path')" class="btn-draw">
+                        <fa-icon style="pointer-events: none;" [icon]="this.faPaint"></fa-icon>
+                    </button>
+                    <button (click)="this.eraseContent()" class="btn-draw">
+                        <fa-icon style="pointer-events: none;" [icon]="this.faEraser"></fa-icon>
+                    </button>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="70 44 47 400">
+                        <polygon style="stroke: rgb(0, 0, 0); fill: rgb(0, 191, 255);"
+                            points="82.002 69.123 83.778 320.16 92.066 342.658 102.132 318.976 101.539 68.531">
+                        </polygon>
+                        <polygon style="stroke: rgb(0, 0, 0); fill: rgb(255, 248, 183);"
+                            points="83.729 319.676 102.036 319.657 92.066 342.658"></polygon>
+                        <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);"
+                            d="M 91.054 338.72 C 90.873 336.939 92.436 335.449 95.743 334.249"></path>
+                        <polygon style="stroke: rgb(0, 0, 0);" points="90.43 337.874 92.115 342.487 95.776 333.699">
+                        </polygon>
+                    </svg>
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center w-100">
+                <div style="font-family: 'Oxygen'; color:cadetblue; font-size: 40px;">
+                    Product designed by you.
+                </div>
+                <div class="d-flex justify-content-center align-items-center flex-column w-100">
+                    <div style="width: 300px;">
+                        <label>Name</label>
+                        <input class="form-control" formControlName="name" type="text" />
+                    </div>
+                    <div style="width: 300px;">
+                        <label>Description</label>
+                        <textarea style="resize: none;" class="form-control" maxlength="200"
+                            formControlName="description"></textarea>
+                    </div>
+                    <div>
+                        <app-input-dimension></app-input-dimension>
+                    </div>
+                    <div class="d-flex justify-content-end" style="width: 300px;">
+                        <button class="btn text-light" style="background-color: #00bfff;">
+                            <span>Send sketch</span>
+                            <fa-icon style="padding:5px; padding-left:10px;" [icon]="this.faPaperPlane"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%; height: 300px; background-color: #eee; display: flex; justify-content: center; align-items: center;">
+            For more details contact us
+        </div>
+    </div>
+</div>
