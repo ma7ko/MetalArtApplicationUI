@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { faGripLines, faCircle, faSquare, faEraser, faPaintBrush, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { Dimension } from 'src/app/service/products/request/product-request';
+import { SketchRequest } from 'src/app/service/sketch/request/sketch-request';
+import { SketchService } from 'src/app/service/sketch/sketch.service';
 
 @Component({
   selector: 'app-sketch-home',
@@ -22,7 +26,16 @@ export class SketchHomeComponent implements OnInit {
   faPaint = faPaintBrush;
   faPaperPlane = faPaperPlane;
 
-  constructor() { }
+  sketchForm = new FormGroup({
+    name: new FormControl(''),
+    description: new FormControl(''),
+    width: new FormControl(''),
+    height: new FormControl(''),
+    depth: new FormControl(''),
+    metric: new FormControl('mm')
+  });
+
+  constructor(private sketchService: SketchService) { }
 
   ngOnInit(): void {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -46,16 +59,16 @@ export class SketchHomeComponent implements OnInit {
     var line1 = document.createElementNS("http://www.w3.org/2000/svg", this.shape);
     line1.setAttribute("id", this.lineNum.toString());
     if (this.shape == "line") {
-      line1.setAttribute("x1", ((<MouseEvent>event).pageX-50).toString());
+      line1.setAttribute("x1", ((<MouseEvent>event).pageX - 50).toString());
       line1.setAttribute("y1", ((<MouseEvent>event).pageY - 55 - 50).toString());
     } else if (this.shape == "rect") {
-      line1.setAttribute("x", ((<MouseEvent>event).pageX-50).toString());
+      line1.setAttribute("x", ((<MouseEvent>event).pageX - 50).toString());
       line1.setAttribute("y", ((<MouseEvent>event).pageY - 55 - 50).toString());
     } else if (this.shape == "ellipse") {
-      line1.setAttribute("cx", ((<MouseEvent>event).pageX-50).toString());
+      line1.setAttribute("cx", ((<MouseEvent>event).pageX - 50).toString());
       line1.setAttribute("cy", ((<MouseEvent>event).pageY - 55 - 50).toString());
     } else if (this.shape == "path") {
-      line1.setAttribute("d", "M " + ((<MouseEvent>event).pageX-50).toString() + " " + ((<MouseEvent>event).pageY - 55 - 50).toString()) + " ";
+      line1.setAttribute("d", "M " + ((<MouseEvent>event).pageX - 50).toString() + " " + ((<MouseEvent>event).pageY - 55 - 50).toString()) + " ";
     }
     document.getElementById("svg-el")?.appendChild(line1);
     this.active = true;
@@ -66,24 +79,24 @@ export class SketchHomeComponent implements OnInit {
       console.log(event);
       let line2 = document.getElementById(this.lineNum.toString());
       if (this.shape == "line") {
-        line2?.setAttribute("x2", ((<MouseEvent>event).pageX-50).toString());
+        line2?.setAttribute("x2", ((<MouseEvent>event).pageX - 50).toString());
         line2?.setAttribute("y2", ((<MouseEvent>event).pageY - 55 - 50).toString());
       } else if (this.shape == "rect") {
         let x = line2?.getAttribute("x");
         let y = line2?.getAttribute("y");
         if (x && y) {
           line2?.setAttribute("width", Math.abs(parseInt(x) - (<MouseEvent>event).pageX + 50).toString());
-          line2?.setAttribute("height", Math.abs(parseInt(y) - Math.abs((<MouseEvent>event).pageY - 55-50)).toString());
+          line2?.setAttribute("height", Math.abs(parseInt(y) - Math.abs((<MouseEvent>event).pageY - 55 - 50)).toString());
         }
       } else if (this.shape == "ellipse") {
         let x = line2?.getAttribute("cx");
         let y = line2?.getAttribute("cy");
         if (x && y) {
-          line2?.setAttribute("rx", Math.abs(parseInt(x) - Math.abs((<MouseEvent>event).pageX-50)).toString());
-          line2?.setAttribute("ry", Math.abs(parseInt(y) - Math.abs((<MouseEvent>event).pageY - 55-50)).toString());
+          line2?.setAttribute("rx", Math.abs(parseInt(x) - Math.abs((<MouseEvent>event).pageX - 50)).toString());
+          line2?.setAttribute("ry", Math.abs(parseInt(y) - Math.abs((<MouseEvent>event).pageY - 55 - 50)).toString());
         }
       } else if (this.shape == "path") {
-        line2?.setAttribute("d", line2?.getAttribute("d") + "C " + ((<MouseEvent>event).pageX + 50) + " " + ((<MouseEvent>event).pageY - 55-50) + " " + ((<MouseEvent>event).pageX + 30) + " " + ((<MouseEvent>event).pageY - 55-30) + " " + ((<MouseEvent>event).pageX + 50) + " " + ((<MouseEvent>event).pageY - 55-50));
+        line2?.setAttribute("d", line2?.getAttribute("d") + "C " + ((<MouseEvent>event).pageX + 50) + " " + ((<MouseEvent>event).pageY - 55 - 50) + " " + ((<MouseEvent>event).pageX + 30) + " " + ((<MouseEvent>event).pageY - 55 - 30) + " " + ((<MouseEvent>event).pageX + 50) + " " + ((<MouseEvent>event).pageY - 55 - 50));
       }
       line2?.setAttribute("style", "stroke: black;");
     }
@@ -119,6 +132,40 @@ export class SketchHomeComponent implements OnInit {
   eraseContent() {
     let element = document.querySelector("#svg-el");
     (<HTMLElement>element).innerHTML = "";
+  }
+
+  setDimensions(dimension: Dimension) {
+    console.log(dimension);
+    this.sketchForm.controls['width'].setValue(dimension.width);
+    this.sketchForm.controls['height'].setValue(dimension.height);
+    this.sketchForm.controls['depth'].setValue(dimension.depth);
+  }
+
+  setMetrics(value: string) {
+    this.sketchForm.controls['metric'].setValue(value);
+  }
+
+  submitForm(event: Event) {
+    event.preventDefault();
+    let request: SketchRequest = new SketchRequest();
+    request.name = this.sketchForm.controls['name'].value;
+    request.description = this.sketchForm.controls['description'].value;
+    request.width = this.sketchForm.controls['width'].value;
+    request.height = this.sketchForm.controls['height'].value;
+    request.depth = this.sketchForm.controls['depth'].value;
+    request.metric = this.sketchForm.controls['metric'].value;
+
+    var svgData = document.getElementById("svg-el")?.outerHTML;
+    if (svgData) {
+      var svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+      var file = new File([svgBlob], "uploadedFile");
+
+      this.sketchService.sendSketch(request, file).subscribe((response) => {
+        console.log(response);
+      }, (error) => {
+        console.log(error);
+      });
+    }
   }
 
 }

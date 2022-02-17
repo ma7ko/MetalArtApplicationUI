@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SketchRoutingModule } from './sketch-routing.module';
 import { SketchHomeComponent } from './sketch-home/sketch-home.component';
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     SketchRoutingModule,
     FontAwesomeModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class SketchModule { }

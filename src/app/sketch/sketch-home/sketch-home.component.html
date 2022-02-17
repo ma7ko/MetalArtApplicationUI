@@ -41,28 +41,31 @@
                     Product designed by you.
                 </div>
                 <div class="d-flex justify-content-center align-items-center flex-column w-100">
-                    <div style="width: 300px;">
-                        <label>Name</label>
-                        <input class="form-control" formControlName="name" type="text" />
-                    </div>
-                    <div style="width: 300px;">
-                        <label>Description</label>
-                        <textarea style="resize: none;" class="form-control" maxlength="200"
-                            formControlName="description"></textarea>
-                    </div>
-                    <div>
-                        <app-input-dimension></app-input-dimension>
-                    </div>
-                    <div class="d-flex justify-content-end" style="width: 300px;">
-                        <button class="btn text-light" style="background-color: #00bfff;">
-                            <span>Send sketch</span>
-                            <fa-icon style="padding:5px; padding-left:10px;" [icon]="this.faPaperPlane"></fa-icon>
-                        </button>
-                    </div>
+                    <form [formGroup]="this.sketchForm" (ngSubmit)="this.submitForm($event)">
+                        <div style="width: 300px;">
+                            <label>Name</label>
+                            <input class="form-control" formControlName="name" type="text" />
+                        </div>
+                        <div style="width: 300px;">
+                            <label>Description</label>
+                            <textarea style="resize: none;" class="form-control" maxlength="200"
+                                formControlName="description"></textarea>
+                        </div>
+                        <div>
+                            <app-input-dimension (emitMetrics)="this.setMetrics($event)" (changedDimensions)="this.setDimensions($event)"></app-input-dimension>
+                        </div>
+                        <div class="d-flex justify-content-end" style="width: 300px;">
+                            <button class="btn text-light" style="background-color: #00bfff;">
+                                <span>Send sketch</span>
+                                <fa-icon style="padding:5px; padding-left:10px;" [icon]="this.faPaperPlane"></fa-icon>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <div style="width: 100%; height: 300px; background-color: #eee; display: flex; justify-content: center; align-items: center;">
+        <div
+            style="width: 100%; height: 300px; background-color: #eee; display: flex; justify-content: center; align-items: center;">
             For more details contact us
         </div>
     </div>

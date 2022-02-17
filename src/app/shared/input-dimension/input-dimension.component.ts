@@ -12,6 +12,7 @@ export class InputDimensionComponent implements OnInit, OnChanges {
   @Input() dimension: Dimension = new Dimension();
   @Input() editMode: boolean = false;
   @Output() changedDimensions: EventEmitter<Dimension> = new EventEmitter<Dimension>();
+  @Output() emitMetrics: EventEmitter<string> = new EventEmitter<string>();
   dimensions: Dimension = new Dimension();
   metrics: string = "mm";
   constructor() { }
@@ -42,6 +43,7 @@ export class InputDimensionComponent implements OnInit, OnChanges {
     });
     this.metrics = radio.value;
     radio.checked = true;
+    this.emitMetrics.emit(this.metrics);
     radio.parentElement?.setAttribute("id", "checkbox-active");
   }
 
