@@ -2,7 +2,7 @@
   "name": "metal-art-application",
   "version": "0.0.0",
   "scripts": {
-    "preinstall": "npm link @angular/cli",
+    "postinstall": "npm link @angular/cli",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
