@@ -1,0 +1,10 @@
+<div class="dropdown">
+    <button (click)="this.showDropdown = !this.showDropdown" style="text-align: right;" class="btn btn-light dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{ this.selectedValue }}
+    </button>
+    <div [ngClass]="{ 'd-block' : this.showDropdown }" class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+      <span (click)="this.shapeSelected($event)" data-id="0" class="dropdown-item">Rounded</span>
+      <span (click)="this.shapeSelected($event)" data-id="1" class="dropdown-item" href="#">Squared</span>
+      <span (click)="this.shapeSelected($event)" data-id="2" class="dropdown-item" href="#">Combined</span>
+    </div>
+  </div>

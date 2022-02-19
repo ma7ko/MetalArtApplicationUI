@@ -1,0 +1,12 @@
+@import "semantic-ui-css/semantic.css";
+
+.placeholder-none {
+    margin: 0px;
+    height: 100%;
+    background: white;
+}
+
+.display-01 {
+    opacity: 1;
+    cursor: pointer;
+}

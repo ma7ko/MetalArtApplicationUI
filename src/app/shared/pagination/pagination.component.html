@@ -1,0 +1,10 @@
+<div class="ui pagination menu">
+    <div *ngFor="let pageNum of this.arrayHelper">
+      <a [ngClass]="{ 'active' : this.page ==  pageNum}" data-id="{{ this.arrayHelper[pageNum] }}"(click)="this.changePage($event)" class="item">
+        {{ pageNum + 1 }}
+      </a>
+    </div>
+    <div class="disabled item">
+      ...
+    </div>
+  </div>

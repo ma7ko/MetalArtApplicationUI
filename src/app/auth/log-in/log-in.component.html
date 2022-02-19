@@ -5,10 +5,10 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            height: 100%;">
+            height: 100%; background-color: aliceblue;">
             <h1 style="height: 20%;"><fa-icon [icon]="this.faFeather"  style="color: #f4f4f4; background: #555; border-radius:10px; padding:10px"></fa-icon></h1>
                 <h1 style="height: 10%;">Not registered yet?</h1>
-                <button class="btn btn-dark">Register now</button>
+                <button class="btn btn-dark" routerLink="/register">Register now</button>
             </div>
         </div>
         <div class="col-5">
@@ -16,21 +16,28 @@
                 <div style="height: 80%;
                 border: 1px solid aquamarine;
                 background: #f4f4f4;
-                border-radius: 30px 0px 30px 0px;
+                border-radius: 0px 30px 30px 0px;
                 align-items: center;
-                display: flex; flex-direction: column; justify-content: space-evenly; width:100%; padding:10%; box-shadow: 5px 5px aquamarine;">
+                display: flex; flex-direction: column; justify-content: space-evenly; width:100%; padding:10%; box-shadow: 5px 5px aquamarine; border-left: 30px solid darkslategrey;">
+                <div class="text-center" [ngClass]="{'text-gray': !this.errorAuth, 'text-danger': this.errorAuth }">Authenticaton Failed <fa-icon [icon]="faExc"></fa-icon></div>
                 <h2>Login</h2>
-                <form class="w-100">
+                <form [formGroup]="this.loginForm" class="w-100" (ngSubmit)="this.onSubmit()">
                     <div class="d-flex justify-content-between" style="margin:10px; flex-direction: column;">
                         <label>Username</label>
-                        <input class="form-control" type="text">
+                        <input formControlName="username" class="form-control" type="text">
                     </div>
+
+                    <app-validation [control]="this.loginForm.controls['username']"></app-validation>
+
                     <div class="d-flex justify-content-between" style="margin:10px; flex-direction: column;">
                         <label>Password</label>
-                        <input class="form-control" type="password">
+                        <input formControlName="password" class="form-control" type="password">
                     </div>
+
+                    <app-validation [control]="this.loginForm.controls['password']"></app-validation>
+                    
                     <div style="padding: 5%;">
-                        <button class="btn w-100" style="background: aquamarine;">Submit</button>
+                        <button type="submit" class="btn w-100" style="background: aquamarine;">Submit</button>
                     </div>
                 </form>
                 </div>

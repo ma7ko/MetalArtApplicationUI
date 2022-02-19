@@ -1,0 +1,12 @@
+@import "semantic-ui-css/semantic.css";
+
+#checkbox-active {
+    background: aquamarine;
+}
+
+.dim-wrapper {
+    background: #eee;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}

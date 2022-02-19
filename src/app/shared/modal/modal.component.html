@@ -1,0 +1,19 @@
+<div (click)="this.closeModal.emit(true);" [ngClass]="{ 'd-block': this.showModal }" id="modalComponent" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div (click)="$event.stopPropagation()" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><ng-content select="header"></ng-content></h5>
+          <button (click)="this.closeModal.emit(true);" type="button" class="close btn btn-light p-1" data-dismiss="modal" aria-label="Close">
+            <span class="close-btn" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ng-content select=".main-message"></ng-content>
+        </div>
+        <div class="modal-footer">
+          <button (click)="this.confirmed.emit(true);" type="button" class="btn btn-primary"><ng-content select=".confirm-text"></ng-content></button>
+          <button (click)="this.closeModal.emit(true);" type="button" class="btn btn-secondary" data-dismiss="modal"><ng-content select=".cancel-text"></ng-content></button>
+        </div>
+      </div>
+    </div>
+  </div>

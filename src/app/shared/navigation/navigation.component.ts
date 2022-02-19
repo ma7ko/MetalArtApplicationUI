@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,6 +9,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 export class NavigationComponent implements OnInit {
 
   faUser = faUser;
+  @Input() homeMenuLink: any;
   constructor() { }
 
   ngOnInit(): void {

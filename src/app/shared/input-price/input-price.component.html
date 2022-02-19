@@ -1,0 +1,15 @@
+<div class="ui right labeled input w-100">
+  <div class="ui dropdown label d-flex align-items-center p-0 w-25">
+    <div [ngClass]="{ 'op-05': this.editMode }" class="d-flex w-100 h-100 align-items-center" (click)="this.editMode ? this.show : this.show = !this.show">
+      <i class="dropdown icon" style="margin-left: 5px; margin-right: 5px;"></i>
+      <div class="text">{{ this.currency }}</div>
+    </div>
+    <div [ngClass]=" { 'd-block' : this.show }" class="menu">
+      <div class="item" (click)="this.changeCurrency('USD')">USD</div>
+      <div class="item" (click)="this.changeCurrency('EUR')">EUR</div>
+      <div class="item" (click)="this.changeCurrency('MKD')">MKD</div>
+    </div>
+  </div>
+  <input type="text" (change)="this.consoleit($event);" placeholder="Amount" id="amount-price" class="w-50">
+  <div class="ui basic label" style="width: 25%;">.00</div>
+</div>

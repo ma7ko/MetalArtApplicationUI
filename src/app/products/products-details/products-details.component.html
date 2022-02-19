@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-12">
+        <div style="background-color: #f4f4f4;">
+            <div class="d-flex w-100 justify-content-between">
+                <div class="d-flex justify-content-around" style="width: 200px; padding-top: 10px; padding-bottom: 10px;
+                margin-left: 10%;
+              ">
+                    <div><a id="product-route" style="text-decoration: none;" routerLink="/products" routerLinkActive="active">Products</a></div>
+                    <fa-icon [icon]="this.angleRight"></fa-icon>
+                    <div>Product Details</div>
+                </div>
+                <div class="d-flex" style="margin-right: 10%;">
+                    <div>
+                        <button (click)="this.showModal=true;" style="border-radius: 50px;  margin-top: 2px; margin-left: 2px;
+                        padding: 5px 10px 5px 10px;" class="btn btn-dark"><fa-icon [icon]="deleteIcon"></fa-icon></button>
+                    </div>
+                    <div [routerLink]="'/products/' + product?.id + '/edit'" (click)="this.setValues(product ? product : '')">
+                        <button style="border-radius: 50px; margin-top: 2px; margin-left: 2px;
+                        padding: 5px 10px 5px 10px;" class="btn btn-info text-light"><fa-icon [icon]="editIcon"></fa-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-center" style="margin-top: 25px; margin-bottom: 25px;">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div style="margin: 20px;">
+                            <img style="height: 500px; object-fit: cover;" class="w-100 rounded" [src]="this.product?.image ? 'data:image/jpeg;base64,' + this.product?.image : ''"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div style="margin: 20px;">
+                            <div>
+                                <h2>{{ product?.name }}</h2>
+                                <h5>{{ product?.description }}</h5>
+                            </div>
+                            <div>
+                                <p class="d-flex justify-content-between align-items-center" style=" margin-top:20px; margin-bottom:20px;"><span style="background-color: #555; border-radius: 20px;" class="nav-pill text-light p-2">{{ this.product?.shape }}</span>
+                                    <span *ngIf="this.product?.available"><fa-icon class="text-success" [icon]="this.tick"></fa-icon><span style="margin-left: 10px;">In stock</span></span>
+                                    <span *ngIf="!this.product?.available"><fa-icon class="text-danger" [icon]="this.cross"></fa-icon><span style="margin-left: 10px;">Unavailable</span></span>
+                                </p>
+                            </div>
+                            <div>
+                                <app-input-dimension [previewMode]="true" [dimension]="this.product?.dimension"></app-input-dimension>
+                            </div>
+                            <div class="p-2">
+                                <app-input-price-tag (selectChanged)="this.changeCurrency($event)">
+                                    <span id="price">{{ this.product?.price | price: this.currency }}</span>
+                                </app-input-price-tag>
+                            </div>
+                            <div>
+                                <button [routerLink]="'/payment/shopping-cart'" class="btn btn-primary m-2"><span class="p-2">Add to cart</span><fa-icon [icon]="this.cart"></fa-icon></button>
+                                <button [routerLink]="'/payment/checkout'" class="btn btn-dark w-50 m-2">Buy now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background: azure;
+    border-top: 3px solid darkcyan;
+    border-radius: 100px 0px 0px 0px;">
+        <div class="col-12">
+            <h3 id="similar-prod">Similar Products</h3>
+        </div>
+    </div>
+    <div *ngIf="!this.similarProducts" class="row" style="background-color: azure;">
+        <div class="col-lg-1"></div>
+        <div *ngFor="let ph of this.placeholderArray" class="col-lg-3">
+            <div>
+                <app-placeholder class="m-2" [placeholderActive]="true"></app-placeholder>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    <div *ngIf="this.similarProducts" class="row" style="background-color: azure;">
+        <div class="col-lg-1"></div>
+        <div *ngFor="let similarProduct of this.similarProducts" class="col-lg-3">
+            <div (click)="this.similarProducts = null;" [routerLink]="'/products/'+similarProduct.id+'/details'" (click)="changeProduct(similarProduct)">
+                <app-placeholder class="m-2" [placeholderActive]="true" [product]="similarProduct"></app-placeholder>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+
+<app-modal [showModal]="this.showModal" (closeModal)="this.showModal = !($event);" (confirmed)="this.deleteProduct($event)">
+<header>Delete Product</header>
+<div class="main-message">Are you sure you want to delete this product?</div>
+<div class="confirm-text">Yes</div>
+<div class="cancel-text">No</div>
+</app-modal>

@@ -1,0 +1,30 @@
+
+
+.form-item {
+    margin: 10px;
+}
+
+.triangle {
+    clip-path: polygon(0% 0, 100% 100%, 0 100%);
+    width: 30px;
+    transform: rotate(180deg);
+    padding: 0px;
+    background: #ced4da;
+    color: #335;
+    border: 8px solid #ced4da;
+    border-radius: 10px 0px 0px 10px;
+    border-bottom: 0px;
+    height: 100%;
+}
+
+.input-wrapper {
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+}
+
+input[type="text"], input[type="text"]:focus {
+    border:none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 10px 0px 0px 10px;
+}
