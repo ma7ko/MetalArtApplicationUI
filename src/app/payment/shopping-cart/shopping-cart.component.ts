@@ -3,6 +3,7 @@ import { ProductResponse } from 'src/app/service/products/request/product-reques
 import { ProductToCartRequest } from 'src/app/service/user/request/user-request';
 import { UserService } from 'src/app/service/user/user.service';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,7 +17,7 @@ export class ShoppingCartComponent implements OnInit {
   cartArray: Array<number> = [1,2,3];
   totalPrice: string = '0';
   products: any;
-  faCart = faCartArrowDown;
+  faCart = faCartArrowDown as IconProp;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {

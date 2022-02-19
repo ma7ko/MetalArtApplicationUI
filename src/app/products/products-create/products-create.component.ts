@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { faMinus, faPlus, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { Dimension, ProductResponse } from 'src/app/service/products/request/product-request';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-products-create',
@@ -25,9 +26,9 @@ export class ProductsCreateComponent implements OnInit {
     depth: new FormControl('', [Validators.required])
   });
 
-  arrowUp = faPlus;
-  arrowDown = faMinus;
-  angleRight = faAngleRight;
+  arrowUp = faPlus as IconProp;
+  arrowDown = faMinus as IconProp;
+  angleRight = faAngleRight as IconProp;
 
   constructor(private productService: ProductsService) { }
 

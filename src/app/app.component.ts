@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser, faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,9 @@ import { faUser, faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-sv
 })
 export class AppComponent implements OnInit {
   title = 'MetalArtApplication';
-  faUser = faUser;
-  faShoppingCart = faShoppingCart;
-  faSignOut = faSignOutAlt;
+  faUser = faUser as IconProp;
+  faShoppingCart = faShoppingCart as IconProp;
+  faSignOut = faSignOutAlt as IconProp;
   loggedIn: boolean = false;
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-input-amount',
@@ -8,8 +9,8 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 })
 export class InputAmountComponent implements OnInit, OnChanges {
 
-  arrowUp = faPlus;
-  arrowDown = faMinus;
+  arrowUp = faPlus as IconProp;
+  arrowDown = faMinus as IconProp;
 
   @Input() amount: any;
   @Output() amountChanged: EventEmitter<number> = new EventEmitter<number>();

@@ -3,6 +3,7 @@ import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
 import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-products-home',
@@ -25,12 +26,12 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   showPrices: boolean = false;
 
-  faEye = faEye;
-  faPen = faPen;
-  faTrash = faTrash;
-  faCartPlus = faPlusSquare;
-  faToggle = faAlignJustify;
-  faSearch = faSearch;
+  faEye = faEye as IconProp;
+  faPen = faPen as IconProp;
+  faTrash = faTrash as IconProp;
+  faCartPlus = faPlusSquare as IconProp;
+  faToggle = faAlignJustify as IconProp;
+  faSearch = faSearch as IconProp;
 
   
   constructor(private productsService: ProductsService, private authService: AuthService) { }

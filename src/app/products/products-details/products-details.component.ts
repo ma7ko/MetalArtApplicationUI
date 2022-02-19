@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/service/auth/auth.service';
 import { UserService } from 'src/app/service/user/user.service';
 import { ProductToCartRequest } from 'src/app/service/user/request/user-request';
 import { Router } from '@angular/router';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-products-details',
@@ -14,12 +15,12 @@ import { Router } from '@angular/router';
 })
 export class ProductsDetailsComponent implements OnInit {
 
-  angleRight = faAngleRight;
-  tick = faCheck;
-  cross = faTimes;
-  cart = faCartPlus;
-  editIcon = faPen;
-  deleteIcon = faTrash;
+  angleRight = faAngleRight as IconProp;
+  tick = faCheck as IconProp;
+  cross = faTimes as IconProp;
+  cart = faCartPlus as IconProp;
+  editIcon = faPen as IconProp;
+  deleteIcon = faTrash as IconProp;
 
   product: any;
   productId: string = '';

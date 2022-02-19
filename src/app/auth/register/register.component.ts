@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { RegisterRequest } from 'src/app/service/user/request/user-request';
 import { UserService } from 'src/app/service/user/user.service';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   });
 
   errorRegister:boolean = false;
-  faExc = faExclamationCircle;
+  faExc = faExclamationCircle as IconProp;
   loading: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
