@@ -19,13 +19,13 @@ import { PaymentModule } from './payment/payment.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
     HomeModule,
     ProductsModule,
     AuthModule,
     SharedModule,
     FontAwesomeModule,
-    PaymentModule
+    PaymentModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

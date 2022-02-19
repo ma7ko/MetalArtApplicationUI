@@ -16,6 +16,8 @@ import { PricePipe } from '../pipe/price/price.pipe';
 import { PaginationComponent } from './pagination/pagination.component';
 import { InputAmountComponent } from './input-amount/input-amount.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { ErrorComponent } from './error/error.component';
+import { CartPlaceholderComponent } from './cart-placeholder/cart-placeholder.component';
 
 
 
@@ -35,7 +37,9 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     InputPriceTagComponent,
     PaginationComponent,
     InputAmountComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    ErrorComponent,
+    CartPlaceholderComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +59,9 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     PricePipe,
     PaginationComponent,
     InputAmountComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    ErrorComponent,
+    CartPlaceholderComponent
   ]
 })
 export class SharedModule { }

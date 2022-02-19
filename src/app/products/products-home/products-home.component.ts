@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
 import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
   selector: 'app-products-home',
   templateUrl: './products-home.component.html',
   styleUrls: ['./products-home.component.css']
 })
-export class ProductsHomeComponent implements OnInit {
+export class ProductsHomeComponent implements OnInit, OnDestroy {
 
   itemsPerRow: Array<number> = [1,2,3,4,5,6,7,8,9,10,11,12];
   rows: Array<number> = [1,2,3,4];
@@ -20,6 +21,8 @@ export class ProductsHomeComponent implements OnInit {
   current: number = 0;
   currentPage: number = 0;
   searchBoxOpened: boolean = false;
+  isAdminUser: boolean = false;
+  isLoggedIn: boolean = false;
 
   faEye = faEye;
   faPen = faPen;
@@ -29,9 +32,11 @@ export class ProductsHomeComponent implements OnInit {
   faSearch = faSearch;
 
   
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.isAdminUser = this.authService.isAdminUser();
+    this.isLoggedIn = this.authService.isLoggedIn();
     this.getPage(0);
   }
 
@@ -106,4 +111,9 @@ export class ProductsHomeComponent implements OnInit {
         searchBox.style.height = "0px";
      }
    }
+
+   ngOnDestroy(): void {
+    this.products = new Array<ProductResponse>();
+  }
+
 }

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <div style="margin-top: 70px;">
+                    <div style="margin-top: 40px;">
                         <div>
                             <h1>Checkout</h1>
                         </div>
@@ -108,7 +108,10 @@
                     <div style="margin-top: 140px;">
                         <div class="d-flex justify-content-between">
                             <h4>Total Amount</h4>
-                            <h4>{{ this.totalPrice }}</h4>
+                            <div *ngIf="this.totalPrice == '0'" style="margin-right: 10px;" class="spinner-border spinner-border-sm text-dark btn-w" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <h4 *ngIf="this.totalPrice != '0'">{{ this.totalPrice }} {{ this.totalPrice == "0" ? '' : '$'}}</h4>
                         </div>
                         <div>
                             <button disabled id="submit-btn" class="btn btn-primary w-100">Complete Payment</button>
