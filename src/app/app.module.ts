@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './products/products.module';
 import { PricePipe } from './pipe/price/price.pipe';
 import { PaymentModule } from './payment/payment.module';
+import { SketchModule } from './sketch/sketch.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PaymentModule } from './payment/payment.module';
     SharedModule,
     FontAwesomeModule,
     PaymentModule,
+    SketchModule,
     AppRoutingModule
   ],
   providers: [],

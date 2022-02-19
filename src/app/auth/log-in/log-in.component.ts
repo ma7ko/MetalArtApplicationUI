@@ -36,8 +36,7 @@ export class LogInComponent implements OnInit {
       localStorage.setItem('userKey', response.username);
       localStorage.setItem('roleKey', response.role.key);
       this.userService.setCartProducts(response.products);
-      console.log(response.products);
-      //location.href="/home";
+      location.href="/home";
     }, (error) => {
       this.errorAuth = true;
     });

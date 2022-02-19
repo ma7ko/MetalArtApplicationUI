@@ -6,6 +6,10 @@
     animation: fading 1s linear forwards 12 alternate;
 }
 
+.draws {
+    stroke-dashoffset: 0 !important;
+}
+
 @keyframes waiting {
     0% {
         transform: translateX(0%);
