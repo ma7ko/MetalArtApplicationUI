@@ -8,21 +8,21 @@
     </div>
     <div id="width" class="ui right labeled input w-100 p-1">
         <input value="{{this.dimension ? ((this.dimension.width ? this.dimension.width : 0) | mmToIn: this.metrics)  : 0}}" name="width" class="w-75 field text-center" type="text" placeholder="Enter width.." (change)="this.dimensionChanged($event)">
-        <div class="ui basic label text-center" style="width: 70px;">
+        <div class="ui basic label text-center w-25" style="font-size: 15px; padding: 0px; padding-top: 11.5px;">
             {{ this.metrics }}
         </div>
     </div>
 
     <div id="height" class="ui right labeled input w-100 p-1">
         <input value="{{this.dimension ? ((this.dimension.height ? this.dimension.height : 0) | mmToIn: this.metrics)  : 0}}" name="height" class="w-75 field text-center" type="text" placeholder="Enter height.." (change)="this.dimensionChanged($event)">
-        <div class="ui basic label text-center" style="width: 70px;">
+        <div class="ui basic label text-center w-25" style="font-size: 15px; padding: 0px; padding-top: 11.5px;">
             {{ this.metrics }}
         </div>
     </div>
 
     <div id="depth" class="ui right labeled input w-100 p-1">
         <input value="{{this.dimension ? ((this.dimension.depth ? this.dimension.depth : 0) | mmToIn: this.metrics)  : 0}}" name="depth" class="w-75 field text-center" type="text" placeholder="Enter depth.." (change)="this.dimensionChanged($event)">
-        <div class="ui basic label text-center" style="width: 70px;">
+        <div class="ui basic label text-center w-25" style="font-size: 15px; padding: 0px; padding-top: 11.5px;">
             {{ this.metrics }}
         </div>
     </div>
