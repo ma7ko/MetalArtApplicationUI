@@ -42,23 +42,30 @@ export class ProductsCreateComponent implements OnInit {
       this.image = element.files[0];
     }
 
-    var reader  = new FileReader();
-    reader.onload = function(e)  {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      if (document.getElementById('img-holder')?.firstChild == null) {
         var img = document.createElement("img");
         if (e.target?.result?.toString() != undefined)
-        img.src = e.target?.result?.toString();
+          img.src = e.target?.result?.toString();
         img.classList.add('w-100');
-        img.style.borderRadius="20px";
+        img.style.borderRadius = "20px";
         img.style.border = "10px solid teal";
         img.style.padding = "20px";
-        img.style.height= "100%";
+        img.style.height = "100%";
         img.style.objectFit = "cover";
         document.getElementById('img-holder')?.appendChild(img);
+      } else {
+        let imgElement = document.getElementById('img-holder')?.firstChild;
+        if (imgElement)
+          if (e.target?.result?.toString() != undefined)
+            (<HTMLImageElement>imgElement).src = e.target?.result?.toString();
+      }
     }
 
     if (this.image)
       reader.readAsDataURL(this.image);
-  
+
   }
 
   changeAmount(incrase: boolean) {
@@ -107,7 +114,7 @@ export class ProductsCreateComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
-    
+
 
   }
 
