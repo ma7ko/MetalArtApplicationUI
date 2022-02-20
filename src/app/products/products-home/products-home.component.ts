@@ -25,6 +25,7 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
   isAdminUser: boolean = false;
   isLoggedIn: boolean = false;
   showPrices: boolean = false;
+  listing: boolean = false;
   
 
   faEye = faEye as IconProp;
@@ -59,6 +60,7 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
       } else {
       window.scrollTo(0,0);
       }
+      this.listing=false;
     },
     (error) => {
       console.log("Could not load products");
@@ -98,6 +100,7 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
 
    changePage(value: number) {
      if (this.currentPage != value) {
+      this.listing = true;
       document.getElementById('content')?.scrollIntoView(true);
       this.products = new Array<ProductResponse>();
       this.getPage(value, true);

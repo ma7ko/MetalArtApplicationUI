@@ -62,14 +62,14 @@
                     </div>
                 </div>
             </ng-container>
-            <ng-container *ngIf="this.products.length == 0 && this.total == -1">
+            <ng-container *ngIf="(this.products.length == 0 && this.total == -1) || this.listing">
                 <div class="row" style="padding: 20px;">
                     <div *ngFor="let row of itemsPerRow" class="col-12 col-md-6 col-lg-4 col-xl-3">
                         <app-placeholder [placeholderActive]="true"></app-placeholder>
                     </div>
                 </div>
             </ng-container>
-            <div class="row" style="padding: 20px; max-height: 1016.55px;">
+            <div class="row" style="padding: 20px;">
                 <div *ngFor="let product of products; let i = index;" class="col-12 col-md-6 col-lg-4 col-xl-3">
                     <div class="ui card p-3 mt-4">
                     <div *ngIf="this.showToolbar" class="input-check">

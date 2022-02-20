@@ -143,6 +143,7 @@ export class ProductsDetailsComponent implements OnInit {
   }
 
   sendToCheckout() {
+    this.productsService.setClickedProduct(new ProductResponse());
     this.router.navigate(['/payment/checkout'], { queryParams: { id: this.product.id } })
   }
 
