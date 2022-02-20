@@ -2,3 +2,19 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.show-menu {
+    max-height: 300px !important;
+}
+
+@media screen and (min-width: 992px) {
+    #navbarNav {
+      height: 100%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #navbarNav {
+      max-height: 0;
+    }
+}

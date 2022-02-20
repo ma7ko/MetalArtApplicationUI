@@ -17,8 +17,8 @@ export class NavigationComponent implements OnInit {
 
   toggleMenu(event: any) {
     console.log(event);
-    if (document.body.getBoundingClientRect().width < 1000)
-    document.getElementsByClassName('navbar-collapse')[0].classList.toggle('collapse');
+    console.log(document.getElementById("navbarNav"));
+    document.getElementById("navbarNav")?.classList.toggle('show-menu');
   }
   
   collapse() {
