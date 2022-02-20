@@ -19,7 +19,7 @@ export class SvgComponent implements OnInit {
     let top = document.getElementById("paint");
     console.log(top?.getBoundingClientRect());
 
-    if (top && top?.getBoundingClientRect().top < 120) {
+    if (top && top?.getBoundingClientRect().top < 200) {
       document.querySelectorAll('.drawing')[1].classList.add('draws');
       setTimeout(function() { document.querySelectorAll('.drawing')[0].classList.add('draws'); }, 3000);
       this.draw = true;
