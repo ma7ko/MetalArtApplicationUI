@@ -13,7 +13,7 @@ flex-direction: column;background: #f4f4f4;
 border-radius: 0px 50px 0px 0px;">
                <p style="  font-family: 'Oxygen';
                font-weight: 500;
-               font-size: 50px; height: 45%;
+               font-size: 50px; height: 60%; min-height: 400px;
              ">Decoration for everyone.</p> 
                <p>Find yours</p>
                <button class="check-button" [routerLink]="'/products'">Check products</button>
@@ -24,18 +24,18 @@ border-radius: 0px 50px 0px 0px;">
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-lg-6 col-12">
             <div class="card-marked">
                 <app-svg [image]="'painting'"></app-svg>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-lg-6 col-12">
             <div style="height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             background: #f4f4f4;
-            border-radius: 50px 0px 0px 0px; padding:5%;">
+            border-radius: 50px 0px 0px 0px; padding:5%; min-height: 400px;">
                 <span style="font-family: 'Oxygen'; font-size:50px;">Sketch it.</span>
                 <p>And let us create it for you</p>
                 <button [routerLink]="'/sketch-home'" class="check-button" style="align-self: center;
@@ -49,24 +49,28 @@ border-radius: 0px 50px 0px 0px;">
             <div style="background: #f4f4f4; border-radius: 0px 100px 0px 0px; font-family: 'Oxygen'; display: flex;
             flex-direction: column;
             height: 50vh;
-            justify-content: center; border: 50px solid cadetblue;">
+            justify-content: center; border: 50px solid cadetblue; height: 100%;">
                 <div class="row">
-                    <div class="col-4">
-                        <div class="text-center">
-                            <fa-icon [icon]="this.faInfo"  style="font-size: 40px; color: #0080ff;"></fa-icon>
-                            <p>Give details of your sketch</p>
+                    <div class="col-lg-4 col-12">
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center" style="padding: 25px;">
+                                <fa-icon [icon]="this.faInfo"  style="font-size: 40px; color: #0080ff;"></fa-icon>
+                                <p>Give details of your sketch</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="text-center">
+                    <div class="col-lg-4 col-12">
+                        <div class="text-center" style="padding: 50px;">
                             <fa-icon [icon]="this.faIcon" style="font-size: 40px;"></fa-icon>
                             <p>Send us your sketch</p>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="text-center">
-                            <fa-icon [icon]="this.faClock" style="font-size: 40px; color: #ffe140;"></fa-icon>
-                            <p>Wait for approval</p>
+                    <div class="col-lg-4 col-12">
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center" style="padding: 25px;">
+                                <fa-icon [icon]="this.faClock" style="font-size: 40px; color: #ffe140;"></fa-icon>
+                                <p>Wait for approval</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,8 +78,8 @@ border-radius: 0px 50px 0px 0px;">
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
-            <div style="height: 100%; background: #f4f4f4; flex-direction: column; justify-content: center; padding:5%;" class="d-flex">
+        <div class="col-lg-5 col-12">
+            <div style="height: 100%; background: #f4f4f4; flex-direction: column; justify-content: center; padding:5%; min-height: 400px;" class="d-flex">
                 <h1 style="font-family: 'Oxygen'; font-size: 40px;">Keep track of your work.</h1>
                 <p>Find the status of your sketch on your dashboard</p>
                 <button class="check-button" style="align-self: flex-end;
@@ -83,7 +87,7 @@ border-radius: 0px 50px 0px 0px;">
                 padding: 2%;">Dashboard</button>
             </div>
         </div>
-        <div class="col-7">
+        <div class="col-lg-7 col-12">
             <div style="background: darkslategray; border-right: 50px solid cadetblue;">
                 <app-svg [image]="'order'"></app-svg>
             </div>
