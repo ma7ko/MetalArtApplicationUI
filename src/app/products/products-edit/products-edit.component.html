@@ -10,80 +10,84 @@
     </app-breadcrumbs>
 </div>
 
-<div class="row w-100">
-    <div class="col-12">
-        <div class="container mt-5">
-            <div class="d-flex align-items-center h-100">
-                <form class="w-100" [formGroup]="this.editForm" (ngSubmit)="this.onSubmit()"
-                    enctype="multipart/form-data" style="height:inherit">
-                    <div style="
+<div class="w-100 overflow-hidden">
+    <div class="row">
+        <div class="col-12">
+            <div class="container mt-5">
+                <div class="d-flex align-items-center h-100">
+                    <form class="w-100" [formGroup]="this.editForm" (ngSubmit)="this.onSubmit()"
+                        enctype="multipart/form-data" style="height:inherit">
+                        <div style="
                 padding: 15px;" class="row">
-                        <div class="col-lg-6 col-12">
-                            <div style="padding: 10px; display: flex; flex-direction: column; justify-content: space-around; height: 100%;">
-                                <div *ngIf="this.product?.image" style="width: 100%; max-height: 600px;">
-                                    <div class="w-100 h-100" id="img-holder">
-                                        <img class="img-class"
-                                            [src]="'data:image/jpeg;base64,' + this.product?.image" />
+                            <div class="col-lg-6 col-12">
+                                <div
+                                    style="padding: 10px; display: flex; flex-direction: column; justify-content: space-around; height: 100%;">
+                                    <div *ngIf="this.product?.image" style="width: 100%; max-height: 600px;">
+                                        <div class="w-100 h-100" id="img-holder">
+                                            <img class="img-class"
+                                                [src]="'data:image/jpeg;base64,' + this.product?.image" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div *ngIf="!this.product?.image"
-                                    style="width: 100%; max-height: 600px; border: 10px solid teal; border-radius: 20px;">
-                                    <app-svg class="w-100 h-100" [image]="'product-placeholder'"></app-svg>
-                                </div>
-                                <input class="form-control m-2" type="file" (change)="onChange($event)">
-                            </div>
-                        </div>
-                        <div class="col-lg-1"></div>
-                        <div class="col-lg-5 col-12">
-
-                            <div class="d-flex flex-column justify-content-around" style="padding: 10px;">
-                                <div>
-                                    <label>Name</label>
-                                    <input class="form-control" formControlName="name" type="text" />
-                                </div>
-                                <div>
-                                    <label>Description</label>
-                                    <input class="form-control" formControlName="description" type="text" />
-                                </div>
-                                <div>
-                                    <label>Shape</label>
-                                    <app-input-shape [shape]="this.product?.shape"
-                                        (selectedShape)="this.setShape($event)"></app-input-shape>
-                                </div>
-                                <div style="margin-top: 10px; margin-bottom: 10px;">
-                                    <div class="form-check">
-                                        <label class="form-check-label">Available</label>
-                                        <input class="form-check-input" formControlName="available" type="checkbox" />
+                                    <div *ngIf="!this.product?.image"
+                                        style="width: 100%; max-height: 600px; border: 10px solid teal; border-radius: 20px;">
+                                        <app-svg class="w-100 h-100" [image]="'product-placeholder'"></app-svg>
                                     </div>
-                                </div>
-                                <div>
-                                    <label>Amount</label>
-                                    <app-input-amount [amount]="this.product?.amount"
-                                        (amountChanged)="this.setAmount($event)"></app-input-amount>
-                                </div>
-                                <div class="h-75">
-                                    <label>Dimensions</label>
-                                    <app-input-dimension [editMode]="true" [dimension]="this.product?.dimension"
-                                        (changedDimensions)="this.setDimensions($event)">
-                                    </app-input-dimension>
-                                </div>
-                                <div class="d-flex flex-column m-3">
-                                    <label>Price</label>
-                                    <app-input-price [editMode]="true" [price]="this.product?.price"
-                                        (changePrice)="this.setPrice($event)"></app-input-price>
+                                    <input class="form-control m-2" type="file" (change)="onChange($event)">
                                 </div>
                             </div>
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-5 col-12">
+
+                                <div class="d-flex flex-column justify-content-around" style="padding: 10px;">
+                                    <div>
+                                        <label>Name</label>
+                                        <input class="form-control" formControlName="name" type="text" />
+                                    </div>
+                                    <div>
+                                        <label>Description</label>
+                                        <input class="form-control" formControlName="description" type="text" />
+                                    </div>
+                                    <div>
+                                        <label>Shape</label>
+                                        <app-input-shape [shape]="this.product?.shape"
+                                            (selectedShape)="this.setShape($event)"></app-input-shape>
+                                    </div>
+                                    <div style="margin-top: 10px; margin-bottom: 10px;">
+                                        <div class="form-check">
+                                            <label class="form-check-label">Available</label>
+                                            <input class="form-check-input" formControlName="available"
+                                                type="checkbox" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label>Amount</label>
+                                        <app-input-amount [amount]="this.product?.amount"
+                                            (amountChanged)="this.setAmount($event)"></app-input-amount>
+                                    </div>
+                                    <div class="h-75">
+                                        <label>Dimensions</label>
+                                        <app-input-dimension [editMode]="true" [dimension]="this.product?.dimension"
+                                            (changedDimensions)="this.setDimensions($event)">
+                                        </app-input-dimension>
+                                    </div>
+                                    <div class="d-flex flex-column m-3">
+                                        <label>Price</label>
+                                        <app-input-price [editMode]="true" [price]="this.product?.price"
+                                            (changePrice)="this.setPrice($event)"></app-input-price>
+                                    </div>
+                                </div>
 
 
+                            </div>
                         </div>
-                    </div>
 
-                    <button style="background: tan;
+                        <button style="background: tan;
                 border: 0px;
                 padding: 10px;
                 width: 100%; margin-top: 45px;" type="submit">Submit</button>
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
