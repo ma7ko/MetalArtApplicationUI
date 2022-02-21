@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { faGripLines, faCircle, faSquare, faEraser, faPaintBrush, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faGripLines, faCircle, faSquare, faEraser, faPaintBrush, faPaperPlane, IconLookup, IconPrefix, IconPack, IconName, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Dimension } from 'src/app/service/products/request/product-request';
 import { SketchRequest } from 'src/app/service/sketch/request/sketch-request';
 import { SketchService } from 'src/app/service/sketch/sketch.service';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-sketch-home',
@@ -19,12 +20,12 @@ export class SketchHomeComponent implements OnInit {
   line: any;
   lineNum: number = 0;
   shape: string = "line";
-  faLine = faGripLines;
-  faSquare = faSquare;
-  faCircle = faCircle;
-  faEraser = faEraser;
-  faPaint = faPaintBrush;
-  faPaperPlane = faPaperPlane;
+  faLine = faGripLines as IconProp;
+  faSquare = faSquare as IconProp;
+  faCircle = faCircle as IconProp;
+  faEraser = faEraser as IconProp;
+  faPaint = faPaintBrush as IconProp;
+  faPaperPlane = faPaperPlane as IconProp;
 
   sketchForm = new FormGroup({
     name: new FormControl(''),

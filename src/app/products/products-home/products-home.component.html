@@ -24,7 +24,7 @@
                         <div class="functions icon-toolbar" routerLink="/products/create">
                                 <fa-icon [icon]="this.faCartPlus"></fa-icon>
                         </div>
-                        <div class="functions icon-toolbar" (click)="this.showModal = !this.showModal">
+                        <div *ngIf="this.checkedProducts.length > 0" class="functions icon-toolbar" (click)="this.showModal = !this.showModal">
                             <fa-icon [icon]="this.faTrash"></fa-icon>
                         </div>
                         <div *ngIf="this.checkedProducts.length == 1" class="functions icon-toolbar" [routerLink]="this.checkedProducts.length == 1 ? '/products/' + this.checkedProducts[0] + '/edit' : ''">
@@ -44,14 +44,32 @@
                     </div>
                 </div>
             </div>
-            <ng-container *ngIf="this.products.length == 0">
+            <ng-container *ngIf="this.products.length == 0 && this.total == 0">
+                <div style="    display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 550px;
+                background: #eee;
+                border-radius: 25px;
+                margin: 20px; flex-direction: column; border: 16px solid lightgray;
+            ">
+                    <div style="    text-align: center;
+                    font-size: 75px;">
+                        <fa-icon [icon]="this.faPalette"></fa-icon>
+                    </div>
+                    <div>
+                        The products page is empty
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="(this.products.length == 0 && this.total == -1) || this.listing">
                 <div class="row" style="padding: 20px;">
                     <div *ngFor="let row of itemsPerRow" class="col-12 col-md-6 col-lg-4 col-xl-3">
                         <app-placeholder [placeholderActive]="true"></app-placeholder>
                     </div>
                 </div>
             </ng-container>
-            <div class="row" style="padding: 20px; min-height: 1016.55px;">
+            <div class="row" style="padding: 20px;">
                 <div *ngFor="let product of products; let i = index;" class="col-12 col-md-6 col-lg-4 col-xl-3">
                     <div class="ui card p-3 mt-4">
                     <div *ngIf="this.showToolbar" class="input-check">

@@ -1,23 +1,42 @@
-<div class="ui raised segment d-flex">
-    <div [ngClass]="{ 'display-01' : this.product?.image,'display-all': !this.product }" class="ui placeholder" style="width: 260px; margin:10px;">
-        <div [ngClass]="{'square image': !this.product}">
-            <img class="rounded" style="height:157px; object-fit: cover;" [ngClass]="{ 'w-100' : this.product?.image }" id="fetched" [src]="this.product?.image ? 'data:image/jpeg;base64,' + this.product.image : ''" />
+<div class="ui raised segment d-flex row" [ngClass]="{ 'pt-25' : !this.product }">
+    <div class="col-12">
+        <div class="row" style="margin-bottom: 7.5px;" [ngClass]="{ 'display-01' : this.product, 'display-all pt-25': !this.product }">
+            <div class="col-5"> 
+                <div> <h4 style="font-family: 'Oxygen'; margin-left: 10px; background: whitesmoke;
+                    color: #555;
+                    border-radius: 10px;
+                    text-align: center;
+                    width: 100%;"> {{ this.product?.name }} </h4> </div>
+                <div class="fs-5 price-tag">{{ this.product?.price }} {{ this.product ? '$' : '' }}
+                </div></div>
+            <div class="col-7">
+                <div class="d-flex justify-content-end"><button (click)="this.removeProduct()" *ngIf="this.product" style="    width: fit-content;
+                    background: #ccc;
+                    color: #333;
+                    padding: 2.5px;
+                    padding-left: 7.5px;
+                    border-color: #ccc;
+                    padding-right: 7.5px;" class="btn d-flex align-self-end">&times;</button></div></div>
         </div>
-    </div>
-
-    <div [ngClass]="{ 'display-01' : this.product, 'ui placeholder display-all': !this.product }" class="" style="width: 100%; margin:20px;">
-        <div class="line fs-5">{{ this.product?.name }}</div>
-        <div class="line">{{ this.product?.description }}</div>
-        <div class="line">{{ this.product?.shape }}</div>
-        <div class="line">{{ this.product?.dimension?.width }} {{this.product? 'x' : ''}} {{ this.product?.dimension?.height }} {{this.product? 'x' : ''}} {{this.product?.dimension?.depth}} {{this.product? 'mm' : ''}}</div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
-
-    <div class="d-flex flex-column justify-content-between" style="width: 100px;" [ngClass]="{ 'display-01' : this.product, 'display-all': !this.product }">
-        <button (click)="this.removeProduct()" *ngIf="this.product" style="width: fit-content; background: #ccc;
-        color: #333;
-        border-color: #ccc;" class="btn d-flex align-self-end">&times;</button>
-        <div class="fs-5">{{ this.product?.price }} {{ this.product ? '$' : '' }}</div>
+        <div class="row">
+            <div class="col-sm-5 col-12">
+                <div [ngClass]="{ 'display-01' : this.product?.image,'display-all': !this.product }" class="ui placeholder" style="width: 175px;">
+                    <div [ngClass]="{'square image': !this.product}">
+                        <img class="rounded" style="height:176px; width: 175px; object-fit: cover;" [ngClass]="{ 'w-100' : this.product?.image }" id="fetched" [src]="this.product?.image ? 'data:image/jpeg;base64,' + this.product.image : ''" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7 col-12">
+                <div [ngClass]="{ 'display-01' : this.product, 'ui placeholder display-all': !this.product }" class="" style="width: 100%; margin-top: 20px; height: 125px;
+                margin-bottom: 20px;">
+                    <div class="line fs-5">{{ this.product?.name }}</div>
+                    <div class="line">{{ this.product?.description }}</div>
+                    <div class="line">{{ this.product?.shape }}</div>
+                    <div class="line">{{ this.product?.dimension?.width }} {{this.product? 'x' : ''}} {{ this.product?.dimension?.height }} {{this.product? 'x' : ''}} {{this.product?.dimension?.depth}} {{this.product? 'mm' : ''}}</div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

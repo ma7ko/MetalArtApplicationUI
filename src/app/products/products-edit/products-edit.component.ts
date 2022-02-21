@@ -3,6 +3,7 @@ import { ProductsService } from 'src/app/service/products/products.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { faPlus, faMinus, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Dimension, ProductResponse } from 'src/app/service/products/request/product-request';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-products-edit',
@@ -29,9 +30,9 @@ export class ProductsEditComponent implements OnInit, OnDestroy {
   dimension: Dimension = new Dimension();
   productId: any;
 
-  arrowUp = faPlus;
-  arrowDown = faMinus;
-  angleRight = faAngleRight;
+  arrowUp = faPlus as IconProp;
+  arrowDown = faMinus as IconProp;
+  angleRight = faAngleRight as IconProp;
 
   constructor(private productService: ProductsService) { }
 

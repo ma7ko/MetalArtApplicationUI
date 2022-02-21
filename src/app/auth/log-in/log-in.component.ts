@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/service/auth/auth.service';
 import { AuthRequest, AuthResponse } from 'src/app/service/auth/request/auth-request';
 import { authKey } from 'src/app/service/route-constants/auth-key';
 import { UserService } from 'src/app/service/user/user.service';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-log-in',
@@ -14,8 +15,8 @@ import { UserService } from 'src/app/service/user/user.service';
 })
 export class LogInComponent implements OnInit {
 
-  faFeather = faFeather;
-  faExc = faExclamationCircle;
+  faFeather = faFeather as IconProp;
+  faExc = faExclamationCircle as IconProp;
   errorAuth: boolean = false;
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{6,}$/)]),

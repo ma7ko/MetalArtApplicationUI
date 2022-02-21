@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
-import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch, faPalette} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-products-home',
@@ -17,20 +18,23 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
   checkedProducts: Array<string> = [];
   showToolbar: boolean = false;
   showModal: boolean = false;
-  total: number = 0;
+  total: number = -1;
   current: number = 0;
   currentPage: number = 0;
   searchBoxOpened: boolean = false;
   isAdminUser: boolean = false;
   isLoggedIn: boolean = false;
   showPrices: boolean = false;
+  listing: boolean = false;
+  
 
-  faEye = faEye;
-  faPen = faPen;
-  faTrash = faTrash;
-  faCartPlus = faPlusSquare;
-  faToggle = faAlignJustify;
-  faSearch = faSearch;
+  faEye = faEye as IconProp;
+  faPen = faPen as IconProp;
+  faTrash = faTrash as IconProp;
+  faCartPlus = faPlusSquare as IconProp;
+  faToggle = faAlignJustify as IconProp;
+  faSearch = faSearch as IconProp;
+  faPalette = faPalette as IconProp;
 
   
   constructor(private productsService: ProductsService, private authService: AuthService) { }
@@ -44,10 +48,10 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
   getPage(page: number, opt?: any) {
     this.productsService.getAll(page).subscribe((response) => {
       console.log(response);
+      console.log("Took page");
       if (response.content)
         this.products =  response.content;
-      if(response.totalCount)
-        this.total = response.totalCount;
+        this.total = response.totalCount ? response.totalCount : 0;
         if(response.count)
         this.current = response.count
       console.log('here');
@@ -56,6 +60,7 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
       } else {
       window.scrollTo(0,0);
       }
+      this.listing=false;
     },
     (error) => {
       console.log("Could not load products");
@@ -95,6 +100,7 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
 
    changePage(value: number) {
      if (this.currentPage != value) {
+      this.listing = true;
       document.getElementById('content')?.scrollIntoView(true);
       this.products = new Array<ProductResponse>();
       this.getPage(value, true);

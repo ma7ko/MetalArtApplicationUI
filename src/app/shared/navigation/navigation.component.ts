@@ -17,7 +17,16 @@ export class NavigationComponent implements OnInit {
 
   toggleMenu(event: any) {
     console.log(event);
-    document.getElementsByClassName('navbar-collapse')[0].classList.toggle('collapse');
+    console.log(document.getElementById("navbarNav"));
+    document.getElementById("navbarNav")?.classList.toggle('show-menu');
+  }
+  
+  collapse() {
+    let navbar = document.getElementsByClassName('navbar-collapse')[0];
+    
+    if(!navbar.classList.contains('collapse')) {
+      this.toggleMenu(null);
+    }
   }
 
 }

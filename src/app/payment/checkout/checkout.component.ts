@@ -4,6 +4,7 @@ import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { UserService } from 'src/app/service/user/user.service';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-checkout',
@@ -24,7 +25,7 @@ export class CheckoutComponent implements OnInit {
     zipPostalCode: new FormControl('', Validators.required)
   });
 
-  creditCardIcon = faCreditCard;
+  creditCardIcon = faCreditCard as IconProp;
 
   constructor(private _location: Location, private productsService: ProductsService, private userService: UserService) { }
 
