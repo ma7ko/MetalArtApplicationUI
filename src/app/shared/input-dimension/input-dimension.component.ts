@@ -31,7 +31,7 @@ export class InputDimensionComponent implements OnInit, OnChanges {
       document.querySelectorAll('.field').forEach((element: Element) => {
         let el = <HTMLInputElement>element;
         el.disabled = true;
-        el.style.opacity = "0.8";
+        el.style.opacity = "1";
       });
     }
   }

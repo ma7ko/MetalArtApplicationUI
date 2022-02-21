@@ -13,7 +13,7 @@
     }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 991.9px) {
     #navbarNav {
       max-height: 0;
     }

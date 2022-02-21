@@ -8,3 +8,20 @@
 .display-all {
     opacity: 1;
 }
+
+.price-tag {
+    margin-left: 10px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    background: aliceblue;
+    border-radius: 20px 0px 0px 0px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.pt-25 {
+    padding-top: 27px;
+}

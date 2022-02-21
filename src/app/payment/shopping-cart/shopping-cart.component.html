@@ -1,4 +1,5 @@
-<div class="row w-100">
+<div class="w-100 overflow-hidden">
+<div class="row">
     <div class="col-12">
         <div class="container" style="min-height: 700px;">
             <div>
@@ -14,18 +15,18 @@
                                 <h5 class="text-secondary">Your cart is empty</h5>
                             </div>
                         </div>
-                        <div *ngIf="!this.products" class="col-12 col-md-8 col-lg-7">
+                        <div *ngIf="!this.products" class="col-12 col-lg-7 text-center">
                             <div *ngFor="let card of cartArray">
                                 <app-cart-placeholder></app-cart-placeholder>
                             </div>
                         </div>
-                        <div *ngIf="this.products && this.products.length > 0" class="col-12 col-md-8 col-lg-7">
+                        <div *ngIf="this.products && this.products.length > 0" class="col-12 col-lg-7 text-center">
                             <div *ngFor="let product of this.products">
                                 <app-cart-placeholder (productRemove)="this.removeProduct($event)" [product]="product">
                                 </app-cart-placeholder>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 col-lg-5">
+                        <div class="col-12 col-lg-5">
                             <div style="margin-top: 10px; padding:20px;">
                                 <div class="d-flex justify-content-between">
                                     <h4>Total Amount</h4>
@@ -47,4 +48,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
