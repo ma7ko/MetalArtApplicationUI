@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
-import { faAngleRight, faCartPlus, faCheck, faCross, faPen, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faCartPlus, faCheck, faListAlt, faPen, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { UserService } from 'src/app/service/user/user.service';
 import { ProductToCartRequest } from 'src/app/service/user/request/user-request';
@@ -21,6 +21,7 @@ export class ProductsDetailsComponent implements OnInit {
   cart = faCartPlus as IconProp;
   editIcon = faPen as IconProp;
   deleteIcon = faTrash as IconProp;
+  noSimilarProduct = faListAlt as IconProp;
 
   product: any;
   productId: string = '';
@@ -44,7 +45,7 @@ export class ProductsDetailsComponent implements OnInit {
 
     let prod = this.productsService.getClickedProduct();
     this.productId = window.location.pathname.split("/")[2];
-    console.log(prod.id);
+    console.log(this.productId);
     if (prod.id == undefined) {
       this.productsService.getProductById(parseInt(this.productId)).subscribe((response) => {
         this.product = response;
