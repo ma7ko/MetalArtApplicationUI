@@ -1,0 +1,15 @@
+.activity-timeline {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 0%;
+    top: 160%;
+}
+
+@media screen and (min-width: 992px) {
+    .activity-timeline {
+        top: 50%;
+        left: 35%;
+        width: 65%;
+    }
+}

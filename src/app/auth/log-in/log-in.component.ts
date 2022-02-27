@@ -36,6 +36,7 @@ export class LogInComponent implements OnInit {
       localStorage.setItem('authKey', "Bearer " + response.jwt);
       localStorage.setItem('userKey', response.username);
       localStorage.setItem('roleKey', response.role.key);
+      localStorage.setItem('lastLogIn', new Date().toDateString());
       this.userService.setCartProducts(response.products);
       location.href="/home";
     }, (error) => {

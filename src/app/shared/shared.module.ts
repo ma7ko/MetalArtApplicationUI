@@ -20,6 +20,7 @@ import { ErrorComponent } from './error/error.component';
 import { CartPlaceholderComponent } from './cart-placeholder/cart-placeholder.component';
 import { SearchComponent } from './search/search.component';
 import { ToggleSwitchComponent } from './toggle-switch/toggle-switch.component';
+import { CarouselProductsComponent } from './carousel-products/carousel-products.component';
 
 
 
@@ -43,7 +44,8 @@ import { ToggleSwitchComponent } from './toggle-switch/toggle-switch.component';
     ErrorComponent,
     CartPlaceholderComponent,
     SearchComponent,
-    ToggleSwitchComponent
+    ToggleSwitchComponent,
+    CarouselProductsComponent
   ],
   imports: [
     CommonModule,
@@ -67,7 +69,8 @@ import { ToggleSwitchComponent } from './toggle-switch/toggle-switch.component';
     ErrorComponent,
     CartPlaceholderComponent,
     SearchComponent,
-    ToggleSwitchComponent
+    ToggleSwitchComponent,
+    CarouselProductsComponent
   ]
 })
 export class SharedModule { }

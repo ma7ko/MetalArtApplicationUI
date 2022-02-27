@@ -1,0 +1,67 @@
+<div style="min-height: 100vh;">
+    <div class="w-100 overflow-hidden">
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <div style="background-color: antiquewhite; min-height: 100vh;">
+                    <div class="text-center d-flex flex-column justify-content-around" style="min-height: 90vh;">
+                        <div>
+                            <app-svg [image]="'user-icon'"></app-svg>
+                        </div>
+                        <div>
+                            <p style="font-variant: all-petite-caps; font-size: 30px;">{{ this.username }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-8">
+                <div style="min-height: 100vh;">
+                    <div class="d-flex flex-column" style="padding-top: 20px;">
+                        <div>
+                            <app-carousel-products [title]="'Products in Cart'" [products]="this.products">
+                            </app-carousel-products>
+                        </div>
+                        <div>
+                            <app-carousel-products [title]="'Rated Products'"></app-carousel-products>
+                        </div>
+                        <div>
+                            <div class="activity-timeline" style="overflow-x: clip;">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="historyPoint" (click)="this.connectToDate($event)"
+                                        style="min-width: 20px; width: 40px; min-height: 20px; height: 40px; background-color: aquamarine; border-radius: 100px;">
+                                    </div>
+                                    <div class="connectingLine" style="width: 100px; z-index: -1;">
+                                        <svg viewBox="0 -10 500 75" style="height: 44px; overflow: initial;">
+                                            <path
+                                                style="stroke: rgb(0, 0, 0); fill: none; stroke-dasharray: 1000px; stroke-dashoffset: 1000px; transition: stroke-dashoffset 2s;"
+                                                d="M 0.3 26.1 L 140 26.1 C 139.029 -7.066 166.986 -9.934 225.332 -8.604 C 225.404 -8.874 265.633 -8.903 355.752 -7.901 C 366.252 -7.533 410.897 -12.156 410.646 25.416 C 410.379 65.446 367.236 62.866 359.452 62.872 C 266.713 63.429 215.319 62.191 214.237 62.193 C 165.755 62.267 138.628 60.997 140 26.1">
+                                            </path>
+                                            <path id="MyPath" style="fill: rgb(216, 216, 216);"
+                                                d="M 159.284 -16.105 L 397.059 -16.106"></path>
+                                            <text class="text-desc" style="
+  fill: cadetblue;
+  font-size: 20px;
+  display: none;
+">
+                                                <textPath href="#MyPath" startOffset="100">
+                                                    last login date
+                                                </textPath>
+                                            </text>
+                                        </svg>
+                                        <!--<svg viewBox="0 0 500 50">
+                                        <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); fill: rgb(216, 216, 216);
+                                        stroke: rgb(0, 0, 0);
+                                        stroke-dasharray: 700px;
+                                        stroke-dashoffset: 700px;
+                                        transition: stroke-dashoffset 1s;" x1="-0.1" y1="26.1" x2="499.632" y2="26.086"></line>
+                                    </svg>-->
+                                    </div>
+                                    <div style="z-index: -1;">{{ this.lastLogIn }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

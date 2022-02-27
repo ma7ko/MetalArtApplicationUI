@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="ui styled accordion w-100">
+                <div class="title" (click)="this.toggleAccordion($event)">
+                    <i class="dropdown icon d-inline-block"></i>
+                    <div class="d-inline">
+                        <h4 class="d-inline">{{ this.title }}</h4>
+                    </div>
+                </div>
+                <div class="content"
+                    style="padding: 0px; display: block; max-height: 0; transition: max-height 0.5s; overflow: hidden;">
+                    <div class="d-flex">
+                        <div *ngIf="this.products" class="row" style="padding: 25px;">
+                            <div *ngFor="let product of this.products"
+                                class="col-xl-3 col-lg-4 col-md-6 col-12" style="padding-bottom: 25px;">
+                                <div class="card">
+                                <img class="rounded" style="height: 210px; object-fit: cover;"
+                                    [ngClass]="{ 'w-100' : product?.image }" id="fetched"
+                                    [src]="this.product?.image ? 'data:image/jpeg;base64,' + product.image : ''" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100" *ngIf="!this.products || this.products?.length == 0">
+                            <div class="w-100 fs-1 text-center" style="color: cadetblue; padding-top: 20px; padding-bottom: 50px;">
+                                <fa-icon [icon]="this.faNote"></fa-icon>
+                                <h4>No activity found</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

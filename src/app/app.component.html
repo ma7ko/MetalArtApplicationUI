@@ -9,7 +9,7 @@
     <a class="nav-link" routerLink="/payment/shopping-cart" routerLinkActive="active" id="shopping-cart">
       <fa-icon [icon]="this.faShoppingCart"  style="color: #f4f4f4; background: #555; border-radius:10px; padding:10px"></fa-icon>
     </a>
-    <a class="nav-link" routerLink="/auth" routerLinkActive="active" id="auth-link">
+    <a class="nav-link" [routerLink]="this.loggedIn ? 'profile' : '/auth'" routerLinkActive="active" id="auth-link">
       <fa-icon [icon]="this.faUser"  style="color: #f4f4f4; background: #555; border-radius:10px; padding:10px 12px;"></fa-icon>
     </a>
   </app-navigation>
