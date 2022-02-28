@@ -18,7 +18,9 @@
 }
 
 .input-wrapper {
-    border: 1px solid #ced4da;
+    border-bottom: solid;
+    border-bottom-color: #ccc6;
+    border-left: solid #ccc6;
     border-radius: 10px;
 }
 
@@ -27,4 +29,13 @@ input[type="text"], input[type="text"]:focus {
     outline: none;
     box-shadow: none;
     border-radius: 10px 0px 0px 10px;
+}
+
+.label-light {
+    color: #555;
+    font-weight: 100;
+}
+
+.label-dark {
+    font-weight: 500;
 }
