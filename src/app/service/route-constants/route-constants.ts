@@ -1,4 +1,4 @@
-export const API_URL = "https://metal-art-application-server.herokuapp.com/";
+export const API_URL = "https://metal-art-application-server.herokuapp.com";
 
 export const AUTHENTICATION_URL = "/authenticate";
 export const PRODUCTS_URL = "/products";
