@@ -5,6 +5,7 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { RegisterRequest } from 'src/app/service/user/request/user-request';
 import { UserService } from 'src/app/service/user/user.service';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +25,10 @@ export class RegisterComponent implements OnInit {
   faExc = faExclamationCircle as IconProp;
   loading: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private translateService: TranslateService) { 
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+  }
 
   ngOnInit(): void {
   }

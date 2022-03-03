@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search',
@@ -8,7 +9,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class SearchComponent implements OnInit {
 
   @Output() emitValue: EventEmitter<any> = new EventEmitter<any>();
-  constructor() { }
+  constructor(private translateService: TranslateService) { 
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+  }
 
   ngOnInit(): void {
   }

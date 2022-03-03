@@ -16,7 +16,7 @@ export class InputAmountComponent implements OnInit, OnChanges {
   arrowDown = faMinus as IconProp;
 
   amountForm = new FormGroup({
-    amount: new AmountFormControl('')
+    amount: new AmountFormControl(0)
   });
 
   @Input() amount: any;
@@ -25,8 +25,9 @@ export class InputAmountComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['amount'] && changes['amount'].currentValue) {
-      this.amountForm.controls['amount'].setValue(changes['amount'].currentValue);
+    if (changes['amount']) {
+      if (changes['amount'].currentValue)
+        this.amountForm.controls['amount'].setValue(changes['amount'].currentValue);
     }
   }
 

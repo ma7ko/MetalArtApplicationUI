@@ -24,7 +24,7 @@
                         <div class="w-100" *ngIf="!this.products || this.products?.length == 0">
                             <div class="w-100 fs-1 text-center" style="color: cadetblue; padding-top: 20px; padding-bottom: 50px;">
                                 <fa-icon [icon]="this.faNote"></fa-icon>
-                                <h4>No activity found</h4>
+                                <h4>{{ 'no activity found' | translate }}</h4>
                             </div>
                         </div>
                     </div>

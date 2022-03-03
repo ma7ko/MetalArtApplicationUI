@@ -2,12 +2,12 @@
     <div class="col-12">
         <div class="row" style="margin-bottom: 7.5px;" [ngClass]="{ 'display-01' : this.product, 'display-all pt-25': !this.product }">
             <div class="col-5"> 
-                <div> <h4 style="font-family: 'Oxygen'; margin-left: 10px; background: whitesmoke;
+                <div> <h4 style="font-family: 'Oxygen', system-ui; margin-left: 10px; background: whitesmoke;
                     color: #555;
                     border-radius: 10px;
                     text-align: center;
                     width: 100%;"> {{ this.product?.name }} </h4> </div>
-                <div class="fs-5 price-tag">{{ this.product?.price }} {{ this.product ? '$' : '' }}
+                <div class="fs-5 price-tag">{{ this.product?.price }} {{ this.product ? 'ден.' : '' }}
                 </div></div>
             <div class="col-7">
                 <div class="d-flex justify-content-end"><button (click)="this.removeProduct()" *ngIf="this.product" style="    width: fit-content;
@@ -31,7 +31,7 @@
                 margin-bottom: 20px;">
                     <div class="line fs-5">{{ this.product?.name }}</div>
                     <div class="line">{{ this.product?.description }}</div>
-                    <div class="line">{{ this.product?.shape }}</div>
+                    <div class="line">{{ this.product?.shape.toLowerCase() | translate }}</div>
                     <div class="line">{{ this.product?.dimension?.width }} {{this.product? 'x' : ''}} {{ this.product?.dimension?.height }} {{this.product? 'x' : ''}} {{this.product?.dimension?.depth}} {{this.product? 'mm' : ''}}</div>
                     <div class="line"></div>
                     <div class="line"></div>

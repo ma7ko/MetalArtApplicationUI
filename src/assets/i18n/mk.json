@@ -24,7 +24,7 @@
     "yes": "да",
     "no": "не",
     "add to cart": "Додај во кошничка",
-    "buy now": "Купи веднаш",
+    "buy now": "Купи",
     "in stock": "Има на залиха",
     "unavailable": "Нема на залиха",
     "product details": "Детали за производ",
@@ -58,5 +58,18 @@
     "security code": "Безбедносен код",
     "Zip/Postal Code": "Поштенски број",
     "complete payment": "Изврши наплата",
-    "secure": "Безбедност на информации"
+    "secure": "Безбедност на информации",
+    "username": "Корисничко име",
+    "password": "Лозинка",
+    "login": "Најава",
+    "not registered yet?": "Не сте регистрирани?",
+    "register now": "Регистрација",
+    "register": "Регистрација",
+    "email": "Емаил",
+    "confirm password": "Потврди лозинка",
+    "search..." : "ПРЕБАРАЈ...",
+    "products in cart": "Производи во кошничка",
+    "rated products": "Оценети производи",
+    "no activity found": "Нема активност",
+    "last login date": "Последна најава"
 }

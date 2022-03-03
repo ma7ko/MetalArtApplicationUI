@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-carousel-products',
@@ -13,7 +14,10 @@ export class CarouselProductsComponent implements OnInit {
   @Input() products: any;
 
   faNote = faAddressCard as IconProp;
-  constructor() { }
+  constructor(private translateService: TranslateService) { 
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+  }
 
   ngOnInit(): void {
   }

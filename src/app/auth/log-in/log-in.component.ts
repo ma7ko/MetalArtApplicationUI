@@ -7,6 +7,7 @@ import { AuthRequest, AuthResponse } from 'src/app/service/auth/request/auth-req
 import { authKey } from 'src/app/service/route-constants/auth-key';
 import { UserService } from 'src/app/service/user/user.service';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-log-in',
@@ -22,7 +23,10 @@ export class LogInComponent implements OnInit {
     username: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{6,}$/)]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
-  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router, private translateService: TranslateService) {
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+   }
 
   ngOnInit(): void {
   }

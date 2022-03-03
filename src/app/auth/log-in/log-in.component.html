@@ -8,8 +8,8 @@
             background-color: aliceblue; min-height: 100vh; height: 100%; ">
             <div class="h-50 d-flex flex-column justify-content-center">
             <h1 style="height: 20%;"><fa-icon [icon]="this.faFeather"  style="color: #f4f4f4; background: #555; border-radius:10px; padding:10px"></fa-icon></h1>
-                <h1 style="height: 10%;">Not registered yet?</h1>
-                <div class="text-center" style="margin-top: 15px;"><button class="btn btn-dark mt-2" routerLink="/register">Register now</button></div>
+                <h1 style="height: 10%;">{{ 'not registered yet?' | translate }}</h1>
+                <div class="text-center" style="margin-top: 15px;"><button class="btn btn-dark mt-2" routerLink="/register">{{ 'register now' | translate }}</button></div>
             </div>
             </div>
         </div>
@@ -22,24 +22,24 @@
                 align-items: center;
                 display: flex; flex-direction: column; justify-content: space-evenly; width:100%; padding:10%; box-shadow: 5px 5px aquamarine; border-left: 30px solid darkslategrey;">
                 <div class="text-center" [ngClass]="{'text-gray': !this.errorAuth, 'text-danger': this.errorAuth }">Authenticaton Failed <fa-icon [icon]="faExc"></fa-icon></div>
-                <h2>Login</h2>
+                <h2>{{ 'login' | translate }}</h2>
                 <form [formGroup]="this.loginForm" class="w-100" (ngSubmit)="this.onSubmit()">
                     <div class="d-flex justify-content-between" style="margin:10px; flex-direction: column;">
-                        <label>Username</label>
+                        <label>{{ 'username' | translate }}</label>
                         <input formControlName="username" class="form-control" type="text">
                     </div>
 
                     <app-validation [control]="this.loginForm.controls['username']"></app-validation>
 
                     <div class="d-flex justify-content-between" style="margin:10px; flex-direction: column;">
-                        <label>Password</label>
+                        <label>{{ 'password' | translate }}</label>
                         <input formControlName="password" class="form-control" type="password">
                     </div>
 
                     <app-validation [control]="this.loginForm.controls['password']"></app-validation>
                     
                     <div style="padding: 5%;">
-                        <button type="submit" class="btn w-100" style="background: aquamarine;">Submit</button>
+                        <button type="submit" class="btn w-100" style="background: aquamarine;">{{ 'submit' | translate }}</button>
                     </div>
                 </form>
                 </div>

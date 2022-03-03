@@ -17,11 +17,11 @@
                 <div style="min-height: 100vh;">
                     <div class="d-flex flex-column" style="padding-top: 20px;">
                         <div>
-                            <app-carousel-products [title]="'Products in Cart'" [products]="this.products">
+                            <app-carousel-products [title]="'products in cart' | translate" [products]="this.products">
                             </app-carousel-products>
                         </div>
                         <div>
-                            <app-carousel-products [title]="'Rated Products'"></app-carousel-products>
+                            <app-carousel-products [title]="'rated products' | translate"></app-carousel-products>
                         </div>
                         <div>
                             <div class="activity-timeline" style="overflow-x: clip;">
@@ -42,8 +42,8 @@
   font-size: 20px;
   display: none;
 ">
-                                                <textPath href="#MyPath" startOffset="100">
-                                                    last login date
+                                                <textPath href="#MyPath" startOffset="90">
+                                                    {{ 'last login date' | translate }}
                                                 </textPath>
                                             </text>
                                         </svg>

@@ -1,8 +1,10 @@
-<div class="ui right labeled left icon input">
-    <select (change)="this.currencyChanged($event)" class="ui compact selection dropdown" style="direction: rtl; border-radius: 10px 0px 0px 10px;">
-        <option selected="" value="USD">USD</option>
+<div class="ui right labeled left icon input" style="    padding-left: 15px;
+border: 1px solid #aaa;
+border-radius: 20px 5px 5px 20px;">
+    <select (change)="this.currencyChanged($event)" class="ui compact selection dropdown" style="direction: rtl; border: none;">
+        <option selected="" value="MKD">MKD</option>
+        <option value="USD">USD</option>
         <option value="EUR">EUR</option>
-        <option value="MKD">MKD</option>
     </select>
     <a class="ui left tag label">
         <ng-content select="#price"></ng-content>

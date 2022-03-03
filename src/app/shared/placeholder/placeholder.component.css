@@ -14,3 +14,8 @@
 .display-all {
     opacity: 1;
 }
+
+.label::before {
+    width: 1.96em !important;
+    height: 1.96em !important;
+}

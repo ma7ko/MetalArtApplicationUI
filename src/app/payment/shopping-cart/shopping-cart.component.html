@@ -34,7 +34,7 @@
                                         class="spinner-border spinner-border-sm text-dark btn-w" role="status">
                                         <span class="sr-only">Loading...</span>
                                     </div>
-                                    <h4 *ngIf="this.totalPrice != '0' || this.products?.length == 0">{{ this.totalPrice }}{{ this.totalPrice ? "$" : '' }}</h4>
+                                    <h4 *ngIf="this.totalPrice != '0' || this.products?.length == 0">{{ this.totalPrice }}{{ this.totalPrice ? " ден." : '' }}</h4>
                                 </div>
                                 <div>
                                     <button [ngClass]="{ 'disabled': this.totalPrice ==  '0' }"

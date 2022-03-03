@@ -74,6 +74,8 @@ export class ProductsCreateComponent implements OnInit {
     if (this.image)
       reader.readAsDataURL(this.image);
 
+    this.checkAllFilled();
+
   }
 
   changeAmount(incrase: boolean) {
@@ -151,7 +153,7 @@ export class ProductsCreateComponent implements OnInit {
     console.log(values);
     console.log(this.createForm.controls);
 
-    if (!values.includes('invalid'))
+    if (!values.includes('invalid') && this.image != undefined)
       (<HTMLButtonElement>document.querySelector('.submit-btn')).disabled = false;
     else 
       (<HTMLButtonElement>document.querySelector('.submit-btn')).disabled = true;
