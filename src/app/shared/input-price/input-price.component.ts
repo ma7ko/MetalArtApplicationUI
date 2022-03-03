@@ -1,4 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { AmountFormControl } from 'src/app/model/amount/amount-form-control';
+import { PositiveNumberFormControl } from 'src/app/model/positive-number-only/positive-number-form-control';
 
 @Component({
   selector: 'app-input-price',
@@ -8,7 +11,11 @@ import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChange
 export class InputPriceComponent implements OnInit, OnChanges {
 
   show = false;
-  currency: string = "USD";
+  currency: string = "MKD";
+
+  priceForm = new FormGroup({
+    price: new AmountFormControl('')
+  });
 
   @Input() price: number | undefined;
   @Input() editMode: boolean = false;
@@ -16,9 +23,10 @@ export class InputPriceComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log("in pirce ng changes");
     console.log(this.price);
-    if (changes['price'] != undefined) {
-      (<HTMLInputElement>document.getElementById('amount-price')).value = changes['price'].currentValue;
+    if (changes['price'] != undefined && changes['price'].currentValue) {
+      (this.priceForm.controls['price'].setValue(changes['price'].currentValue));
     }
   }
 

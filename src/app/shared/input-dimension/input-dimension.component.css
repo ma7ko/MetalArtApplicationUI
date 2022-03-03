@@ -12,7 +12,7 @@
 }
 
 #width::before {
-    content: "width";
+    content: "ширина";
     transform: rotate(360deg);
     width: 0px;
     margin-top: 4px;
@@ -23,10 +23,12 @@
     padding-left: 4px;
     background: transparent;
     color: #aaa;
+    transition: transform 1s;
+    pointer-events: none;
 }
 
 #height::before {
-    content: "height";
+    content: "висина";
     transform: rotate(360deg);
     width: 0px;
     margin-top: 4px;
@@ -37,10 +39,12 @@
     padding-left: 4px;
     background: transparent;
     color: #aaa;
+    transition: transform 1s;
+    pointer-events: none;
 }
 
 #depth::before {
-    content: "depth";
+    content: "должина";
     transform: rotate(360deg);
     width: 0px;
     margin-top: 4px;
@@ -51,4 +55,20 @@
     padding-left: 4px;
     background: transparent;
     color: #aaa;
+    transition: transform 1s;
+    pointer-events: none;
+}
+
+.label-alt::before {
+    transform: translateX(300%) translateY(10px) scale(1.25) !important;
+}
+
+.or::before {
+    content: 'или' !important;
+    width: 37px !important;
+    height: 37px !important;
+    font-size: 15px;
+    padding-top: 3.5px;
+    top: 37% !important;
+    left: -50% !important;
 }

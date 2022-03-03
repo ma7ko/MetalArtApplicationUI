@@ -6,13 +6,13 @@
                     <div class="col-12 col-lg-6">
                         <div style="margin-top: 40px;">
                             <div>
-                                <h1>Checkout</h1>
+                                <h1>{{ 'checkout' | translate }}</h1>
                             </div>
                             {{ this.checkoutForm.controls['securityCode'].errors }}
                             <div class="mt-3 pt-3">
                                 <form [formGroup]="this.checkoutForm">
                                     <div class="form-item">
-                                        <label class="label-light label-checkout">Billing Address</label>
+                                        <label class="label-light label-checkout">{{ 'billing address' | translate }}</label>
                                         <div class="d-flex input-wrapper">
                                             <input (focus)="this.focusField($event)" (change)="this.checkAllFilled()" class="form-control"
                                                 formControlName="billingAddress" type="text" />
@@ -26,7 +26,7 @@
                                             <div>
                                                 <input name="credit-card"
                                                     class="form-check-input" type="radio" checked/>
-                                                <label style="margin-left: 10px;">Credit/Debit Card</label>
+                                                <label style="margin-left: 10px;">{{ 'credit/debit card' | translate }}</label>
                                             </div>
                                             <fa-icon [icon]="creditCardIcon"></fa-icon>
                                         </div>
@@ -35,7 +35,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-item">
-                                                    <label class="label-light label-checkout">Name on Card</label>
+                                                    <label class="label-light label-checkout">{{ 'name on card' | translate }}</label>
                                                     <div class="d-flex input-wrapper">
                                                         <input (focus)="this.focusField($event)" (change)="this.checkAllFilled()" class="form-control"
                                                             formControlName="nameOnCard" type="text" />
@@ -46,7 +46,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-item">
-                                                    <label class="label-light label-checkout">Card Number</label>
+                                                    <label class="label-light label-checkout">{{ 'card number' | translate }}</label>
                                                     <div class="d-flex input-wrapper">
                                                         <input (focus)="this.focusField($event)" (change)="this.checkAllFilled()" class="form-control text-center"
                                                             formControlName="cardNumber" type="text" />
@@ -61,7 +61,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-item">
-                                                    <label class="label-light label-checkout">MM/YY</label>
+                                                    <label class="label-light label-checkout">{{ 'MM/YY' | translate }}</label>
                                                     <div class="d-flex input-wrapper">
                                                         <input (focus)="this.focusField($event)" (change)="this.checkAllFilled()" class="form-control"
                                                             formControlName="mmYY" type="text" />
@@ -74,7 +74,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-item">
-                                                    <label class="label-light label-checkout">Security Code</label>
+                                                    <label class="label-light label-checkout">{{ 'security code' | translate }}</label>
                                                     <div class="d-flex input-wrapper">
                                                         <input (focus)="this.focusField($event)" (change)="this.checkAllFilled()" class="form-control"
                                                             formControlName="securityCode" type="text" />
@@ -89,7 +89,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-item">
-                                                    <label class="label-light label-checkout">Zip/Postal Code</label>
+                                                    <label class="label-light label-checkout">{{ 'Zip/Postal Code' | translate }}</label>
                                                     <div class="d-flex input-wrapper">
                                                         <input (focus)="this.focusField($event)" (change)="this.checkAllFilled()" class="form-control"
                                                             formControlName="zipPostalCode" type="text" />
@@ -110,7 +110,7 @@
                                                 padding-left: 10px;
                                                 padding-right: 10px;
                                                 color: #444;">
-                                                        <h6 style="margin: 10px;">Secure</h6>
+                                                        <h6 style="margin: 10px;">{{ 'secure' | translate }}</h6>
                                                         <fa-icon style="margin: 8px;" [icon]="this.faLock"></fa-icon>
                                                     </div>
                                                 </div>
@@ -124,7 +124,7 @@
                     <div class="col-12 col-lg-6">
                         <div style="margin-top: 140px;">
                             <div class="d-flex justify-content-between">
-                                <h4>Total Amount</h4>
+                                <h4>{{ 'total amount' | translate }}</h4>
                                 <div *ngIf="this.totalPrice == '0'" style="margin-right: 10px;"
                                     class="spinner-border spinner-border-sm text-dark btn-w" role="status">
                                     <span class="sr-only">Loading...</span>
@@ -133,7 +133,7 @@
                                     : '$'}}</h4>
                             </div>
                             <div>
-                                <button disabled id="submit-btn" class="btn btn-primary w-100">Complete Payment</button>
+                                <button disabled id="submit-btn" class="btn btn-primary w-100">{{ 'complete payment' | translate }}</button>
                             </div>
                         </div>
                     </div>

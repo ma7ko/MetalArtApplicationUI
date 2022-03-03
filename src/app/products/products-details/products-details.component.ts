@@ -7,6 +7,7 @@ import { UserService } from 'src/app/service/user/user.service';
 import { ProductToCartRequest } from 'src/app/service/user/request/user-request';
 import { Router } from '@angular/router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products-details',
@@ -35,8 +36,10 @@ export class ProductsDetailsComponent implements OnInit {
   addedToCart: boolean = false;
   productsInCart: any;
 
-  constructor(private productsService: ProductsService, private authService: AuthService, private userService: UserService, private router: Router) {
+  constructor(private productsService: ProductsService, private authService: AuthService, private userService: UserService, private router: Router, private translateService: TranslateService) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
   }
 
   ngOnInit(): void {

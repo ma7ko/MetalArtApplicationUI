@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-input-shape',
@@ -10,9 +11,12 @@ export class InputShapeComponent implements OnInit {
   @Input() shape: number | undefined;
   @Output() selectedShape: EventEmitter<string> = new EventEmitter<string>();
   showDropdown: boolean = false;
-  selectedValue: string = "Rounded";
+  selectedValue: string = "rounded";
 
-  constructor() { }
+  constructor(private translateService: TranslateService) { 
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+  }
 
   ngOnInit(): void {
     if (this.shape != undefined) {
@@ -20,7 +24,7 @@ export class InputShapeComponent implements OnInit {
         let dataId = (<HTMLElement> element).getAttribute('data-id');
         if (dataId == this.shape?.toString())
           (<HTMLElement>element).click();
-      })
+      });
     }
   } 
 
@@ -33,6 +37,32 @@ export class InputShapeComponent implements OnInit {
       this.selectedShape.emit(value);
 
     this.showDropdown = false;
+    event.stopPropagation();
+  }
+
+  toggleDropdown(event: Event) {
+    this.showDropdown = !this.showDropdown;
+    setTimeout(function() { (<HTMLElement>document.querySelector('.menu-shape')).click();
+    (<HTMLElement>document.querySelector('.menu-shape')).focus();
+    (<HTMLElement>(<HTMLElement>event.target).nextElementSibling)?.click();
+    console.log(document.activeElement == (<HTMLElement>document.querySelector('.menu-shape')));
+    console.log((<HTMLElement>document.querySelector('.menu-shape'))); }, 100);
+  }
+
+  focusOnDropdown(event: Event) {
+    (<HTMLElement>document.querySelector('.menu-shape')).click();
+    (<HTMLElement>document.querySelector('.menu-shape')).focus();
+    (<HTMLElement>(<HTMLElement>event.target).nextElementSibling)?.click();
+    console.log(document.activeElement == (<HTMLElement>document.querySelector('.menu-shape')));
+  }
+
+  checkValueChanged(event: Event) {
+    this.showDropdown = false;
+    event.stopPropagation();
+  }
+
+  focusIn(event: Event) {
+    this.showDropdown = true;
   }
 
 }

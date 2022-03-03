@@ -2,10 +2,10 @@
     <app-breadcrumbs>
         <div class="first-lvl">
             <a id="product-route" style="text-decoration: none;" routerLink="/products"
-                routerLinkActive="active">Products</a>
+                routerLinkActive="active">{{ 'products' | translate }}</a>
         </div>
         <div class="second-lvl">
-            Edit Product
+            {{ 'edit product' | translate }}
         </div>
     </app-breadcrumbs>
 </div>
@@ -32,7 +32,12 @@
                                         style="width: 100%; max-height: 600px; border: 10px solid teal; border-radius: 20px;">
                                         <app-svg class="w-100 h-100" [image]="'product-placeholder'"></app-svg>
                                     </div>
-                                    <input class="form-control m-2" type="file" (change)="onChange($event)">
+                                    <label for="files" class="btn btn-light m-2">
+                                        <span>{{ 'select image' | translate }}</span>
+                                        <fa-icon style="margin: 10px;
+                                        color: cadetblue;" [icon]="this.upload"></fa-icon>
+                                    </label>
+                                    <input name="files" id="files" class="form-control m-2 d-none" type="file" (change)="onChange($event)">
                                 </div>
                             </div>
                             <div class="col-lg-1"></div>
@@ -40,38 +45,38 @@
 
                                 <div class="d-flex flex-column justify-content-around" style="padding: 10px;">
                                     <div>
-                                        <label>Name</label>
-                                        <input class="form-control" formControlName="name" type="text" />
+                                        <label class="pad-bot">{{ 'product name' | translate }}</label>
+                                        <input (keyup)="checkAllFilled()" class="form-control" formControlName="name" type="text" />
                                     </div>
                                     <div>
-                                        <label>Description</label>
-                                        <input class="form-control" formControlName="description" type="text" />
+                                        <label class="pad-bot">{{ 'description' | translate }}</label>
+                                        <input (keyup)="checkAllFilled()" class="form-control" formControlName="description" type="text" />
                                     </div>
                                     <div>
-                                        <label>Shape</label>
+                                        <label class="pad-bot">{{ 'shape' | translate }}</label>
                                         <app-input-shape [shape]="this.product?.shape"
                                             (selectedShape)="this.setShape($event)"></app-input-shape>
                                     </div>
                                     <div style="margin-top: 10px; margin-bottom: 10px;">
                                         <div class="form-check">
-                                            <label class="form-check-label">Available</label>
-                                            <input class="form-check-input" formControlName="available"
+                                            <label class="form-check-label">{{ 'in stock' | translate }}</label>
+                                            <input (keyup)="checkAllFilled()" class="form-check-input" formControlName="available"
                                                 type="checkbox" />
                                         </div>
                                     </div>
                                     <div>
-                                        <label>Amount</label>
+                                        <label class="pad-bot">{{ 'amount' | translate }}</label>
                                         <app-input-amount [amount]="this.product?.amount"
                                             (amountChanged)="this.setAmount($event)"></app-input-amount>
                                     </div>
                                     <div class="h-75">
-                                        <label>Dimensions</label>
+                                        <label class="pad-bot">{{ 'dimensions' | translate }}</label>
                                         <app-input-dimension [editMode]="true" [dimension]="this.product?.dimension"
                                             (changedDimensions)="this.setDimensions($event)">
                                         </app-input-dimension>
                                     </div>
                                     <div class="d-flex flex-column m-3">
-                                        <label>Price</label>
+                                        <label class="pad-bot">{{ 'price' | translate }}</label>
                                         <app-input-price [editMode]="true" [price]="this.product?.price"
                                             (changePrice)="this.setPrice($event)"></app-input-price>
                                     </div>
@@ -81,10 +86,10 @@
                             </div>
                         </div>
 
-                        <button style="background: tan;
+                        <button class="submit-btn" style="background: tan;
                 border: 0px;
                 padding: 10px;
-                width: 100%; margin-top: 45px;" type="submit">Submit</button>
+                width: 100%; margin-top: 45px;" type="submit">{{ 'submit' | translate }}</button>
 
                     </form>
                 </div>

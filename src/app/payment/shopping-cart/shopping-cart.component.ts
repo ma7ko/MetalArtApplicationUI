@@ -4,6 +4,7 @@ import { ProductToCartRequest } from 'src/app/service/user/request/user-request'
 import { UserService } from 'src/app/service/user/user.service';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,7 +19,10 @@ export class ShoppingCartComponent implements OnInit {
   totalPrice: string = '0';
   products: any;
   faCart = faCartArrowDown as IconProp;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private translateService: TranslateService) {
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+   }
 
   ngOnInit(): void {
     let user = localStorage.getItem('userKey')?.toString();

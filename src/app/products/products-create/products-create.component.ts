@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { faMinus, faPlus, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faAngleRight, faFileUpload } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { Dimension, ProductResponse } from 'src/app/service/products/request/product-request';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { TranslateService } from '@ngx-translate/core';
+import { LetterFormControl } from 'src/app/model/letter-only/letter-form-control';
+import { PositiveNumberFormControl } from 'src/app/model/positive-number-only/positive-number-form-control';
+import { AmountFormControl } from 'src/app/model/amount/amount-form-control';
 
 @Component({
   selector: 'app-products-create',
@@ -15,10 +19,10 @@ export class ProductsCreateComponent implements OnInit {
   image: File | undefined;
 
   createForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required]),
-    amount: new FormControl(0, [Validators.required]),
+    name: new LetterFormControl('', [Validators.required]),
+    description: new LetterFormControl('', [Validators.required]),
+    price: new AmountFormControl('', [Validators.required]),
+    amount: new AmountFormControl(0, [Validators.required]),
     available: new FormControl('', [Validators.required]),
     shape: new FormControl(0, [Validators.required]),
     width: new FormControl('', [Validators.required]),
@@ -29,8 +33,12 @@ export class ProductsCreateComponent implements OnInit {
   arrowUp = faPlus as IconProp;
   arrowDown = faMinus as IconProp;
   angleRight = faAngleRight as IconProp;
+  upload = faFileUpload as IconProp;
 
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, private translateService: TranslateService) { 
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+  }
 
   ngOnInit(): void {
   }
@@ -70,18 +78,21 @@ export class ProductsCreateComponent implements OnInit {
 
   changeAmount(incrase: boolean) {
     let amountControl = this.createForm.controls['amount'];
-    amountControl.setValue(incrase ? amountControl.value + 1 : amountControl.value - 1);
+    console.log(amountControl);
+    amountControl.setValue(incrase ? parseInt(amountControl.value) + 1 : parseInt(amountControl.value) - 1);
   }
 
   setPrice(price: string) {
     if (price) {
       this.createForm.controls['price'].setValue(parseInt(price));
+      this.checkAllFilled();
     }
   }
 
   setShape(shape: string) {
     this.createForm.controls['shape'].setValue(parseInt(shape));
     console.log(this.createForm);
+    this.checkAllFilled();
   }
 
   setDimensions(dimension: Dimension) {
@@ -89,6 +100,7 @@ export class ProductsCreateComponent implements OnInit {
     this.createForm.controls['width'].setValue(dimension.width);
     this.createForm.controls['height'].setValue(dimension.height);
     this.createForm.controls['depth'].setValue(dimension.depth);
+    this.checkAllFilled();
   }
 
   onSubmit() {
@@ -116,6 +128,33 @@ export class ProductsCreateComponent implements OnInit {
     });
 
 
+  }
+
+  checkAllFilled() {
+    let values = Object.keys(this.createForm.controls).map(key => {
+      let val = this.createForm.controls[key].value;
+      if (key == 'shape' || key == 'available' || key == 'amount')
+        return 'valid';
+      if (val != null && val != undefined && val != '') {
+        if ((key == 'name' || key == 'description') && val.length > 4) {
+          return 'valid';
+        } else if (key != 'name' && key != 'description') {
+          return 'valid';
+        } else {
+          return 'invalid';
+        }
+      }
+      else 
+        return 'invalid';
+    });
+
+    console.log(values);
+    console.log(this.createForm.controls);
+
+    if (!values.includes('invalid'))
+      (<HTMLButtonElement>document.querySelector('.submit-btn')).disabled = false;
+    else 
+      (<HTMLButtonElement>document.querySelector('.submit-btn')).disabled = true;
   }
 
 }

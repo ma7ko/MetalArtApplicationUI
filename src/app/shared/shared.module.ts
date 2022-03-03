@@ -22,6 +22,14 @@ import { SearchComponent } from './search/search.component';
 import { ToggleSwitchComponent } from './toggle-switch/toggle-switch.component';
 import { CarouselProductsComponent } from './carousel-products/carousel-products.component';
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 
 @NgModule({
@@ -49,7 +57,15 @@ import { CarouselProductsComponent } from './carousel-products/carousel-products
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [
     NavigationComponent,

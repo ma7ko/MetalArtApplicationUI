@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { PositiveNumberFormControl } from 'src/app/model/positive-number-only/positive-number-form-control';
 import { Dimension } from 'src/app/service/products/request/product-request';
 
 @Component({
@@ -8,6 +10,11 @@ import { Dimension } from 'src/app/service/products/request/product-request';
 })
 export class InputDimensionComponent implements OnInit, OnChanges {
 
+  dimensionsForm = new FormGroup({
+    width: new PositiveNumberFormControl(),
+    height: new PositiveNumberFormControl(),
+    depth: new PositiveNumberFormControl()
+  });
   @Input() previewMode: boolean = false;
   @Input() dimension: Dimension = new Dimension();
   @Input() editMode: boolean = false;
@@ -22,6 +29,11 @@ export class InputDimensionComponent implements OnInit, OnChanges {
     console.log(this.dimension);
     if (changes['dimension'] != undefined) {
       this.dimension = changes['dimension'].currentValue;
+      if (this.dimension != undefined) {
+        this.dimensionsForm.controls['width'].setValue(this.dimension.width);
+        this.dimensionsForm.controls['height'].setValue(this.dimension.height);
+        this.dimensionsForm.controls['depth'].setValue(this.dimension.depth);
+      }
     }
     console.log(this.dimension);
   }
@@ -50,6 +62,11 @@ export class InputDimensionComponent implements OnInit, OnChanges {
   dimensionChanged(event: Event) {
     let inputElement = <HTMLInputElement>event.target;
 
+    console.log(inputElement.value);
+    if (inputElement.value == "") {
+      inputElement.parentElement?.classList.add('label-alt');
+    }
+
     if (inputElement.name == "width") {
       this.dimensions.width = parseFloat(inputElement.value);
     } else if (inputElement.name == "height") {
@@ -59,6 +76,20 @@ export class InputDimensionComponent implements OnInit, OnChanges {
     }
 
     this.changedDimensions.emit(this.dimensions);
+  }
+
+  checkValue(event: Event) {
+    let inputElement = <HTMLInputElement>event.target;
+    console.log(inputElement.value);
+
+    inputElement.parentElement?.classList.remove('label-alt');
+  }
+
+  focusOut(event: Event) {
+    let inputElement = <HTMLInputElement>event.target;
+
+    if (inputElement.value == "")
+      inputElement.parentElement?.classList.add('label-alt');
   }
 
 }

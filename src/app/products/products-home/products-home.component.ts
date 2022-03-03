@@ -4,6 +4,7 @@ import { ProductResponse } from 'src/app/service/products/request/product-reques
 import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch, faPalette} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products-home',
@@ -37,7 +38,10 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
   faPalette = faPalette as IconProp;
 
   
-  constructor(private productsService: ProductsService, private authService: AuthService) { }
+  constructor(private productsService: ProductsService, private authService: AuthService, private translateService: TranslateService) { 
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+  }
 
   ngOnInit(): void {
     this.isAdminUser = this.authService.isAdminUser();

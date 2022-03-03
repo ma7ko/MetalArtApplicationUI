@@ -8,14 +8,14 @@
                         <div class="d-flex justify-content-around w-100 align-items-center" style="background-color: #888; border-radius: 0px 0px 10px 10px;">
                             <div class="d-flex flex-column align-items-center" style="padding:2px;">
                                 <app-toggle-switch [toggledOn]="this.showPrices"  (emitShowPrice)="this.setShowPrices($event)"></app-toggle-switch>
-                                <span style="font-size: 12px;" class="text-light">Show Prices</span>
+                                <span style="font-size: 12px;" class="text-light">{{ 'show prices' | translate }}</span>
                             </div>
                             <app-search (emitValue)="this.searchProducts($event)"></app-search>
                         </div>
                     </div>
                 </div>
-                <div style="font-family: 'Oxygen'; font-size: 50px; height: fit-content; display: flex; padding-left: 20px;">
-                    Pr<fa-icon class="icon-toolbar" style="font-size: 38px; padding-top: 18px;" (click)="this.openSearchBox($event)" [icon]="this.faSearch"></fa-icon>ducts.
+                <div style="font-family: 'Oxygen', 'Helvetica'; font-size: 50px; height: fit-content; display: flex; padding-left: 20px;">
+                    Пр<fa-icon class="icon-toolbar" style="font-size: 38px; padding-top: 18px; padding-left: 2px;" (click)="this.openSearchBox($event)" [icon]="this.faSearch"></fa-icon>изводи.
                 </div>
                 <div class="d-flex align-items-end h-100 w-100 justify-items-around">
                     <ng-container *ngIf="this.showToolbar">
@@ -58,7 +58,7 @@
                         <fa-icon [icon]="this.faPalette"></fa-icon>
                     </div>
                     <div>
-                        The products page is empty
+                        {{ 'the products page is empty' | translate }}
                     </div>
                 </div>
             </ng-container>
@@ -93,8 +93,8 @@
 </div>
 
 <app-modal [showModal]="this.showModal" (closeModal)="this.showModal = !($event);" (confirmed)="this.bulkDeleteProducts($event)">
-    <header>Delete Products</header>
-    <div class="main-message">Are you sure you want to delete the selected products?</div>
-    <div class="confirm-text">Yes</div>
-    <div class="cancel-text">No</div>
+    <header>{{ 'delete products' | translate }}</header>
+    <div class="main-message">{{ 'are you sure you want to delete the selected products?' | translate }}</div>
+    <div class="confirm-text">{{ 'yes' | translate }}</div>
+    <div class="cancel-text">{{ 'no' | translate }}</div>
 </app-modal>

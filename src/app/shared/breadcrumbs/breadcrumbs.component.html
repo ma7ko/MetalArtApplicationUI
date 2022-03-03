@@ -2,14 +2,14 @@
     <div class="col-12">
         <div style="background-color: #f4f4f4;" class="container">
             <div class="d-flex w-100">
-                <div class="d-flex justify-content-around breadcrumb-holder" style="width: 200px; padding-top: 10px;   padding-bottom: 10px;
+                <div class="d-flex justify-content-around breadcrumb-holder" style="width: 100%; padding-top: 10px;   padding-bottom: 10px;
                 margin-left: 10%;
               ">
                     <div>
                         <ng-content select=".first-lvl"></ng-content>
                     </div>
-                        <fa-icon [icon]="this.angleRight"></fa-icon>
-                    <div>
+                        <fa-icon style="padding-left: 15px; padding-right: 15px;" [icon]="this.angleRight"></fa-icon>
+                    <div style="white-space: nowrap;">
                         <ng-content select=".second-lvl"></ng-content>
                     </div>
                 </div>

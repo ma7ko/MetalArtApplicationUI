@@ -4,7 +4,7 @@
         <div class="container" style="min-height: 700px;">
             <div>
                 <div style="margin-top: 10px;">
-                    <h2>Shopping cart</h2>
+                    <h2>{{ 'shopping cart' | translate }}</h2>
                 </div>
                 <div style="margin-top: 30px; margin-bottom: 30px;">
                     <div class="row">
@@ -12,7 +12,7 @@
                             <div style="min-height: 600px; background-color: #f4f4f4; border-radius: 10px;"
                                 class="d-flex flex-column justify-content-center text-center align-items-center">
                                 <fa-icon style="font-size: 70px;" class="text-secondary" [icon]="this.faCart"></fa-icon>
-                                <h5 class="text-secondary">Your cart is empty</h5>
+                                <h5 class="text-secondary">{{ 'your cart is empty' | translate }}</h5>
                             </div>
                         </div>
                         <div *ngIf="!this.products" class="col-12 col-lg-7 text-center">
@@ -29,7 +29,7 @@
                         <div class="col-12 col-lg-5">
                             <div style="margin-top: 10px; padding:20px;">
                                 <div class="d-flex justify-content-between">
-                                    <h4>Total Amount</h4>
+                                    <h4>{{ 'total amount' | translate }}</h4>
                                     <div *ngIf="this.totalPrice == '0' && !this.products" style="margin-right: 10px;"
                                         class="spinner-border spinner-border-sm text-dark btn-w" role="status">
                                         <span class="sr-only">Loading...</span>
@@ -39,7 +39,7 @@
                                 <div>
                                     <button [ngClass]="{ 'disabled': this.totalPrice ==  '0' }"
                                         [routerLink]="'/checkout'" id="submit-btn"
-                                        class="btn btn-primary w-100">Checkout</button>
+                                        class="btn btn-primary w-100">{{ 'checkout' | translate }}</button>
                                 </div>
                             </div>
                         </div>

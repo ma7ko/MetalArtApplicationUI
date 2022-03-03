@@ -4,13 +4,13 @@
             <div style="background-color: #f4f4f4;" class="container">
                 <div class="row">
                     <div class="col-12 col-sm-8">
-                        <div class="d-flex justify-content-around breadcrumb-holder" style="width: 200px; padding-top: 10px; padding-bottom: 10px;
+                        <div class="d-flex justify-content-around breadcrumb-holder" style="width: 250px; padding-top: 10px; padding-bottom: 10px;
                 margin-left: 12%;
               ">
                             <div><a id="product-route" style="text-decoration: none;" routerLink="/products"
-                                    routerLinkActive="active">Products</a></div>
-                            <fa-icon [icon]="this.angleRight"></fa-icon>
-                            <div>Product Details</div>
+                                    routerLinkActive="active">{{ 'products' | translate }}</a></div>
+                            <fa-icon style="padding-left: 15px; padding-right: 15px;" [icon]="this.angleRight"></fa-icon>
+                            <div style="white-space: nowrap;">{{ 'product details' | translate }}</div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-4">
@@ -61,11 +61,11 @@
                                             class="nav-pill text-light p-2">{{ this.product?.shape }}</span>
                                         <span *ngIf="this.product?.available">
                                             <fa-icon class="text-success" [icon]="this.tick"></fa-icon><span
-                                                style="margin-left: 10px;">In stock</span>
+                                                style="margin-left: 10px;">{{ 'in stock' | translate }}</span>
                                         </span>
                                         <span *ngIf="!this.product?.available">
                                             <fa-icon class="text-danger" [icon]="this.cross"></fa-icon><span
-                                                style="margin-left: 10px;">Unavailable</span>
+                                                style="margin-left: 10px;">{{ 'unavailable' | translate }}</span>
                                         </span>
                                     </p>
                                 </div>
@@ -79,11 +79,11 @@
                                     </app-input-price-tag>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-7 col-xl-6 col-12">
                                         <button style="width: 100%" class="btn m-2" (click)="this.addToCart()"
                                             [ngClass]="{ 'btn-primary' : !this.addedToCart || !this.isLoggedIn, 'btn-success': this.addedToCart, 'btn-secondary': this.addingToCart, 'disabled': this.addingToCart || this.addedToCart }">
                                             <div>
-                                                <span class="p-2">Add to cart</span>
+                                                <span class="p-2">{{ 'add to cart' | translate }}</span>
                                                 <fa-icon *ngIf="!this.addingToCart || !this.isLoggedIn; else spinner"
                                                     [icon]="this.addedToCart ? this.tick : this.cart"></fa-icon>
                                                 <ng-template #spinner>
@@ -95,9 +95,9 @@
                                             </div>
                                         </button>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-5 col-xl-6 col-12">
                                         <button style="width: 100%;" (click)="this.sendToCheckout()"
-                                            class="btn btn-dark m-2">Buy now</button>
+                                            class="btn btn-dark m-2">{{ 'buy now' | translate }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -111,14 +111,14 @@
     border-top: 3px solid darkcyan;
     border-radius: 100px 0px 0px 0px;">
         <div class="col-12" style="display: flex; justify-content: space-between;">
-            <h3 style="margin-left: 45px; margin-top: 25px;">Similar Products</h3>
+            <h3 style="margin-left: 45px; margin-top: 25px;">{{ 'similar products' | translate }}</h3>
             <h3 id="similar-prod"></h3>
         </div>
     </div>
     <div *ngIf="this.similarProducts?.length == 0" class="row" style="background-color: azure;">
         <div style="font-size: 50px; height: 300px; text-align: center; padding: 75px; background: azure; margin: 0px;">
             <fa-icon style="color: #0008;" [icon]="this.noSimilarProduct"></fa-icon>
-            <h5>No similar products found.</h5>
+            <h5>{{ 'no similar products found' | translate }}</h5>
         </div>
     </div>
     <div *ngIf="!this.similarProducts" class="row" style="background-color: azure;">
@@ -144,8 +144,8 @@
 
 <app-modal [showModal]="this.showModal" (closeModal)="this.showModal = !($event);"
     (confirmed)="this.deleteProduct($event)">
-    <header>Delete Product</header>
-    <div class="main-message">Are you sure you want to delete this product?</div>
-    <div class="confirm-text">Yes</div>
-    <div class="cancel-text">No</div>
+    <header>{{ 'delete product' | translate }}</header>
+    <div class="main-message">{{ 'are you sure you want to delete this product?' | translate }}</div>
+    <div class="confirm-text">{{ 'yes' | translate }}</div>
+    <div class="cancel-text">{{ 'no' | translate }}</div>
 </app-modal>

@@ -10,7 +10,13 @@ import { ProductsCreateComponent } from './products-create/products-create.compo
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PricePipe } from '../pipe/price/price.pipe';
 import { ProductsEditComponent } from './products-edit/products-edit.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 @NgModule({
   declarations: [
@@ -24,7 +30,14 @@ import { ProductsEditComponent } from './products-edit/products-edit.component';
     ProductsRoutingModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ]
 })
 export class ProductsModule { }

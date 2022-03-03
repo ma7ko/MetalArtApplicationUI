@@ -11,6 +11,7 @@ import { CreditCardFormControl } from 'src/app/model/credit-card/credit-card-for
 import { NameFormControl } from 'src/app/model/name/name-form-control';
 import { ZipCodeFormControl } from 'src/app/model/zip-code/zip-code-form-control';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-checkout',
@@ -34,8 +35,10 @@ export class CheckoutComponent implements OnInit {
 
   creditCardIcon = faCreditCard as IconProp;
 
-  constructor(private _location: Location, private productsService: ProductsService, private userService: UserService, private httpClient: HttpClient) {
-   }
+  constructor(private _location: Location, private productsService: ProductsService, private userService: UserService, private httpClient: HttpClient, private translateService: TranslateService) {
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk'); 
+  }
 
   ngOnInit(): void {
     this.httpClient.get("https://ipinfo.io").subscribe((response: any) => {

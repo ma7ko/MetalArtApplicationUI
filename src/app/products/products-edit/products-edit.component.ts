@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { faPlus, faMinus, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faAngleRight, faFileUpload } from '@fortawesome/free-solid-svg-icons';
 import { Dimension, ProductResponse } from 'src/app/service/products/request/product-request';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products-edit',
@@ -18,8 +19,8 @@ export class ProductsEditComponent implements OnInit, OnDestroy {
   editForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
-    price: new FormControl(0, [Validators.required]),
-    amount: new FormControl(0, [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+    amount: new FormControl('', [Validators.required]),
     available: new FormControl('', [Validators.required]),
     shape: new FormControl(0, [Validators.required]),
     width: new FormControl('', [Validators.required]),
@@ -33,8 +34,12 @@ export class ProductsEditComponent implements OnInit, OnDestroy {
   arrowUp = faPlus as IconProp;
   arrowDown = faMinus as IconProp;
   angleRight = faAngleRight as IconProp;
+  upload = faFileUpload as IconProp;
 
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, private translateService: TranslateService) { 
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+  }
 
   ngOnInit(): void {
     let prod = this.productService.getClickedProduct();
@@ -83,12 +88,14 @@ export class ProductsEditComponent implements OnInit, OnDestroy {
   setPrice(price: string) {
     if (price) {
       this.editForm.controls['price'].setValue(parseInt(price));
+      this.checkAllFilled();
     }
   }
 
   setShape(shape: string) {
     this.editForm.controls['shape'].setValue(parseInt(shape));
     console.log(this.editForm);
+    this.checkAllFilled();
   }
 
   setDimensions(dimension: Dimension) {
@@ -96,11 +103,14 @@ export class ProductsEditComponent implements OnInit, OnDestroy {
     this.editForm.controls['width'].setValue(dimension.width);
     this.editForm.controls['height'].setValue(dimension.height);
     this.editForm.controls['depth'].setValue(dimension.depth);
+    console.log(dimension);
+    this.checkAllFilled();
   }
 
   setAmount(amount: number) {
     console.log(amount);
     this.editForm.controls['amount'].setValue(amount);
+    this.checkAllFilled();
   }
 
   onChange(event: Event) {
@@ -158,6 +168,35 @@ export class ProductsEditComponent implements OnInit, OnDestroy {
     });
     
 
+  }
+
+  checkAllFilled() {
+    let values = Object.keys(this.editForm.controls).map(key => {
+      let val = this.editForm.controls[key].value;
+      if (key == 'shape' || key == 'available' || key == 'amount')
+        return 'valid';
+      if ((key == 'width' || key == 'height' || key == 'depth') && isNaN(val))
+        return 'invalid';
+      if (val != null && val != undefined && val != '') {
+        if ((key == 'name' || key == 'description') && val.length > 4) {
+          return 'valid';
+        } else if (key != 'name' && key != 'description') {
+          return 'valid';
+        } else {
+          return 'invalid';
+        }
+      }
+      else 
+        return 'invalid';
+    });
+
+    console.log(values);
+    console.log(this.editForm.controls);
+
+    if (!values.includes('invalid'))
+      (<HTMLButtonElement>document.querySelector('.submit-btn')).disabled = false;
+    else 
+      (<HTMLButtonElement>document.querySelector('.submit-btn')).disabled = true;
   }
 
   ngOnDestroy() {

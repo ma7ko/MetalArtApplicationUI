@@ -6,6 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MmToInPipe implements PipeTransform {
 
   transform(value: number, arg: string): any {
+    console.log("In Pipe");
+    console.log(value);
+    console.log(arg);
+    console.log(value.toFixed(2));
     if (arg == "mm")
       return value.toFixed(2);
     else 

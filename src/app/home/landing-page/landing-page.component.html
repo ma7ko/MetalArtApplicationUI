@@ -1,7 +1,7 @@
 <div class="container" style="font-family: 'Julius Sans One';">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center"><span style="font-family: 'Oxygen';font-weight: 900;font-size: 100px;">art</span> Reimagined</h1>
+            <h1 class="text-center"><span class="sm-screen" style="font-family: 'Oxygen', 'Neucha';font-weight: 900;font-size: 85px;">{{ 'art' | translate }}</span> <span style="font-family: 'Bad Script';">{{ 'reimagined' | translate }}</span></h1>
         </div>
     </div>
     <div class="row">
@@ -11,12 +11,12 @@
 display: flex;
 flex-direction: column;background: #f4f4f4;
 border-radius: 0px 50px 0px 0px;">
-               <p style="  font-family: 'Oxygen';
-               font-weight: 500;
-               font-size: 50px; height: 45%; min-height: 300px;
-             ">Decoration for everyone.</p> 
-               <p>Find yours</p>
-               <button class="check-button" [routerLink]="'/products'">Check products</button>
+               <p class="font-arial" style="  font-family: 'Oxygen';
+               font-weight: 100;
+               font-size: 40px; height: 45%; min-height: 300px;
+             ">{{ 'decoration for everyone' | translate }}</p> 
+               <p class="font-arial">{{ 'find yours' | translate }}</p>
+               <button class="check-button font-arial" [routerLink]="'/products'">{{ 'check products' | translate}}</button>
            </div>
         </div>
         <div class="d-none d-lg-block col-lg-8">
@@ -36,11 +36,11 @@ border-radius: 0px 50px 0px 0px;">
             justify-content: center;
             background: #f4f4f4;
             border-radius: 50px 0px 0px 0px; padding:5%; min-height: 400px;">
-                <span style="font-family: 'Oxygen'; font-size:50px;">Sketch it.</span>
-                <p>And let us create it for you</p>
-                <button [routerLink]="'/sketch-home'" class="check-button" style="align-self: center;
+                <span class="font-arial" style="font-family: 'Oxygen'; font-size:40px; font-weight: 100;">{{ 'sketch it' | translate }}</span>
+                <p class="font-arial">{{ 'and let us create it for you' | translate }}</p>
+                <button [routerLink]="'/sketch-home'" class="check-button font-arial" style="align-self: center;
                 width: 50%;
-                padding: 2%;">Create Sketch</button>
+                padding: 2%;">{{ 'create sketch' | translate }}</button>
             </div>
         </div>
     </div>
@@ -55,21 +55,21 @@ border-radius: 0px 50px 0px 0px;">
                         <div class="d-flex h-100 align-items-center justify-content-center">
                             <div class="text-center" style="padding: 25px;">
                                 <fa-icon [icon]="this.faInfo"  style="font-size: 40px; color: #0080ff;"></fa-icon>
-                                <p>Give details of your sketch</p>
+                                <p class="font-arial">{{ 'give details of your sketch' | translate }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-12">
                         <div class="text-center" style="padding: 50px;">
                             <fa-icon [icon]="this.faIcon" style="font-size: 40px;"></fa-icon>
-                            <p>Send us your sketch</p>
+                            <p class="font-arial">{{ 'send us your sketch' | translate }}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-12">
                         <div class="d-flex h-100 align-items-center justify-content-center">
                             <div class="text-center" style="padding: 25px;">
                                 <fa-icon [icon]="this.faClock" style="font-size: 40px; color: #ffe140;"></fa-icon>
-                                <p>Wait for approval</p>
+                                <p class="font-arial">{{ 'wait for approval' | translate }}</p>
                             </div>
                         </div>
                     </div>
@@ -80,11 +80,11 @@ border-radius: 0px 50px 0px 0px;">
     <div class="row">
         <div class="col-lg-5 col-12">
             <div style="height: 100%; background: #f4f4f4; flex-direction: column; justify-content: center; padding:5%; min-height: 400px;" class="d-flex">
-                <h1 style="font-family: 'Oxygen'; font-size: 40px;">Keep track of your work.</h1>
-                <p>Find the status of your sketch on your dashboard</p>
-                <button class="check-button" style="align-self: flex-end;
+                <h1 class="font-arial" style="font-family: 'Oxygen'; font-size: 40px; font-weight: 100;">{{ 'keep track of your work' | translate }}</h1>
+                <p class="font-arial">{{ 'find the status of your sketch on your dashboard' | translate }}</p>
+                <button class="check-button font-arial" style="align-self: flex-end;
                 width: 50%;
-                padding: 2%;">Dashboard</button>
+                padding: 2%;">{{ 'dashboard' | translate }}</button>
             </div>
         </div>
         <div class="col-lg-7 col-12">
