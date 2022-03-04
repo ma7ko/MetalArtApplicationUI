@@ -82,7 +82,7 @@ border-radius: 0px 50px 0px 0px;">
             <div style="height: 100%; background: #f4f4f4; flex-direction: column; justify-content: center; padding:5%; min-height: 400px;" class="d-flex">
                 <h1 class="font-arial" style="font-family: 'Oxygen'; font-size: 40px; font-weight: 100;">{{ 'keep track of your work' | translate }}</h1>
                 <p class="font-arial">{{ 'find the status of your sketch on your dashboard' | translate }}</p>
-                <button class="check-button font-arial" style="align-self: flex-end;
+                <button [routerLink]="'/dashboard'" class="check-button font-arial" style="align-self: flex-end;
                 width: 50%;
                 padding: 2%;">{{ 'dashboard' | translate }}</button>
             </div>

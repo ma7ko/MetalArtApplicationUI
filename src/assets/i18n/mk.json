@@ -71,5 +71,11 @@
     "products in cart": "Производи во кошничка",
     "rated products": "Оценети производи",
     "no activity found": "Нема активност",
-    "last login date": "Последна најава"
+    "last login date": "Последна најава",
+    "checked": "Прегледани",
+    "approved": "Одобрени",
+    "in progress": "Во изработка",
+    "finished": "Завршени",
+    "dashboard of active sketches": "Табла на активни скици",
+    "create new task": "Додај нова картичка"
 }

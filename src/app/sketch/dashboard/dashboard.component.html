@@ -1,0 +1,89 @@
+<div class="container" style="height: 100vh;">
+    <div class="row">
+        <div class="col-12">
+            <div>
+                <div style="margin: 20px;">
+                    <h3 style="font-family: system-ui;">{{ 'dashboard of active sketches' | translate }}</h3>
+                </div>
+                <div class="row" style="margin-top: 30px;">
+                <div class="col-3">
+                    <div class="example-container">
+                        <div class="checked-wrapper">
+                            <h4 class="checked-title">{{ 'checked' | translate }}</h4>
+                            <div style="height: 80vh;" class="example-list" cdkDropList #checkedList="cdkDropList" [cdkDropListData]="this.todo"
+                                [cdkDropListConnectedTo]="[approvedList]" (cdkDropListDropped)="this.drop($event)">
+                                <div style="position: relative;">
+                                <div (click)="this.showModal()" class="create-new" style="pointer-events: all;" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                    <span style="margin-right: 5px;">{{ 'create new task' | translate }}</span>
+                                    <fa-icon [icon]="this.faAdd"></fa-icon>
+                                </div>
+                                </div>
+                                <div style="background: lightcyan;
+                                border-color: lightcyan !important;" class="example-box" *ngFor="let item of todo" cdkDrag>{{ item }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="example-container">
+                        <div class="approved-wrapper">
+                            <h4 class="approved-title">{{ 'approved' | translate }}</h4>
+                            <div style="height: 80vh;" class="example-list" cdkDropList #approvedList="cdkDropList" [cdkDropListData]="this.done"
+                                [cdkDropListConnectedTo]="[checkedList, inProgressList]" (cdkDropListDropped)="this.drop($event)">
+                                <div style="background: #a9ffe2;
+                                border-color: #a9ffe2 !important;" class="example-box" *ngFor="let item of done" cdkDrag>{{ item }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="example-container">
+                        <div class="inprogress-wrapper">
+                        <h4 class="inprogress-title">{{ 'in progress' | translate }}</h4>
+                        <div style="height: 80vh;" class="example-list" cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="this.inprogress"
+                            [cdkDropListConnectedTo]="[approvedList, finishedList]" (cdkDropListDropped)="this.drop($event)">
+                            <div style="background: cadetblue;
+                            border: cadetblue !important;
+                            color: whitesmoke;" class="example-box" *ngFor="let item of inprogress" cdkDrag>{{ item }}</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="example-container">
+                        <div class="finished-wrapper">
+                        <h4 class="finished-title">{{ 'finished' | translate }}</h4>
+                        <div style="height: 80vh;" class="example-list" cdkDropList #finishedList="cdkDropList" [cdkDropListData]="this.finished"
+                            [cdkDropListConnectedTo]="[inProgressList]" (cdkDropListDropped)="this.drop($event)">
+                            <div style="    background: deepskyblue;
+                            border-color: deepskyblue !important;
+                            color: whitesmoke;" class="example-box" *ngFor="let item of finished" cdkDrag>{{ item }}</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div (focusout)="this.displayNone($event)" class="modal d-block" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
