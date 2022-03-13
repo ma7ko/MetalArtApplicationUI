@@ -26,6 +26,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SafePipe } from '../pipe/safe/safe.pipe';
+import { DebounceClickDirective } from '../directive/debounce-click/debounce-click.directive';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -53,7 +55,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     CartPlaceholderComponent,
     SearchComponent,
     ToggleSwitchComponent,
-    CarouselProductsComponent
+    CarouselProductsComponent,
+    SafePipe,
+    DebounceClickDirective
   ],
   imports: [
     CommonModule,
@@ -86,7 +90,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     CartPlaceholderComponent,
     SearchComponent,
     ToggleSwitchComponent,
-    CarouselProductsComponent
+    CarouselProductsComponent,
+    SafePipe,
+    DebounceClickDirective
   ]
 })
 export class SharedModule { }

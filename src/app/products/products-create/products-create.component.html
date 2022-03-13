@@ -59,7 +59,7 @@
                                     <div style="margin-top: 10px; margin-bottom: 10px;">
                                         <div class="form-check">
                                             <label class="form-check-label">{{ 'in stock' | translate }}</label>
-                                            <input (keyup)="checkAllFilled()" class="form-check-input" formControlName="available"
+                                            <input (change)="this.enableAmount($event)" (keyup)="checkAllFilled()" class="form-check-input" formControlName="available"
                                                 type="checkbox" />
                                         </div>
                                     </div>
@@ -71,8 +71,7 @@
                                                 (click)="this.changeAmount(false)">
                                                 <fa-icon [icon]="this.arrowDown"></fa-icon>
                                             </button>
-                                            <input class="form-control text-center" formControlName="amount"
-                                                type="text" />
+                                            <input style="box-shadow: none;" class="form-control text-center" formControlName="amount" type="text"/>
                                             <button type="button"
                                                 style="width: 50%; border:0; border-radius: 0px 40px 40px 0px; font-size: 10px;"
                                                 (click)="this.changeAmount(true)">

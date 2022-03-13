@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 export class ModalComponent implements OnInit, OnChanges {
 
   @Input() showModal: boolean = false;
+  @Input() showCancelButton: boolean = true;
   @Output() closeModal: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() confirmed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -15,12 +16,12 @@ export class ModalComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['showModal'] && changes['showModal'].currentValue) {
-      setTimeout(() => {(<HTMLElement>document.querySelector('.modal-content')).style.maxHeight = "500px";}, 50);
+      setTimeout(() => {(<HTMLElement>document.querySelector('.modal-custom')).style.maxHeight = "500px";}, 50);
     }
   }
 
   removeMaxHeight() {
-    (<HTMLElement>document.querySelector('.modal-content')).style.maxHeight = "0px";
+    (<HTMLElement>document.querySelector('.modal-custom')).style.maxHeight = "0px";
   }
 
   ngOnInit(): void {

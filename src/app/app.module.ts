@@ -9,11 +9,11 @@ import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './products/products.module';
-import { PricePipe } from './pipe/price/price.pipe';
 import { PaymentModule } from './payment/payment.module';
 import { SketchModule } from './sketch/sketch.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DebounceClickDirective } from './directive/debounce-click/debounce-click.directive';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);

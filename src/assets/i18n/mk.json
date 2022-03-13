@@ -77,5 +77,20 @@
     "in progress": "Во изработка",
     "finished": "Завршени",
     "dashboard of active sketches": "Табла на активни скици",
-    "create new task": "Додај нова картичка"
+    "create new task": "Додај нова картичка",
+    "create card": "Креирај картичка",
+    "close": "Откажи",
+    "width": "Ширина",
+    "height": "Висина",
+    "depth": "Должина",
+    "add sketch": "Додај скица",
+    "delete sketch": "Избриши скица",
+    "are you sure you want to delete this sketch?": "Дали сте сигурни дека сакате да ја избришете оваа скица?",
+    "product designed by you.": "Производ дизајниран од ваша страна.",
+    "sketch name": "Име на скица",
+    "send sketch": "Испрати скица",
+    "for more details contact us": "За повеќе детали контактирајте не и следете не на социјалните мрежи",
+    "an email has been successfully sent to your email address from where you can verify your account.": "На вашата е-маил адреса е испратена порака од каде може да го активирате вашиот сметка.",
+    "email sent": "Емаил испратен",
+    "authenticate": "Оди на најава"
 }

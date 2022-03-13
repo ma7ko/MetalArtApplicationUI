@@ -5,6 +5,7 @@ import { Dimension } from 'src/app/service/products/request/product-request';
 import { SketchRequest } from 'src/app/service/sketch/request/sketch-request';
 import { SketchService } from 'src/app/service/sketch/sketch.service';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sketch-home',
@@ -36,7 +37,10 @@ export class SketchHomeComponent implements OnInit {
     metric: new FormControl('mm')
   });
 
-  constructor(private sketchService: SketchService) { }
+  constructor(private sketchService: SketchService, private translateService: TranslateService) {
+    this.translateService.setDefaultLang('mk');
+    this.translateService.use('mk');
+   }
 
   ngOnInit(): void {
     document.body.scrollTop = document.documentElement.scrollTop = 0;

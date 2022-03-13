@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   errorRegister:boolean = false;
   faExc = faExclamationCircle as IconProp;
   loading: boolean = false;
+  showModal: boolean = false;
 
   constructor(private userService: UserService, private router: Router, private translateService: TranslateService) { 
     this.translateService.setDefaultLang('mk');
@@ -31,6 +32,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  goToAuth(isConfirm: boolean) {
+    this.router.navigate(['/auth']);
   }
 
   onSubmit() {
@@ -43,7 +48,7 @@ export class RegisterComponent implements OnInit {
     console.log(data);
     this.userService.register(data).subscribe((response) => {
       console.log(response);
-      this.router.navigate(['/auth']);
+      this.showModal = true;
     }, (error) => {
       console.log(error);
       this.errorRegister = true;

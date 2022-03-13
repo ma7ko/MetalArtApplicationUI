@@ -29,6 +29,11 @@ export class SketchService {
       })
     };
   }
+
+  getAllSketches(): Observable<any> {
+    const httpOptions = this.getAuthorizationHeader();
+    return this.httpClient.get<any>(`${API_URL}/sketch`, httpOptions);
+  }
   
   sendSketch(request: any, file?: any): Observable<any> {
     const httpOptions = this.getAuthorizationHeader();
@@ -46,5 +51,23 @@ export class SketchService {
     });
 
     return this.httpClient.post<any>(`${API_URL}/sketch`, formData, httpOptions);
+  }
+
+  addNewSketch(request: any, file?: any): Observable<any> {
+    const httpOptions = this.getAuthorizationHeader();
+
+    const formData = new FormData();
+    // Append file to the virtual form.
+    console.log(file);
+    if (file)
+      formData.append('uploadedFile', file);
+    console.log(file);
+
+    // Optional, append other kev:val rest data to the form.
+    Object.keys(request).forEach(key => {
+      formData.append(key, request[key]);
+    });
+
+    return this.httpClient.post<any>(`${API_URL}/sketch/create-sketch`, formData, httpOptions);
   }
 }

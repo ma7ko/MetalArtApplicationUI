@@ -17,12 +17,13 @@ import { AmountFormControl } from 'src/app/model/amount/amount-form-control';
 export class ProductsCreateComponent implements OnInit {
 
   image: File | undefined;
+  isAmountDisabled: boolean = true;
 
   createForm = new FormGroup({
     name: new LetterFormControl('', [Validators.required]),
     description: new LetterFormControl('', [Validators.required]),
     price: new AmountFormControl('', [Validators.required]),
-    amount: new AmountFormControl(0, [Validators.required]),
+    amount: new AmountFormControl({value: 0, disabled: this.isAmountDisabled}, [Validators.required]),
     available: new FormControl('', [Validators.required]),
     shape: new FormControl(0, [Validators.required]),
     width: new FormControl('', [Validators.required]),
@@ -103,6 +104,17 @@ export class ProductsCreateComponent implements OnInit {
     this.createForm.controls['height'].setValue(dimension.height);
     this.createForm.controls['depth'].setValue(dimension.depth);
     this.checkAllFilled();
+  }
+
+  enableAmount(event: Event) {
+    let isChecked = (<HTMLInputElement>event.target).checked;
+    if (isChecked) {
+      this.isAmountDisabled = false;
+      this.createForm.controls['amount'].enable();
+    } else {
+        this.isAmountDisabled = true;
+      this.createForm.controls['amount'].disable();
+    }
   }
 
   onSubmit() {

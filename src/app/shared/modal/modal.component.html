@@ -1,6 +1,6 @@
 <div (click)="this.closeModal.emit(true); this.removeMaxHeight()" [ngClass]="{ 'd-block': this.showModal }" id="modalComponent" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div (click)="$event.stopPropagation()" class="modal-content" style="max-height: 0;
+      <div (click)="$event.stopPropagation()" class="modal-content modal-custom" style="max-height: 0;
       overflow: hidden;
       transition: max-height 0.8s;">
         <div class="modal-header">
@@ -12,9 +12,9 @@
         <div class="modal-body">
           <ng-content select=".main-message"></ng-content>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" [ngClass]="{ 'text-center': !this.showCancelButton }">
           <button (click)="this.confirmed.emit(true); this.removeMaxHeight()" type="button" class="btn btn-primary"><ng-content select=".confirm-text"></ng-content></button>
-          <button (click)="this.closeModal.emit(true); this.removeMaxHeight()" type="button" class="btn btn-secondary" data-dismiss="modal"><ng-content select=".cancel-text"></ng-content></button>
+          <button *ngIf="this.showCancelButton" (click)="this.closeModal.emit(true); this.removeMaxHeight()" type="button" class="btn btn-secondary" data-dismiss="modal"><ng-content select=".cancel-text"></ng-content></button>
         </div>
       </div>
     </div>

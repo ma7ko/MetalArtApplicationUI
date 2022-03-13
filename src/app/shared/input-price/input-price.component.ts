@@ -14,7 +14,7 @@ export class InputPriceComponent implements OnInit, OnChanges {
   currency: string = "MKD";
 
   priceForm = new FormGroup({
-    price: new AmountFormControl('')
+    price: new AmountFormControl('0')
   });
 
   @Input() price: number | undefined;
@@ -43,7 +43,15 @@ export class InputPriceComponent implements OnInit, OnChanges {
   }
 
   consoleit(event: Event) {
-    this.changePrice.emit((<HTMLInputElement>(event.target)).value);
+    console.log(event);
+    console.log((<HTMLInputElement>event.target).value);
+    if ((<KeyboardEvent>event).key == "Backspace" && (<HTMLInputElement>(event.target)).value != "0" &&  (<HTMLInputElement>(event.target)).value.length == 1) {
+      this.changePrice.emit('0');
+    } else if ((<KeyboardEvent>event).key != "Backspace" && (<HTMLInputElement>(event.target)).value == "0") {
+      this.changePrice.emit((<KeyboardEvent>event).key);
+    } else {
+      this.changePrice.emit((<HTMLInputElement>(event.target)).value + "" + (<KeyboardEvent>event).key);
+    }
   }
 
 }

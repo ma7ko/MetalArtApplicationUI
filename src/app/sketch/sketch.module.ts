@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { SketchRoutingModule } from './sketch-routing.module';
 import { SketchHomeComponent } from './sketch-home/sketch-home.component';
@@ -11,6 +10,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -19,7 +20,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
   declarations: [
     SketchHomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardCardComponent
   ],
   imports: [
     CommonModule,

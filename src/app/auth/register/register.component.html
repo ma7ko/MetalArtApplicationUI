@@ -51,3 +51,10 @@
         </div>
     </div>
 </div>
+
+<app-modal [showModal]="this.showModal" [showCancelButton]="false" (closeModal)="this.showModal = !($event);"
+    (confirmed)="this.goToAuth($event)">
+    <header>{{ 'email sent' | translate }}</header>
+    <div class="main-message">{{ 'an email has been successfully sent to your email address from where you can verify your account.' | translate }}</div>
+    <div class="confirm-text">{{ 'authenticate' | translate }}</div>
+</app-modal>

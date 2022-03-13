@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { ProductResponse } from 'src/app/service/products/request/product-request';
-import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch, faPalette} from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare, faTrash, faPen, faEye, faAlignJustify, faSearch, faPalette, faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { TranslateService } from '@ngx-translate/core';
@@ -33,7 +33,7 @@ export class ProductsHomeComponent implements OnInit, OnDestroy {
   faPen = faPen as IconProp;
   faTrash = faTrash as IconProp;
   faCartPlus = faPlusSquare as IconProp;
-  faToggle = faAlignJustify as IconProp;
+  faToggle = faEllipsisH as IconProp;
   faSearch = faSearch as IconProp;
   faPalette = faPalette as IconProp;
 
